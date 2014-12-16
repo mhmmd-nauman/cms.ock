@@ -194,7 +194,7 @@
                                     </div>
                                     <div class="modal-body">
                                       <div class="form">
-                                        <form class="form-horizontal">
+                                        <form class="form-horizontal" >
                                           
                                           <div class="form-group">
                                             <label class="col-md-3 control-label">Icon <span class='require'>*</span></label>
