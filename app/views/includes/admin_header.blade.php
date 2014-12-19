@@ -16,7 +16,7 @@
                 <ul class="nav navbar-top-links navbar-right">
                 
                     <li class="dropdown"><a data-toggle="dropdown" href="#" class="dropdown-toggle"><img src="{{ URL::asset('assets/images/profile/image_hock.jpg') }}" alt="" class="img-responsive img-circle"/>&nbsp;
-                        {{$user->first_name}} {{$user->last_name}}
+                        
                         &nbsp;<span class="caret"></span></a>
           <ul class="dropdown-menu dropdown-user pull-right animated bounceInLeft">
                             <li>
@@ -28,9 +28,9 @@
                                             	<a href="#" data-target="#modal-change-avatar" data-toggle="modal" class="change-avatar">
                                                 <small>Change Avatar</small>                                                </a></p>
                                       </div>
-                                        <div class="col-md-7 col-xs-5"><span>{{$user->first_name}} {{$user->last_name}}</span>
+                                        <div class="col-md-7 col-xs-5"><span></span>
 
-                                            <p class="text-muted small">{{$user->email}}</p>
+                                            <p class="text-muted small"></p>
 
                                             <div class="divider"></div>
                                             <!--<a href="#" class="btn btn-primary btn-sm">View Profile</a>-->

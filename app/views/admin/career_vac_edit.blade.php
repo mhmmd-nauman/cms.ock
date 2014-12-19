@@ -66,7 +66,7 @@
                   <div class="caption">Job Vacancies Listing</div>
                   <br/>
                   <p class="margin-top-10px"></p>
-                  <a href="#" data-target="#modal-add-director" data-toggle="modal" class="btn btn-success">Add New &nbsp;<i class="fa fa-plus"></i></a>&nbsp;
+                  <a href="{{ URL::to('create') }}" data-target="#modal-add-director" data-toggle="modal" class="btn btn-success">Add New &nbsp;<i class="fa fa-plus"></i></a>&nbsp;
                   <div class="btn-group">
                     <button type="button" class="btn btn-primary">Delete</button>
                     <button type="button" data-toggle="dropdown" class="btn btn-red dropdown-toggle"><span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
@@ -79,6 +79,7 @@
                    
 <div class="tools"> <i class="fa fa-chevron-up"></i> </div>
                   <!--Modal Add New start-->
+                   {{ Form::open(array('url' => 'Add_Vacancy',"method" => "post","class"=>"form-horizontal")) }}
                   <div id="modal-add-director" tabindex="-1" role="dialog" aria-labelledby="modal-login-label" aria-hidden="true" class="modal fade">
                     <div class="modal-dialog modal-wide-width">
                       <div class="modal-content">
@@ -88,26 +89,28 @@
                         </div>
                         <div class="modal-body">
                           <div class="form">
-                            <form class="form-horizontal">
+                            
                               <div class="form-group">
                                 <label class="col-md-3 control-label">Status</label>
                                 <div class="col-md-9">
                                   <div data-on="success" data-off="primary" class="make-switch">
-                                    <input type="checkbox" checked="checked"/>
+                                    {{ Form::checkbox('status', '1');}}
                                   </div>
                                 </div>
                               </div>
                               <div class="form-group">
                                 <label class="col-md-3 control-label">Job Title <span class='require'>*</span></label>
                                 <div class="col-md-9">
-                                  <textarea name="inputContent" rows="2" class="form-control" id="inputContent"></textarea>
+                                    {{ Form::textarea('job_title', Input::old('job_title'), array('class' => 'form-control','placeholder' => 'Job Title'))}}
+                                  
                                 </div>
                               </div>
                               <div class="form-group">
                                 <label class="col-md-3 control-label">Date</label>
                                 <div class="col-md-5">
                                   <div class="input-group">
-                                    <input type="text" class="datepicker-default form-control" data-date-format="dd/mm/yyyy" placeholder="dd/mm/yyyy"/>
+                                      {{ Form::text('date', Input::old('date'), array('class' => 'form-control','placeholder' => 'Date'))}}
+                                   
                                     <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
                                   </div>
                                 </div>
@@ -115,13 +118,13 @@
                               <div class="form-group">
                                 <label for="inputContent" class="col-md-3 control-label">Responsibilities <span class='require'>*</span></label>
                                 <div class="col-md-9"> note to programmer: please follow 100% front end style, including the list style in below fckeditor.
-                                  <textarea name="area" rows="3" class="form-control" id="area4"></textarea>
+                                  {{ Form::textarea('Responsibilities', Input::old('Responsibilities'), array('class' => 'form-control','placeholder' => 'Responsibilities'))}}
                                 </div>
                               </div>
                               <div class="form-group">
                                 <label for="inputContent" class="col-md-3 control-label">Requirements <span class='require'>*</span></label>
                                 <div class="col-md-9"> note to programmer: please follow 100% front end style, including the list style in below fckeditor.
-                                  <textarea name="area" rows="3" class="form-control" id="area4"></textarea>
+                                 {{ Form::textarea('Requirements', Input::old('Requirements'), array('class' => 'form-control','placeholder' => 'Requirements'))}}
                                 </div>
                               </div>
                               <div class="form-group">
@@ -135,9 +138,10 @@
                                 </div>
                               </div>
                               <div class="form-actions">
-                                <div class="col-md-offset-5 col-md-8"> <a href="#" class="btn btn-red">Save &nbsp;<i class="fa fa-floppy-o"></i></a>&nbsp; <a href="#" data-dismiss="modal" class="btn btn-green">Cancel &nbsp;<i class="glyphicon glyphicon-ban-circle"></i></a> </div>
+                                <div class="col-md-offset-5 col-md-8"> {{ Form::submit('Save &nbsp;', array('class' => 'btn btn-red')) }}<i class="fa fa-floppy-o"></i></a>&nbsp; <a href="#" data-dismiss="modal" class="btn btn-green">Cancel &nbsp;<i class="glyphicon glyphicon-ban-circle"></i></a> </div>
                               </div>
-                            </form>
+                            {{ Form::close() }}
+                              
                           </div>
                         </div>
                       </div>
@@ -209,15 +213,59 @@
                       </tr>
                     </thead>
                     <tbody>
+                     @foreach ($careers as $career)   
                       <tr>
                         <td><input type="checkbox"/></td>
-                        <td>1</td>
+                        <td>{{$career->id}}</td>
                         <td><span class="label label-sm label-success">Active</span></td>
-                        <td>31 Dec, 2013</td>
-                        <td>Business Development Executive</td>
-                        <td><a href="#" data-hover="tooltip" data-placement="top" data-target="#modal-edit-director" data-toggle="modal" title="Edit"><span class="label label-sm label-success"><i class="fa fa-pencil"></i></span></a> <a href="#" data-hover="tooltip" data-placement="top" title="Delete" data-target="#modal-delete-1" data-toggle="modal"><span class="label label-sm label-red"><i class="fa fa-trash-o"></i></span></a>
-                            <!--Modal Edit vacancy start-->
-                            <div id="modal-edit-director" tabindex="-1" role="dialog" aria-labelledby="modal-login-label" aria-hidden="true" class="modal fade">
+                        <td>{{$career->date}}</td>
+                        <td>{{$career->jobtitle}}</td>
+                        <td><a href="#" data-hover="tooltip" data-placement="top" data-target="#modal-edit-{{$career->id}}" data-toggle="modal" title="Edit"><span class="label label-sm label-success"><i class="fa fa-pencil"></i></span></a> <a href="#" data-hover="tooltip" data-placement="top" title="Delete" data-target="#modal-delete-{{$career->id}}" data-toggle="modal"><span class="label label-sm label-red"><i class="fa fa-trash-o"></i></span></a>
+                          
+                        </td>
+                      </tr>
+                      @endforeach 
+                    </tbody>
+                    <tfoot>
+                      <tr>
+                        <td colspan="6"></td>
+                      </tr>
+                    </tfoot>
+                  </table>
+                  <div class="tool-footer text-right">
+                    <p class="pull-left">Showing 1 to 10 of 57 entries</p>
+                    <ul class="pagination pagination mtm mbm">
+                      <li class="disabled"><a href="#">&laquo;</a></li>
+                      <li class="active"><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#">&raquo;</a></li>
+                    </ul>
+                  </div>
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+              <!-- end portlet -->
+            </div>
+          </div>
+        </div>
+        <!-- InstanceEndEditable -->
+        <!--END CONTENT-->
+            
+            <!--BEGIN FOOTER-->
+<div class="page-footer">
+                <div class="copyright"><span class="text-15px">2014 © <a href="http://www.webqom.com" target="_blank">Webqom Technologies Sdn Bhd.</a> Any queries, please contact <a href="mailto:support@webqom.com">Webqom Support</a>.</span>
+                	<div class="pull-right"><img src="images/logo_webqom.png" alt="Webqom Technologies"></div>
+                </div>
+        </div>
+    <!--END FOOTER--></div>
+<!--END PAGE WRAPPER-->
+  <!--Modal Edit vacancy start-->
+   @foreach ($careers as $career)          
+            {{ Form::open(array('url' => 'update_career/'.$career->id,"method" => "post","class"=>"form-horizontal")) }}
+                            <div id="modal-edit-{{$career->id}}" tabindex="-1" role="dialog" aria-labelledby="modal-login-label" aria-hidden="true" class="modal fade">
                               <div class="modal-dialog modal-wide-width">
                                 <div class="modal-content">
                                   <div class="modal-header">
@@ -225,27 +273,27 @@
                                     <h4 id="modal-login-label2" class="modal-title">Edit Vacancy</h4>
                                   </div>
                                   <div class="modal-body">
-                                    <div class="form">
+                                    
                                       <form class="form-horizontal">
                                         <div class="form-group">
                                           <label class="col-md-3 control-label">Status</label>
                                           <div class="col-md-9">
                                             <div data-on="success" data-off="primary" class="make-switch">
-                                              <input type="checkbox" checked="checked"/>
+                                             {{ Form::checkbox('status', '1');}}
                                             </div>
                                           </div>
                                         </div>
                                         <div class="form-group">
                                           <label class="col-md-3 control-label">Job Title <span class='require'>*</span></label>
                                           <div class="col-md-9">
-                                            <textarea name="inputContent" rows="2" class="form-control" id="inputContent">Business Development Executive</textarea>
+                                            {{ Form::textarea('job_title', $career->jobtitle, array('placeholder' => 'Title','class'=>'form-control')) }}
                                           </div>
                                         </div>
                                         <div class="form-group">
                                           <label class="col-md-3 control-label">Date <span class='require'>*</span></label>
                                           <div class="col-md-5">
                                             <div class="input-group">
-                                              <input type="text" class="datepicker-default form-control" data-date-format="dd/mm/yyyy" placeholder="dd/mm/yyyy" value="31 Dec, 2013"/>
+                                             {{ Form::text('date', $career->date, array('placeholder' => 'Title','class'=>'form-control')) }}
                                               <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
                                             </div>
                                           </div>
@@ -300,17 +348,21 @@
                                           </div>
                                         </div>
                                         <div class="form-actions">
-                                          <div class="col-md-offset-5 col-md-8"> <a href="#" class="btn btn-red">Save &nbsp;<i class="fa fa-floppy-o"></i></a>&nbsp; <a href="#" data-dismiss="modal" class="btn btn-green">Cancel &nbsp;<i class="glyphicon glyphicon-ban-circle"></i></a> </div>
+                                          <div class="col-md-offset-5 col-md-8">{{ Form::submit('Update &nbsp;', array('class' => 'btn btn-red')) }}  <i class="fa fa-floppy-o"></i></a>&nbsp; <a href="#" data-dismiss="modal" class="btn btn-green">Cancel &nbsp;<i class="glyphicon glyphicon-ban-circle"></i></a> </div>
                                         </div>
-                                      </form>
+                                      {{ Form::close() }}
                                     </div>
                                   </div>
                                 </div>
                               </div>
                           </div>
+             
+             @endforeach
                           <!--END MODAL Edit vacancy-->
                             <!--Modal delete start-->
-                            <div id="modal-delete-1" tabindex="-1" role="dialog" aria-labelledby="modal-login-label" aria-hidden="true" class="modal fade">
+                            @foreach ($careers as $career)          
+            {{ Form::open(array('url' => 'deletevecancy/'.$career->id,"method" => "post","class"=>"form-horizontal")) }}
+                            <div id="modal-delete-{{$career->id}}" tabindex="-1" role="dialog" aria-labelledby="modal-login-label" aria-hidden="true" class="modal fade">
                               <div class="modal-dialog">
                                 <div class="modal-content">
                                   <div class="modal-header">
@@ -318,53 +370,15 @@
                                     <h4 id="modal-login-label3" class="modal-title"><a href=""><i class="fa fa-exclamation-triangle"></i></a> Are you sure you want to delete this vacancy? </h4>
                                   </div>
                                   <div class="modal-body">
-                                    <p><strong>#1:</strong> Business Development Executive</p>
+                                    <p><strong>#1:</strong> $career->jobtitle</p>
                                     <div class="form-actions">
-                                      <div class="col-md-offset-4 col-md-8"> <a href="#" class="btn btn-red">Yes &nbsp;<i class="fa fa-check"></i></a>&nbsp; <a href="#" data-dismiss="modal" class="btn btn-green">No &nbsp;<i class="fa fa-times-circle"></i></a> </div>
+                                      <div class="col-md-offset-4 col-md-8"> {{ Form::submit('Yes &nbsp;', array('class' => 'btn btn-red')) }}<i class="fa fa-check"></i>&nbsp; <a href="#" data-dismiss="modal" class="btn btn-green">No &nbsp;<i class="fa fa-times-circle"></i></a> </div>
                                     </div>
                                   </div>
                                 </div>
                               </div>
                           </div>
+            {{ Form::close() }}
+             @endforeach
                           <!-- modal delete end -->
-                        </td>
-                      </tr>
-                    </tbody>
-                    <tfoot>
-                      <tr>
-                        <td colspan="6"></td>
-                      </tr>
-                    </tfoot>
-                  </table>
-                  <div class="tool-footer text-right">
-                    <p class="pull-left">Showing 1 to 10 of 57 entries</p>
-                    <ul class="pagination pagination mtm mbm">
-                      <li class="disabled"><a href="#">&laquo;</a></li>
-                      <li class="active"><a href="#">1</a></li>
-<li><a href="#">2</a></li>
-<li><a href="#">3</a></li>
-<li><a href="#">4</a></li>
-<li><a href="#">5</a></li>
-<li><a href="#">&raquo;</a></li>
-</ul>
-                  </div>
-                  <div class="clearfix"></div>
-                </div>
-              </div>
-              <!-- end portlet -->
-            </div>
-          </div>
-        </div>
-        <!-- InstanceEndEditable -->
-        <!--END CONTENT-->
-            
-            <!--BEGIN FOOTER-->
-<div class="page-footer">
-                <div class="copyright"><span class="text-15px">2014 © <a href="http://www.webqom.com" target="_blank">Webqom Technologies Sdn Bhd.</a> Any queries, please contact <a href="mailto:support@webqom.com">Webqom Support</a>.</span>
-                	<div class="pull-right"><img src="images/logo_webqom.png" alt="Webqom Technologies"></div>
-                </div>
-        </div>
-    <!--END FOOTER--></div>
-<!--END PAGE WRAPPER-->
-
 @stop

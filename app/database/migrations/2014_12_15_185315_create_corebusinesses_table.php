@@ -12,7 +12,7 @@ class CreateCorebusinessesTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('corebusinesses', function(Blueprint $table)
+		Schema::create('core_businesses', function(Blueprint $table)
 		{
 			$table->increments('id');
                         $table->string('icon');
@@ -30,7 +30,7 @@ class CreateCorebusinessesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('corebusinesses');
+		Schema::drop('core_businesses');
 	}
 
 }

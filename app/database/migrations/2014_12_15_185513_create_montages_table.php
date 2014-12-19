@@ -16,6 +16,11 @@ class CreateMontagesTable extends Migration {
 		{
 			$table->increments('id');
 			$table->timestamps();
+                        $table->string('title', 255);
+                        $table->string('status', 255);
+                        $table->string('Banner', 255);
+                        $table->string('MoreStatus', 255);
+                        $table->string('url', 255);
 		});
 	}
 

@@ -3,7 +3,7 @@
 
 <!--BEGIN PAGE WRAPPER-->
 <div id="page-wrapper"><!--BEGIN PAGE HEADER & BREADCRUMB-->
-        
+       
         <div class="page-header-breadcrumb">
           <div class="page-heading hidden-xs">
             <h1 class="page-title">Index</h1>
@@ -86,105 +86,21 @@
                                 </div>
                             </div>
                             <br/>
-                            <!-- Step 1 -->                        
-                              <div class="col-lg-3">
-                                  <div class="thumbnail">
-                                    <div class="caption-head">
-                                      
-                                          <a href="#" data-placement="top" data-target="#modal-edit-core-business-1" data-toggle="modal" title="Edit">
-                                              <em class="caption-icon icon-sitemap icon-big"></em>                            
-                                              <h4 class="caption-title">Telco Network Services</h4>
-                                          </a>
-                                    </div>
-                                  </div>
-                              </div>                        
-    
-                            <!-- Step 2 -->                        
-                              <div class="col-lg-3">
-                                  <div class="thumbnail">
-                                    <div class="caption-head">
-                                       <a href="#" data-placement="top" data-target="#modal-edit-core-business-2" data-toggle="modal" title="Edit">
-                                        <em class="caption-icon icon-laptop icon-big"></em>
-                                        <h4 class="caption-title">Trading of Telco <br/>&amp; IT Products</h4>
-                                       </a>
-                                    </div>
-                                  </div>
-                              </div>                        
-    
-                            <!-- Step 3 -->
-                            <div class="col-lg-3">
-                                <div class="thumbnail">
-                                  <div class="caption-head">
-                                     <a href="#" data-placement="top" data-target="#modal-edit-core-business-3" data-toggle="modal" title="Edit"> 
-                                      <em class="caption-icon icon-leaf icon-big"></em>
-                                      <h4 class="caption-title">Green Technology <br/>&amp; Solar</h4>
-                                     </a>
-                                  </div>
-                                </div>
-                            </div>
-    
-                            <!-- Step 4 -->
-                            <div class="col-lg-3">
-                                <div class="thumbnail">
-                                  <div class="caption-head">
-                                     <a href="#" data-placement="top" data-target="#modal-edit-core-business-4" data-toggle="modal" title="Edit"> 
-                                      <em class="caption-icon icon-wrench icon-big"></em>
-                                      <h4 class="caption-title">M&amp;E Engineering Works</h4>
-                                     </a>
-                                  </div>                           
-                                </div>
-                            </div>                    
-                        </div>
-                        
-                        
-                        <!--Modal edit core business 1 start-->
-                              <div id="modal-edit-core-business-1" tabindex="-1" role="dialog" aria-labelledby="modal-login-label" aria-hidden="true" class="modal fade">
-                                <div class="modal-dialog modal-wide-width">
-                                  <div class="modal-content">
-                                    <div class="modal-header">
-                                      <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
-                                      <h4 id="modal-login-label2" class="modal-title">Edit Core Business</h4>
-                                    </div>
-                                    <div class="modal-body">
-                                      <div class="form">
-                                        <form class="form-horizontal">
-                                          
-                                          <div class="form-group">
-                                            <label class="col-md-3 control-label">Icon <span class='require'>*</span></label>
-                                            <div class="col-md-6">
-                                              <input type="text" class="form-control" id="inputContent" value="icon-sitemap">
-                                              <div class="help-block">Please refer here for more <a href="icons.html" target="_blank">icon options.</a></div>
-                                            </div>
-                                          </div>
-                                          <div class="form-group">
-                                            <label class="col-md-3 control-label">Title <span class='require'>*</span></label>
-                                            <div class="col-md-6">
-                                              <textarea name="inputContent" rows="2" class="form-control" id="inputContent">Telco Network Services</textarea>
-                                            </div>
-                                          </div>
-                                          
-                                          <div class="form-group">
-                                            <label class="col-md-3 control-label">Website URL </label>
-                                            <div class="col-md-6">
-                                              <div class="input-icon"><i class="fa fa-link"></i>
-                                                  <input type="text" placeholder="http://" class="form-control" value="http://www.ock.com.my/services_telecommunications_network.html"/>
-                                              </div>
-                                            </div>
-                                            
-                                          </div>
+                            <!-- Step 1 --> 
+                            @foreach ($businesses_create as $Busi)
+        
+                             <div class="col-lg-3">
+                                           <div class="thumbnail">
+                                             <div class="caption-head">
 
-                                          <div class="form-actions">
-                                            <div class="col-md-offset-5 col-md-8"> <a href="#" class="btn btn-red">Save &nbsp;<i class="fa fa-floppy-o"></i></a>&nbsp; <a href="#" data-dismiss="modal" class="btn btn-green">Cancel &nbsp;<i class="glyphicon glyphicon-ban-circle"></i></a> </div>
-                                          </div>
-                                        </form>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <!--END MODAL edit core business 1-->
-                              
-                              <!--Modal edit core business 2 start-->
+                                                   <a href="#" data-placement="top" data-target="#modal-edit-core-business-1" data-toggle="modal" title="Edit">
+                                                       <em class="caption-icon icon-sitemap icon-big"></em>                            
+                                                       <h4 class="caption-title">{{$Busi->title}}</h4>
+                                                   </a>
+                                             </div>
+                                           </div>
+                                       </div>     
+                            @endforeach 
                               <div id="modal-edit-core-business-2" tabindex="-1" role="dialog" aria-labelledby="modal-login-label" aria-hidden="true" class="modal fade">
                                 <div class="modal-dialog modal-wide-width">
                                   <div class="modal-content">
@@ -194,19 +110,21 @@
                                     </div>
                                     <div class="modal-body">
                                       <div class="form">
-                                        <form class="form-horizontal" >
-                                          
+                                       
+                                          {{ Form::open(array('url' => 'businesses_create',"method" => "post","class"=>"form-horizontal")) }}
                                           <div class="form-group">
                                             <label class="col-md-3 control-label">Icon <span class='require'>*</span></label>
                                             <div class="col-md-6">
-                                              <input type="text" class="form-control" id="inputContent" value="icon-laptop">
+                                                 {{ Form::text('icon', Input::old('icon'), array('class' => 'form-control','placeholder' => 'Icon')) }}
+                                              
                                               <div class="help-block">Please refer here for more <a href="icons.html" target="_blank">icon options.</a></div>
                                             </div>
                                           </div>
                                           <div class="form-group">
                                             <label class="col-md-3 control-label">Title <span class='require'>*</span></label>
                                             <div class="col-md-6">
-                                              <textarea name="inputContent" rows="2" class="form-control" id="inputContent">Trading of Telco <br/>&amp; IT Products</textarea>
+                                                {{ Form::text('title', Input::old('title'), array('class' => 'form-control','placeholder' => 'Trading of Telco <br/>&amp; IT Products')) }}
+                                              
                                             </div>
                                           </div>
                                           
@@ -214,115 +132,49 @@
                                             <label class="col-md-3 control-label">Website URL </label>
                                             <div class="col-md-6">
                                               <div class="input-icon"><i class="fa fa-link"></i>
-                                                  <input type="text" placeholder="http://" class="form-control" value="http://www.ock.com.my/services_trading_telecommunications_it.html"/>
+                                                  {{ Form::text('url', Input::old('url'), array('class' => 'form-control','placeholder' => 'http:'))}}
+                                                 
                                               </div>
                                             </div>
                                             
                                           </div>
                                           
                                           <div class="form-actions">
-                                            <div class="col-md-offset-5 col-md-8"> <a href="#" class="btn btn-red">Save &nbsp;<i class="fa fa-floppy-o"></i></a>&nbsp; <a href="#" data-dismiss="modal" class="btn btn-green">Cancel &nbsp;<i class="glyphicon glyphicon-ban-circle"></i></a> </div>
+                                              
+                                            <div class="col-md-offset-5 col-md-8">{{ Form::submit('Save &nbsp;', array('class' => 'btn btn-red')) }} <i class="fa fa-floppy-o"></i></a>&nbsp; <a href="#" data-dismiss="modal" class="btn btn-green">Cancel &nbsp;<i class="glyphicon glyphicon-ban-circle"></i></a> </div>
                                           </div>
-                                        </form>
+                                        {{ Form::close() }}
                                       </div>
                                     </div>
                                   </div>
                                 </div>
-                              </div>
+                              </div>                  
+    
+                            <!-- Step 2 -->                        
+                                              
+    
+                            <!-- Step 3 -->
+                            
+    
+                            <!-- Step 4 -->
+                                            
+                        </div>
+                        
+                        
+                        <!--Modal edit core business 1 start-->
+                             
+                              <!--END MODAL edit core business 1-->
+                              
+                              <!--Modal edit core business 2 start-->
+                              
                               <!--END MODAL edit core business 2-->
                               
                               <!--Modal edit core business 3 start-->
-                              <div id="modal-edit-core-business-3" tabindex="-1" role="dialog" aria-labelledby="modal-login-label" aria-hidden="true" class="modal fade">
-                                <div class="modal-dialog modal-wide-width">
-                                  <div class="modal-content">
-                                    <div class="modal-header">
-                                      <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
-                                      <h4 id="modal-login-label2" class="modal-title">Edit Core Business</h4>
-                                    </div>
-                                    <div class="modal-body">
-                                      <div class="form">
-                                        <form class="form-horizontal">
-                                          
-                                          <div class="form-group">
-                                            <label class="col-md-3 control-label">Icon <span class='require'>*</span></label>
-                                            <div class="col-md-6">
-                                              <input type="text" class="form-control" id="inputContent" value="icon-leaf">
-                                              <div class="help-block">Please refer here for more <a href="icons.html" target="_blank">icon options.</a></div>
-                                            </div>
-                                          </div>
-                                          <div class="form-group">
-                                            <label class="col-md-3 control-label">Title <span class='require'>*</span></label>
-                                            <div class="col-md-6">
-                                              <textarea name="inputContent" rows="2" class="form-control" id="inputContent">Green Technology <br/>&amp; Solar</textarea>
-                                            </div>
-                                          </div>
-                                          
-                                          <div class="form-group">
-                                            <label class="col-md-3 control-label">Website URL </label>
-                                            <div class="col-md-6">
-                                              <div class="input-icon"><i class="fa fa-link"></i>
-                                                  <input type="text" placeholder="http://" class="form-control" value="http://www.ock.com.my/services_green_technology_solar.html"/>
-                                              </div>
-                                            </div>
-                                            
-                                          </div>
-
-                                          <div class="form-actions">
-                                            <div class="col-md-offset-5 col-md-8"> <a href="#" class="btn btn-red">Save &nbsp;<i class="fa fa-floppy-o"></i></a>&nbsp; <a href="#" data-dismiss="modal" class="btn btn-green">Cancel &nbsp;<i class="glyphicon glyphicon-ban-circle"></i></a> </div>
-                                          </div>
-                                        </form>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
+                              
                               <!--END MODAL edit core business 3-->
                               
                               <!--Modal edit core business 4 start-->
-                              <div id="modal-edit-core-business-4" tabindex="-1" role="dialog" aria-labelledby="modal-login-label" aria-hidden="true" class="modal fade">
-                                <div class="modal-dialog modal-wide-width">
-                                  <div class="modal-content">
-                                    <div class="modal-header">
-                                      <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
-                                      <h4 id="modal-login-label2" class="modal-title">Edit Core Business</h4>
-                                    </div>
-                                    <div class="modal-body">
-                                      <div class="form">
-                                        <form class="form-horizontal">
-                                          
-                                          <div class="form-group">
-                                            <label class="col-md-3 control-label">Icon <span class='require'>*</span></label>
-                                            <div class="col-md-6">
-                                              <input type="text" class="form-control" id="inputContent" value="icon-wrench">
-                                              <div class="help-block">Please refer here for more <a href="icons.html" target="_blank">icon options.</a></div>
-                                            </div>
-                                          </div>
-                                          <div class="form-group">
-                                            <label class="col-md-3 control-label">Title <span class='require'>*</span></label>
-                                            <div class="col-md-6">
-                                              <textarea name="inputContent" rows="2" class="form-control" id="inputContent">M&amp;E Engineering Works</textarea>
-                                            </div>
-                                          </div>
-                                          
-                                          <div class="form-group">
-                                            <label class="col-md-3 control-label">Website URL </label>
-                                            <div class="col-md-6">
-                                              <div class="input-icon"><i class="fa fa-link"></i>
-                                                  <input type="text" placeholder="http://" class="form-control" value="http://www.ock.com.my/services_me_engineering_works.html"/>
-                                              </div>
-                                            </div>
-                                            
-                                          </div>
-
-                                          <div class="form-actions">
-                                            <div class="col-md-offset-5 col-md-8"> <a href="#" class="btn btn-red">Save &nbsp;<i class="fa fa-floppy-o"></i></a>&nbsp; <a href="#" data-dismiss="modal" class="btn btn-green">Cancel &nbsp;<i class="glyphicon glyphicon-ban-circle"></i></a> </div>
-                                          </div>
-                                        </form>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
+                             
                               <!--END MODAL edit core business 4-->
                               <div class="clearfix"></div>
   
@@ -355,90 +207,7 @@
 				  <div class="tools"> 
                   	<i class="fa fa-chevron-up"></i> 
                   </div>
-                  <!--Modal Add New Montage start-->
-                  <div id="modal-add-montage" tabindex="-1" role="dialog" aria-labelledby="modal-login-label" aria-hidden="true" class="modal fade">
-                    <div class="modal-dialog modal-wide-width">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
-                          <h4 id="modal-login-label2" class="modal-title">Add New Montage</h4>
-                        </div>
-                        <div class="modal-body">
-                          <div class="form">
-                            <form class="form-horizontal">
-                              <div class="form-group">
-                                <label class="col-md-3 control-label">Status</label>
-                                <div class="col-md-6">
-                                  <div data-on="success" data-off="primary" class="make-switch">
-                                    <input type="checkbox" checked="checked"/>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="form-group has-error">
-                                <label class="col-md-3 control-label">Title </label>
-                                <div class="col-md-6">
-                                  <input id="text" type="text" class="form-control" placeholder="Banner 1">
-                                </div>
-                                <div class="col-md-3">
-                                      <div class="popover popover-validator right">
-                                        <div class="arrow"></div>
-                                        <div class="popover-content">
-                                          <p class="mbn">Title is empty!</p>
-                                        </div>
-                                      </div>
-                                    </div>
-                              </div>
-                              <div class="form-group">
-                                <label class="col-md-3 control-label">Banner Text </label>
-                                <div class="col-md-9">
-                                	<div class="text-blue border-bottom">You can edit the content by clicking the text section below.</div>
-                                  <div contenteditable="true">
-                                  	 <div class="camera_caption fadeFromLeft">
-
-                                        <div class="row-fluid">                                
-                                                <h1 class="animated fadeInDown">Full Turnkey Solutions <br>for <span>Telecom Client</span>.</h1>
-                                                <p class="animated fadeInUp">Network planning, design &amp; optimization, network deployment, network operations &amp; maintenance</p>
-                                        </div>  
-                                    </div>                                                                                         
-
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="form-group">
-                                <label class="col-md-3 control-label">Upload Banner <span class='require'>*</span></label>
-                                <div class="col-md-9">
-                                  <div class="text-15px margin-top-10px">
-                                    <input id="exampleInputFile1" type="file"/>
-                                    <br/>
-                                    <span class="help-block">(Image dimension: min. 1700 x 1000 pixels, JPEG/GIF/PNG only, Max. 1MB) </span> </div>
-                                </div>
-                              </div>
-                              <div class="form-group">
-                                <label class="col-md-3 control-label">Enable Explore More Button</label>
-                                <div class="col-md-6">
-                                  <div data-on="success" data-off="primary" class="make-switch">
-                                    <input type="checkbox" />
-                                  </div>
-                                  <div class="clearfix"></div>
-								  note to programmer: the below URL link box is only appeared  when the above enable explore more button is on.
-                                  <div class="input-icon margin-top-10px"><i class="fa fa-link"></i>
-                                     <input type="text" placeholder="http://" class="form-control"/>
-                                  </div>
-                                </div>
-                                
-                                
-                              </div>
-                              
-                              <div class="form-actions">
-                                <div class="col-md-offset-5 col-md-8"> <a href="#" class="btn btn-red">Save &nbsp;<i class="fa fa-floppy-o"></i></a>&nbsp; <a href="#" data-dismiss="modal" class="btn btn-green">Cancel &nbsp;<i class="glyphicon glyphicon-ban-circle"></i></a> </div>
-                              </div>
-                            </form>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!--END MODAL Add New Montage-->
+                 
                   <!--Modal delete selected items start-->
                   <div id="modal-delete-selected" tabindex="-1" role="dialog" aria-labelledby="modal-login-label" aria-hidden="true" class="modal fade">
                     <div class="modal-dialog">
@@ -503,14 +272,162 @@
                       </tr>
                     </thead>
                     <tbody>
+                        @foreach ($montages as $montage)
                       <tr>
                         <td><input type="checkbox"/></td>
-                        <td>1</td>
+                        <td>{{$montage->id}}</td>
                         <td><span class="label label-sm label-success">Active</span></td>
-                        <td>Banner 1</td>
-                        <td><a href="#" data-hover="tooltip" data-placement="top" data-target="#modal-edit-montage" data-toggle="modal" title="Edit"><span class="label label-sm label-success"><i class="fa fa-pencil"></i></span></a> <a href="#" data-hover="tooltip" data-placement="top" title="Delete" data-target="#modal-delete-1" data-toggle="modal"><span class="label label-sm label-red"><i class="fa fa-trash-o"></i></span></a>
-                          <!--Modal Edit Montage start-->
-                          <div id="modal-edit-montage" tabindex="-1" role="dialog" aria-labelledby="modal-login-label" aria-hidden="true" class="modal fade">
+                        <td>{{$montage->title}}</td>
+                        <td>
+                            <a href="{{$montage->id}}" data-hover="tooltip" data-placement="top" data-target="#modal-edit-{{$montage->id}}" data-toggle="modal" title="Edit"><span class="label label-sm label-success"><i class="fa fa-pencil"></i></span></a> 
+                            <a href="deletemontage/{{$montage->id}}" data-hover="tooltip" data-placement="top" title="Delete" data-target="#modal-delete-{{$montage->id}}" data-toggle="modal"><span class="label label-sm label-red"><i class="fa fa-trash-o"></i></span></a>
+                        </td>
+                      </tr>
+                       @endforeach
+                    </tbody>
+                    <tfoot>
+                      <tr>
+                        <td colspan="5"></td>
+                      </tr>
+                    </tfoot>
+                  </table>
+                  <div class="tool-footer text-right">
+                    <p class="pull-left">Showing 1 to 10 of 57 entries</p>
+                    <ul class="pagination pagination mtm mbm">
+                      <li class="disabled"><a href="#">&laquo;</a></li>
+                      <li class="active"><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#">&raquo;</a></li>
+                        </ul>
+                  </div>
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+              <!-- End porlet -->
+              
+              <div class="form-actions none-bg"> 
+                  {{ Form::submit('Save &amp; Preview', array('class' => 'btn btn-red')) }}&nbsp; {{ Form::submit('Save &amp; Publish', array('class' => 'btn btn-blue')) }}&nbsp; <a href="#" class="btn btn-green">Cancel &nbsp;</a> </div>
+            </div>
+          </div>
+        </div>
+        {{ Form::close() }}
+        <!--END CONTENT-->
+         <!--Modal Add New Montage start-->
+     
+             <div id="modal-add-montage" tabindex="-1" role="dialog" aria-labelledby="modal-login-label" aria-hidden="true" class="modal fade">
+                    <div class="modal-dialog modal-wide-width">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+                          <h4 id="modal-login-label2" class="modal-title">Add New Montage</h4>
+                        </div>
+                        <div class="modal-body">
+                          <div class="form">
+                             {{ Form::open(array('url' => 'montage',"method" => "post","class"=>"form-horizontal")) }}
+                              <div class="form-group">
+                                <label class="col-md-3 control-label">Status</label>
+                                <div class="col-md-6">
+                                  <div data-on="success" data-off="primary" class="make-switch">
+                                   {{ Form::checkbox('status', '1');}}
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="form-group has-error">
+                                <label class="col-md-3 control-label">Title </label>
+                                <div class="col-md-6">
+                                   {{ Form::text('title', Input::old('title'), array('class' => 'form-control','placeholder' => 'Title'))}}
+                                </div>
+                                <div class="col-md-3">
+                                      <div class="popover popover-validator right">
+                                        <div class="arrow"></div>
+                                        <div class="popover-content">
+                                          <p class="mbn">Title is empty!</p>
+                                        </div>
+                                      </div>
+                                    </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="col-md-3 control-label">Banner Text </label>
+                                <div class="col-md-9">
+                                	<div class="text-blue border-bottom">You can edit the content by clicking the text section below.</div>
+                                  <div contenteditable="true">
+                                  	 <div class="camera_caption fadeFromLeft">
+
+                                        <div class="row-fluid">                                
+                                                <h1 class="animated fadeInDown">Full Turnkey Solutions <br>for <span>Telecom Client</span>.</h1>
+                                                <p class="animated fadeInUp">Network planning, design &amp; optimization, network deployment, network operations &amp; maintenance</p>
+                                        </div>  
+                                    </div>                                                                                         
+
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="col-md-3 control-label">Upload Banner <span class='require'>*</span></label>
+                                <div class="col-md-9">
+                                  <div class="text-15px margin-top-10px">
+                                   {{ Form::file('Banner_image');}}
+                                    <br/>
+                                    <span class="help-block">(Image dimension: min. 1700 x 1000 pixels, JPEG/GIF/PNG only, Max. 1MB) </span> </div>
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="col-md-3 control-label">Enable Explore More Button</label>
+                                <div class="col-md-6">
+                                  <div data-on="success" data-off="primary" class="make-switch">
+                                     {{ Form::checkbox('morestatus', '1');}}
+                                    
+                                  </div>
+                                  <div class="clearfix"></div>
+								  note to programmer: the below URL link box is only appeared  when the above enable explore more button is on.
+                                  <div class="input-icon margin-top-10px"><i class="fa fa-link"></i>
+                                     {{ Form::text('url', Input::old('url'), array('class' => 'form-control','placeholder' => 'http://'))}}
+                                  </div>
+                                </div>
+                                
+                                
+                              </div>
+                              
+                              <div class="form-actions">
+                                <div class="col-md-offset-5 col-md-8"> {{ Form::submit('Save &nbsp;', array('class' => 'btn btn-red')) }}<i class="fa fa-floppy-o"></i></a>&nbsp; <a href="#" data-dismiss="modal" class="btn btn-green">Cancel &nbsp;<i class="glyphicon glyphicon-ban-circle"></i></a> </div>
+                              </div>
+                             {{ Form::close() }}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+         <!--END MODAL Add New Montage-->
+         <!--Modal delete start-->
+         @foreach ($montages as $montage)          
+            {{ Form::open(array('url' => 'deletemontage/'.$montage->id,"method" => "post","class"=>"form-horizontal")) }}              
+          <div id="modal-delete-{{$montage->id}}" tabindex="-1" role="dialog" aria-labelledby="modal-login-label" aria-hidden="true" class="modal fade">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+                                    <h4 id="modal-login-label3" class="modal-title"><a href=""><i class="fa fa-exclamation-triangle"></i></a> Are you sure you want to delete this banner? </h4>
+                                  </div>
+                                  <div class="modal-body">
+                                    <p><strong>#1:</strong> Banner 1</p>
+                                    <div class="form-actions">
+                                       
+                                      <div class="col-md-offset-4 col-md-8"> {{ Form::submit('Yes &nbsp;', array('class' => 'btn btn-red')) }}<i class="fa fa-check"></i>&nbsp; <a href="#" data-dismiss="modal" class="btn btn-green">No &nbsp;<i class="fa fa-times-circle"></i></a> </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                          </div>
+            {{ Form::close() }}
+             @endforeach
+         <!-- modal delete end -->
+          <!--Modal Edit Montage start-->
+          @foreach ($montages as $montage)          
+            {{ Form::open(array('url' => 'update_emontage/'.$montage->id,"method" => "post","class"=>"form-horizontal")) }}
+                          <div id="modal-edit-{{$montage->id}}" tabindex="-1" role="dialog" aria-labelledby="modal-login-label" aria-hidden="true" class="modal fade">
                             <div class="modal-dialog modal-wide-width">
                               <div class="modal-content">
                                 <div class="modal-header">
@@ -524,14 +441,15 @@
                                         <label class="col-md-3 control-label">Status</label>
                                         <div class="col-md-6">
                                           <div data-on="success" data-off="primary" class="make-switch">
-                                            <input type="checkbox" checked="checked"/>
+                                           {{ Form::checkbox('status', '1');}}
                                           </div>
                                         </div>
                                       </div>
                                       <div class="form-group">
                                         <label class="col-md-3 control-label">Title </label>
                                         <div class="col-md-6">
-                                          <input id="text" type="text" class="form-control" placeholder="Banner 1" value="Banner 1">
+                                            {{ Form::text('title', $montage->title, array('placeholder' => 'Title','class'=>'form-control')) }}
+                                          
                                         </div>
                                       </div>
                                       <div class="form-group">
@@ -555,27 +473,28 @@
                                         <div class="col-md-9">
                                           <div class="text-15px margin-top-10px">
                                           	<img src="../img/slide/slides/img1.jpg" alt="Banner" class="img-responsive"><br/>
-                                            <input id="exampleInputFile1" type="file"/>
+                                            {{ Form::file('Banner_image');}}
                                             <br/>
                                             <span class="help-block">(Image dimension: min. 1700 x 1000 pixels, JPEG/GIF/PNG only, Max. 1MB) </span> </div>
                                         </div>
-                                      </div>
+                                   </div>
                                       <div class="form-group">
                                         <label class="col-md-3 control-label">Enable Explore More Button</label>
                                         <div class="col-md-6">
-                                          <div data-on="success" data-off="primary" class="make-switch">
-                                            <input type="checkbox" />
+                                         <div data-on="success" data-off="primary" class="make-switch">
+                                            {{ Form::checkbox('morestatus', '1');}}
                                           </div>
                                           note to programmer: the below URL link box is only appeared  when the above enable explore more button is on.
                                           <div class="input-icon margin-top-10px"><i class="fa fa-link"></i>
-                                             <input type="text" placeholder="http://" class="form-control" value="http://www.ock.com.my/services_telecommunications_network.html"/>
+                                               {{ Form::text('url', $montage->url, array('placeholder' => 'http://','class'=>'form-control')) }}
+                                            
                                           </div>
                                           
                                         </div>
                                       </div>
                                       
                                       <div class="form-actions">
-                                        <div class="col-md-offset-5 col-md-8"> <a href="#" class="btn btn-red">Save &nbsp;<i class="fa fa-floppy-o"></i></a>&nbsp; <a href="#" data-dismiss="modal" class="btn btn-green">Cancel &nbsp;<i class="glyphicon glyphicon-ban-circle"></i></a> </div>
+                                        <div class="col-md-offset-5 col-md-8"> {{ Form::submit('Update &nbsp;', array('class' => 'btn btn-red')) }}<i class="fa fa-floppy-o"></i>&nbsp; <a href="#" data-dismiss="modal" class="btn btn-green">Cancel &nbsp;<i class="glyphicon glyphicon-ban-circle"></i></a> </div>
                                       </div>
                                     </form>
                                   </div>
@@ -583,60 +502,9 @@
                               </div>
                             </div>
                           </div>
+             {{ Form::close() }}
+             @endforeach
                           <!--END MODAL Edit Montage-->
-                            <!--Modal delete start-->
-                            <div id="modal-delete-1" tabindex="-1" role="dialog" aria-labelledby="modal-login-label" aria-hidden="true" class="modal fade">
-                              <div class="modal-dialog">
-                                <div class="modal-content">
-                                  <div class="modal-header">
-                                    <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
-                                    <h4 id="modal-login-label3" class="modal-title"><a href=""><i class="fa fa-exclamation-triangle"></i></a> Are you sure you want to delete this banner? </h4>
-                                  </div>
-                                  <div class="modal-body">
-                                    <p><strong>#1:</strong> Banner 1</p>
-                                    <div class="form-actions">
-                                      <div class="col-md-offset-4 col-md-8"> <a href="#" class="btn btn-red">Yes &nbsp;<i class="fa fa-check"></i></a>&nbsp; <a href="#" data-dismiss="modal" class="btn btn-green">No &nbsp;<i class="fa fa-times-circle"></i></a> </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                          </div>
-                          <!-- modal delete end -->
-                           
-                        </td>
-                      </tr>
-                    </tbody>
-                    <tfoot>
-                      <tr>
-                        <td colspan="5"></td>
-                      </tr>
-                    </tfoot>
-                  </table>
-                  <div class="tool-footer text-right">
-                    <p class="pull-left">Showing 1 to 10 of 57 entries</p>
-                    <ul class="pagination pagination mtm mbm">
-                      <li class="disabled"><a href="#">&laquo;</a></li>
-                      <li class="active"><a href="#">1</a></li>
-<li><a href="#">2</a></li>
-<li><a href="#">3</a></li>
-<li><a href="#">4</a></li>
-<li><a href="#">5</a></li>
-<li><a href="#">&raquo;</a></li>
-</ul>
-                  </div>
-                  <div class="clearfix"></div>
-                </div>
-              </div>
-              <!-- End porlet -->
-              
-              <div class="form-actions none-bg"> 
-                  {{ Form::submit('Save &amp; Preview', array('class' => 'btn btn-red')) }}&nbsp; {{ Form::submit('Save &amp; Publish', array('class' => 'btn btn-blue')) }}&nbsp; <a href="#" class="btn btn-green">Cancel &nbsp;</a> </div>
-            </div>
-          </div>
-        </div>
-        {{ Form::close() }}
-        <!--END CONTENT-->
-            
             <!--BEGIN FOOTER-->
             <div class="page-footer">
                 <div class="copyright"><span class="text-15px">2014 © <a href="http://www.webqom.com" target="_blank">Webqom Technologies Sdn Bhd.</a> Any queries, please contact <a href="mailto:support@webqom.com">Webqom Support</a>.</span>
