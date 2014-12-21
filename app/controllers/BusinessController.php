@@ -67,8 +67,47 @@ class BusinessController extends \BaseController {
 			return Redirect::to('index_edit');
 		}
 	}
+        public function edit($id)
+	{
+		// get the nerd
+		$Business = CoreBusiness::find($id);
 
+		// show the edit form and pass the nerd
+		return View::make('admin.index_edit')
+			->with('nerd', $Business);
+	}
 
+public function update($id)
+	{
+		// validate
+		// read more on validation at http://laravel.com/docs/validation
+		$rules = array(
+			'icon'       => '',
+			'title'      => '',
+			'url'      => ''
+                       
+		);
+		$validator = Validator::make(Input::all(), $rules);
+
+		// process the login
+		if ($validator->fails()) {
+			return Redirect::to('index_edit/' . $id . '/edit')
+				->withErrors($validator)
+				->withInput(Input::except('password'));
+		} else {
+			// store
+			$Business = CoreBusiness::find($id);
+			$Business->icon       = Input::get('icon');
+			$Business->title      = Input::get('title');
+                        $Business->url      = Input::get('url');
+                        
+			$Business->save();
+
+			// redirect
+			Session::flash('message', 'The information has been updated successfully !');
+			return Redirect::to('index_edit');
+		}
+	}
 	
 	
 }

@@ -35,6 +35,7 @@ Route::get('Profile/{id}',array('uses' => 'AdminController@userProfile'));
 Route::get('edit-profile/{id}',array('uses' => 'AdminController@showEditProfile'));
 Route::post('update-profile',array('uses' => 'AdminController@updateProfile'));
 Route::post('businesses_create', 'BusinessController@doStore');
+Route::post('businesses_update/{id}', 'BusinessController@update');
 Route::post('montage', 'MontageController@Store');
 Route::post('deletemontage/{id}', 'MontageController@dodestroy');
 Route::post('update_emontage/{id}', 'MontageController@update');

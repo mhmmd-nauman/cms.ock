@@ -1,4 +1,58 @@
 <?php
+ {{ Form::open(array('url' => 'businesses_create',"method" => "post","class"=>"form-horizontal")) }}
+                              <div id="modal-edit-core-business-{{$Busi->id}}" tabindex="-1" role="dialog" aria-labelledby="modal-login-label" aria-hidden="true" class="modal fade">
+                                <div class="modal-dialog modal-wide-width">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+                                      <h4 id="modal-login-label2" class="modal-title">Edit Core Business</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                      <div class="form">
+                                       
+                                          
+                                          <div class="form-group">
+                                            <label class="col-md-3 control-label">Icon <span class='require'>*</span></label>
+                                            <div class="col-md-6">
+                                                {{ Form::text('job_title', $Busi->icon, array('placeholder' => 'Icon','class'=>'form-control')) }}
+                                                 {{ Form::text('icon', Input::old('icon'), array('class' => 'form-control','placeholder' => 'Icon')) }}
+                                              
+                                              <div class="help-block">Please refer here for more <a href="icons.html" target="_blank">icon options.</a></div>
+                                            </div>
+                                          </div>
+                                          <div class="form-group">
+                                            <label class="col-md-3 control-label">Title <span class='require'>*</span></label>
+                                            <div class="col-md-6">
+                                                {{ Form::text('title', Input::old('title'), array('class' => 'form-control','placeholder' => 'Trading of Telco <br/>&amp; IT Products')) }}
+                                              
+                                            </div>
+                                          </div>
+                                          
+                                          <div class="form-group">
+                                            <label class="col-md-3 control-label">Website URL </label>
+                                            <div class="col-md-6">
+                                              <div class="input-icon"><i class="fa fa-link"></i>
+                                                  {{ Form::text('url', Input::old('url'), array('class' => 'form-control','placeholder' => 'http:'))}}
+                                                 
+                                              </div>
+                                            </div>
+                                            
+                                          </div>
+                                          
+                                          <div class="form-actions">
+                                              
+                                            <div class="col-md-offset-5 col-md-8">{{ Form::submit('Save &nbsp;', array('class' => 'btn btn-red')) }} <i class="fa fa-floppy-o"></i></a>&nbsp; <a href="#" data-dismiss="modal" class="btn btn-green">Cancel &nbsp;<i class="glyphicon glyphicon-ban-circle"></i></a> </div>
+                                          </div>
+                                       
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                             {{ Form::close() }}
+
+
+
 
 @extends('layouts.admin')
 @section('content')

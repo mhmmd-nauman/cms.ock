@@ -36,6 +36,48 @@ class PageSeeder extends Seeder {
 		
 	}
 }
+class MontagesSeeder extends Seeder {
+	/**
+	 * Run the database seeds.
+	 *
+	 * @return void
+	 */
+	public function run()
+	{
+		DB::table('montages')->delete();
+		Page::create(array(
+	        'title'         => 'Montages Title',
+                'status'        => 'Montages Status',
+                'Banner'        => 'Montages Banner',
+                'MoreStatus'    => 'Montages More Status', 
+                'url'           => 'Website url',
+	        ));
+		
+	}
+}
+class CareersSeeder extends Seeder {
+	/**
+	 * Run the database seeds.
+	 *
+	 * @return void
+	 */
+	public function run()
+	{
+		DB::table('careers')->delete();
+		Page::create(array(
+	        'jobtitle'         => 'New Job Title',
+                'status'        => 'Job Status',
+                'date'        => 'Job Date',
+                'responsibilities'    => 'Job Responsibilities', 
+                'requirements'           => 'Job requirements',
+                'footertext'           => 'footer text',
+	        ));
+		
+	}
+}
+
+
+
 class SentryGroupSeeder extends Seeder {
 	/**
 	 * Run the database seeds.

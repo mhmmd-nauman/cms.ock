@@ -9,16 +9,15 @@ class CareersController extends \BaseController {
 	 */
 	public function index()
 	{
-            //echo "its here";
-            //exit;
+           
 		// get all the nerds
-		$career = Career::all();
+		$careers = Career::all();
                 //echo "<pre>";
                 //print_r($nerds);
                 //echo "</pre>";
 		// load the view and pass the nerds
 		return View::make('admin.career_vac_edit')
-			->with('careers', $career);
+			->with('careers', $careers);
 	}
 
 	/**
@@ -73,7 +72,7 @@ class CareersController extends \BaseController {
 			$career->save();
                        
 			// redirect
-			Session::flash('message', 'Successfully created nerd!');
+			Session::flash('message', 'The information has been saved successfully!');
 			return Redirect::to('career_vac_edit');
 		}
 	}
@@ -145,7 +144,7 @@ class CareersController extends \BaseController {
 			$career->save();
 
 			// redirect
-			Session::flash('message', 'Successfully updated Montage!');
+			Session::flash('message', 'The information has been updated successfully!');
 			return Redirect::to('career_vac_edit');
 		}
 	}
@@ -163,7 +162,7 @@ class CareersController extends \BaseController {
 		$career->delete();
 
 		// redirect
-		Session::flash('message', 'Successfully deleted the Montages!');
+		Session::flash('message', 'The information has been Deleted successfully!');
 		return Redirect::to('career_vac_edit');
 	}
 

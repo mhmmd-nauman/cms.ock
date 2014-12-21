@@ -147,7 +147,7 @@
                     <li @if(Route::getCurrentRoute()->getPath()=='news_events_list') class="active" @endif><a href="news_events_list"><i class="glyphicon glyphicon-camera fa-fw"></i><span class="menu-title">News &amp; Events</span></a> </li>
                     <li><a href="#"><i class="fa fa-briefcase fa-fw"></i><span class="menu-title">Careers</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li @if(Route::getCurrentRoute()->getPath()=='careers_job_vacancy_list') class="active" @endif><a href="careers_job_vacancy_list">Vacancies Listing</a></li>
+                            <li @if(Route::getCurrentRoute()->getPath()=='career_vac_edit') class="active" @endif><a href="career_vac_edit">Vacancies Listing</a></li>
                             <li @if(Route::getCurrentRoute()->getPath()=='careers_online_applicants_list') class="active" @endif><a href="careers_online_applicants_list">Online Applicants Listing</a></li>
                         </ul>
                     </li>

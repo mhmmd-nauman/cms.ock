@@ -145,7 +145,7 @@ class MontageController extends \BaseController {
 			$montage->save();
 
 			// redirect
-			Session::flash('message', 'Successfully updated Montage!');
+			Session::flash('message', 'The information has been updated successfully!');
 			return Redirect::to('index_edit');
 		}
 	}
@@ -163,7 +163,7 @@ class MontageController extends \BaseController {
 		$montages->delete();
 
 		// redirect
-		Session::flash('message', 'Successfully deleted the Montages!');
+		Session::flash('message', 'The information has been deleted successfully!');
 		return Redirect::to('index_edit');
 	}
 

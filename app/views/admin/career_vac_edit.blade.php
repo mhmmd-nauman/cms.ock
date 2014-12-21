@@ -1,6 +1,17 @@
 @extends('layouts.admin')
 @section('content')
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <link rel="stylesheet" href="/css/datepicker3.css">
 
+<script type="text/javascript" src="/bootstrap-datepicker.js"></script>
+  <script>
+  $(function() {
+    $( "#career-vacancy-date" ).datepicker();
+  });
+  </script>
 <!--BEGIN PAGE WRAPPER-->
       <div id="page-wrapper"><!--BEGIN PAGE HEADER & BREADCRUMB-->
         
@@ -22,16 +33,20 @@
             <div class="col-lg-12">
               <h2>Job Vacancies <i class="fa fa-angle-right"></i> Listing</h2>
               <div class="clearfix"></div>
+              @if (Session::has('message'))
               <div class="alert alert-success alert-dismissable">
                 <button type="button" data-dismiss="alert" aria-hidden="true" class="close">&times;</button>
                 <i class="fa fa-check-circle"></i> <strong>Success!</strong>
-                <p>The information has been saved/updated successfully.</p>
+                <p>{{ Session::get('message') }}</p>
               </div>
+              @endif
+               @if (Session::has('error_message'))
               <div class="alert alert-danger alert-dismissable">
                 <button type="button" data-dismiss="alert" aria-hidden="true" class="close">&times;</button>
                 <i class="fa fa-times-circle"></i> <strong>Error!</strong>
-                <p>The information has not been saved/updated. Please correct the errors.</p>
+                <p>{{ Session::get('message') }}</p>
               </div>
+               @endif
               <div class="pull-left"> Last updated: <span class="text-blue">15 Sept, 2014 @ 12.00PM</span> </div>
               <div class="clearfix"></div>
               <p></p>
@@ -293,7 +308,8 @@
                                           <label class="col-md-3 control-label">Date <span class='require'>*</span></label>
                                           <div class="col-md-5">
                                             <div class="input-group">
-                                             {{ Form::text('date', $career->date, array('placeholder' => 'Title','class'=>'form-control')) }}
+                                                
+                                             {{ Form::text('date', $career->date, array('placeholder' => 'Title','class'=>'form-control','id'=>'career-vacancy-date')) }}
                                               <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
                                             </div>
                                           </div>
@@ -370,7 +386,7 @@
                                     <h4 id="modal-login-label3" class="modal-title"><a href=""><i class="fa fa-exclamation-triangle"></i></a> Are you sure you want to delete this vacancy? </h4>
                                   </div>
                                   <div class="modal-body">
-                                    <p><strong>#1:</strong> $career->jobtitle</p>
+                                    <p><strong>#1:</strong> Are You sure Delete Vacancy</p>
                                     <div class="form-actions">
                                       <div class="col-md-offset-4 col-md-8"> {{ Form::submit('Yes &nbsp;', array('class' => 'btn btn-red')) }}<i class="fa fa-check"></i>&nbsp; <a href="#" data-dismiss="modal" class="btn btn-green">No &nbsp;<i class="fa fa-times-circle"></i></a> </div>
                                     </div>

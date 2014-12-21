@@ -97,7 +97,7 @@
                                            <div class="thumbnail">
                                              <div class="caption-head">
 
-                                                   <a href="#" data-placement="top" data-target="#modal-edit-core-business-1" data-toggle="modal" title="Edit">
+                                                   <a href="{{$Busi->id}}" data-placement="top" data-target="#modal-edit-core-business-{{$Busi->id}}" data-toggle="modal" title="Edit">
                                                        <em class="caption-icon icon-sitemap icon-big"></em>                            
                                                        <h4 class="caption-title">{{$Busi->title}}</h4>
                                                    </a>
@@ -105,7 +105,9 @@
                                            </div>
                                        </div>     
                             @endforeach 
-                              <div id="modal-edit-core-business-2" tabindex="-1" role="dialog" aria-labelledby="modal-login-label" aria-hidden="true" class="modal fade">
+                            @foreach ($businesses_create as $Busi)
+                            {{ Form::open(array('url' => 'businesses_update/'.$Busi->id,"method" => "post","class"=>"form-horizontal")) }}
+                              <div id="modal-edit-core-business-{{$Busi->id}}" tabindex="-1" role="dialog" aria-labelledby="modal-login-label" aria-hidden="true" class="modal fade">
                                 <div class="modal-dialog modal-wide-width">
                                   <div class="modal-content">
                                     <div class="modal-header">
@@ -115,11 +117,12 @@
                                     <div class="modal-body">
                                       <div class="form">
                                        
-                                          {{ Form::open(array('url' => 'businesses_create',"method" => "post","class"=>"form-horizontal")) }}
+                                          
                                           <div class="form-group">
                                             <label class="col-md-3 control-label">Icon <span class='require'>*</span></label>
                                             <div class="col-md-6">
-                                                 {{ Form::text('icon', Input::old('icon'), array('class' => 'form-control','placeholder' => 'Icon')) }}
+                                                {{ Form::text('job_title', $Busi->icon, array('placeholder' => 'Icon','class'=>'form-control')) }}
+                                                 
                                               
                                               <div class="help-block">Please refer here for more <a href="icons.html" target="_blank">icon options.</a></div>
                                             </div>
@@ -127,7 +130,8 @@
                                           <div class="form-group">
                                             <label class="col-md-3 control-label">Title <span class='require'>*</span></label>
                                             <div class="col-md-6">
-                                                {{ Form::text('title', Input::old('title'), array('class' => 'form-control','placeholder' => 'Trading of Telco <br/>&amp; IT Products')) }}
+                                                {{ Form::text('title', $Busi->title, array('placeholder' => 'Trading of Telco <br/>&amp; IT Products','class'=>'form-control')) }}
+                                                
                                               
                                             </div>
                                           </div>
@@ -136,7 +140,8 @@
                                             <label class="col-md-3 control-label">Website URL </label>
                                             <div class="col-md-6">
                                               <div class="input-icon"><i class="fa fa-link"></i>
-                                                  {{ Form::text('url', Input::old('url'), array('class' => 'form-control','placeholder' => 'http:'))}}
+                                                  {{ Form::text('url', $Busi->url, array('placeholder' => 'http:','class'=>'form-control')) }}
+                                                  
                                                  
                                               </div>
                                             </div>
@@ -147,13 +152,14 @@
                                               
                                             <div class="col-md-offset-5 col-md-8">{{ Form::submit('Save &nbsp;', array('class' => 'btn btn-red')) }} <i class="fa fa-floppy-o"></i></a>&nbsp; <a href="#" data-dismiss="modal" class="btn btn-green">Cancel &nbsp;<i class="glyphicon glyphicon-ban-circle"></i></a> </div>
                                           </div>
-                                        {{ Form::close() }}
+                                       
                                       </div>
                                     </div>
                                   </div>
                                 </div>
-                              </div>                  
-    
+                              </div>
+                             {{ Form::close() }}
+                        @endforeach
                             <!-- Step 2 -->                        
                                               
     
@@ -313,8 +319,7 @@
               </div>
               <!-- End porlet -->
               
-              <div class="form-actions none-bg"> 
-                  {{ Form::submit('Save &amp; Preview', array('class' => 'btn btn-red')) }}&nbsp; {{ Form::submit('Save &amp; Publish', array('class' => 'btn btn-blue')) }}&nbsp; <a href="#" class="btn btn-green">Cancel &nbsp;</a> </div>
+             
             </div>
           </div>
         </div>
