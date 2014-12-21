@@ -34,5 +34,19 @@ class PageController extends BaseController {
 			return Redirect::to('index_edit');
 		}
 	}
-
+        public function updateContents(){
+            //print_r($_POST);
+            //editorID
+            $page = Page::find(1);
+            switch(Input::get('editorID')){
+                case"heading1":
+                    $page->heading1       = Input::get('editabledata');
+                    $page->save();
+                    break;
+                case"body1":
+                    $page->body1          = Input::get('editabledata');
+                    $page->save();
+                    break;
+            }
+        }
 }

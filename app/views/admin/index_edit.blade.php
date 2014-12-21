@@ -22,17 +22,20 @@
             <div class="col-lg-12">
               <h2>Index <i class="fa fa-angle-right"></i> Edit</h2>
               <div class="clearfix"></div>
+              @if (Session::has('message'))
               <div class="alert alert-success alert-dismissable">
                 <button type="button" data-dismiss="alert" aria-hidden="true" class="close">&times;</button>
                 <i class="fa fa-check-circle"></i> <strong>Success!</strong>
-                <p>The information has been saved/updated successfully.</p>
+                <p>{{ Session::get('message') }}</p>
               </div>
+              @endif
+              @if (Session::has('error_message'))
               <div class="alert alert-danger alert-dismissable">
                 <button type="button" data-dismiss="alert" aria-hidden="true" class="close">&times;</button>
                 <i class="fa fa-times-circle"></i> <strong>Error!</strong>
-                <p>The information has not been saved/updated. Please correct the errors.</p>
+                <p>{{ Session::get('message') }}</p>
               </div>
-              
+              @endif
               <div class="pull-left"> Last updated: <span class="text-blue">15 Sept, 2014 @ 12.00PM</span> </div>
               <div class="clearfix"></div>
               <p></p>
@@ -55,11 +58,12 @@
                   <div class="info_vertical">  
                     <div class="col-lg-6">
                         <div class="row-fluid">
-                          <div contenteditable="true">
-                          	<h2 class="red-title"><span>Driving Network Solution</span></h2>
+                          <div id="heading1" contenteditable="true">
+                            {{$page->heading1}}
+                          	
                           </div>
-                          <div contenteditable="true">
-                          	<p>Established in 2000, OCK Group is principally involved in the provision of telecommunications network services. We are able to provide full turnkey services in that respect.</p> 
+                          <div id="body1" contenteditable="true">
+                            {{$page->body1}} 
                           </div>
                         </div>
                     </div>
@@ -261,6 +265,7 @@
                   <div class="clearfix"></div>
                   <br/>
                   <br/>
+                 
                   <table class="table table-hover table-striped">
                     <thead>
                       <tr>
@@ -513,4 +518,7 @@
             </div>
     <!--END FOOTER--></div>
 
+
+
+<script>var dump_file="savecontents";</script>
 @stop

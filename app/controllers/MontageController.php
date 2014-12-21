@@ -73,7 +73,7 @@ class MontageController extends \BaseController {
 			$montage->save();
 
 			// redirect
-			Session::flash('message', 'Successfully created nerd!');
+			Session::flash('message', 'The information has been saved successfully.');
 			return Redirect::to('index_edit');
 		}
 	}

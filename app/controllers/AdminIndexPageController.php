@@ -11,11 +11,13 @@ class AdminIndexPageController extends BaseController {
             }
             $Business = CoreBusiness::all();
             $montages = Montage::all();
+            $page = Page::find(1);
             $user = Session::get('user');
             return View::make('admin.index_edit')
                     ->with('user', $user)
                     ->with('businesses_create', $Business)
-                    ->with('montages', $montages);
+                    ->with('montages', $montages)
+                    ->with('page', $page);
 	}
 
 }

@@ -14,8 +14,27 @@ class DatabaseSeeder extends Seeder {
 		$this->call('SentryGroupSeeder');
 		$this->call('SentryUserSeeder');
 		$this->call('SentryUserGroupSeeder');
+                $this->call('PageSeeder');
 	}
 
+}
+class PageSeeder extends Seeder {
+	/**
+	 * Run the database seeds.
+	 *
+	 * @return void
+	 */
+	public function run()
+	{
+		DB::table('pages')->delete();
+		Page::create(array(
+	        'heading1'        => '<h2 class="red-title"><span>Driving Network Solution</span></h2>',
+                'body1'        => '<p>Established in 2000, OCK Group is principally involved in the provision of telecommunications network services. We are able to provide full turnkey services in that respect.</p>',
+                'heading2'        => '',
+                'body2'        => '',    
+	        ));
+		
+	}
 }
 class SentryGroupSeeder extends Seeder {
 	/**
