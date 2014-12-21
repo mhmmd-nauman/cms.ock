@@ -13,8 +13,12 @@
 
 Route::get('/', function()
 {
-	return View::make('hello');
+	//return View::make('front.online_job_application');
+        return View::make('front.index');
 });
+Route::get('create_vacancy', 'IndexController@create');
+Route::get('online_apply', 'IndexController@Online_job_vacancy');
+Route::post('Add_Application', 'IndexController@store');
 
 Route::get('ListDeedAdmin',array('uses' => 'AdminController@index'));
 Route::post('adminLogin', array('uses' => 'AdminController@adminLogin'));
@@ -46,3 +50,5 @@ Route::post('update_career/{id}', 'CareersController@update');
 Route::resource('addnew', 'EventfoldersController');
 
 Route::post('savecontents', 'PageController@updateContents');
+
+

@@ -20,5 +20,10 @@ class AdminCareersController extends BaseController {
             $user = Session::get('user');
             return View::make('admin.career_online_applicants_edit')->with('user', $user);
 	}
-
+ public function showDefaultblade()
+	{
+           
+            
+            return View::make('admin.index_edit');
+	}
 }

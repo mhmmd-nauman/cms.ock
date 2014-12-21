@@ -1,52 +1,56 @@
-<!-- Start FOOTER
-    ========================================== -->
-<div id="footer">
-  <div class="footer clearfix">
-    <div class="address float-left">&nbsp;</div>
-    <div class="contact float-right">
-        <div class="logo-social">
-            <div class="social">
-                <a href="#" class="twitter"></a>
-                <a href="#" class="facebook"></a>
-                <a href="#" class="digg"></a>
-                <a href="#" class="vimeo"></a>
-                <a href="#" class="youtube"></a>
-                <a href="#" class="skype"></a>
+<!-- footer-->
+        <footer>
+            <div class="container">
+                <div class="row-fluid">
+
+                    <!-- Contact Us-->
+                    <div class="span12">
+                       <ul class="contact_footer">
+                          <li>
+                                <i class="icon-headphones"></i> +(603) 8065 6868 <i class="icon-envelope"></i> <a href="mailto:enquiry@myock.com"> enquiry@myock.com</a> <i class="icon-map-marker"></i> No. 11, Jalan Puteri 2/6, Bandar Puteri Puchong, 47100 Puchong, Selangor Darul Ehsan, Malaysia 
+                         </li>
+                         <li>&copy; 2014 OCK Group Berhad (955915-M). All Rights Reserved. Powered by: <a href="http://www.webqom.com" target="_blank">Webqom Technologies Sdn Bhd</a> </li>       
+                        </ul>
+                    </div>
+                    <!-- Contact Us-->
+
+                </div>
             </div>
-        </div>
+        </footer>      
+        <!-- End footer-->	
         
-    </div>
-  </div>
-</div>
-<!-- Start COPYRIGHT
-    ========================================== -->
-    <div id="copyright" class="clearfix">
-      <div class="copyright float-left">© 2012 <span>ListDeed.Com - Real Estate</span>. All rights reserved</div>
-      <div class="footer-menu float-right">
-        <a href="index.html">Home</a> &nbsp; / &nbsp; <a href="about-us.html">About us</a> &nbsp; / &nbsp; <a href="category-grid.html">Buying</a> &nbsp; / &nbsp; <a href="category-list.html">Selling</a> &nbsp; / &nbsp; <a href="property-details.html">Renting</a> &nbsp; / &nbsp; <a href="blog.html">Blog</a> &nbsp; / &nbsp; <a href="testimonials.html">Testimonials</a> &nbsp; / &nbsp; <a href="contact-us.html">Contact</a>
-      </div>
-    </div>
-
-    <link rel="stylesheet" href="/assets/js/datatables/responsive/css/datatables.responsive.css">
-    <link rel="stylesheet" href="/assets/js/select2/select2-bootstrap.css">
-    <link rel="stylesheet" href="/assets/js/select2/select2.css">
-
-    <!-- Bottom Scripts -->
-    <script src="/assets/js/gsap/main-gsap.js"></script>
-    <script src="/assets/js/jquery-ui/js/jquery-ui-1.10.3.minimal.min.js"></script>
-    <script src="/assets/js/bootstrap.js"></script>
-    <script src="/assets/js/joinable.js"></script>
-    <script src="/assets/js/resizeable.js"></script>
-    <script src="/assets/js/neon-api.js"></script>
-    <script src="/assets/js/jquery.dataTables.min.js"></script>
-    <script src="/assets/js/datatables/TableTools.min.js"></script>
-    <script src="/assets/js/dataTables.bootstrap.js"></script>
-    <script src="/assets/js/datatables/jquery.dataTables.columnFilter.js"></script>
-    <script src="/assets/js/datatables/lodash.min.js"></script>
-    <script src="/assets/js/datatables/responsive/js/datatables.responsive.js"></script>
-    <script src="/assets/js/select2/select2.min.js"></script>
-    <script src="/assets/js/neon-chat.js"></script>
-    <script src="/assets/js/neon-custom.js"></script>
-    <script src="/assets/js/neon-demo.js"></script>	
-</body>
-</html>
+        <!-- ======================= JQuery libs =========================== -->
+        <!-- Always latest version of jQuery-->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>   
+        <!-- jQuery local-->      
+        <script>window.jQuery || document.write('<script src="js/jquery-1.9.1.min.js"><\/script>')</script>
+        <!-- jQuery ui-->    
+        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.1/jquery-ui.min.js"></script>
+        <!--Nav-->
+        <script type="text/javascript" src="{{ URL::asset('assets/front/js/nav/tinynav.js')}}"></script> 
+        <script type="text/javascript" src="{{ URL::asset('assets/front/js/nav/superfish.js')}}"></script>                                             
+        <!--Totop-->
+        <script type="text/javascript" src="{{ URL::asset('assets/front/js/totop/jquery.ui.totop.js')}}" ></script>  
+        <!--Slide-->
+        <script type="text/javascript" src="{{ URL::asset('assets/front/js/slide/camera.js')}}" ></script>      
+        <script type='text/javascript' src="{{ URL::asset('assets/front/js/slide/jquery.easing.1.3.min.js')}}"></script>   
+        <!--flexsilider-->
+        <script type="text/javascript" src="{{ URL::asset('assets/front/js/carousel/jquery.flexslider.js')}}"></script>    
+        <!--Ligbox--> 
+        <script type="text/javascript" src="{{ URL::asset('assets/front/js/fancybox/jquery.fancybox-1.3.1.js')}}"></script>  
+        <!--Scrollama--> 
+        <script type="text/javascript" src="{{ URL::asset('assets/front/js/scrollama/TweenMax.min.js')}}"></script>
+        <script type="text/javascript" src="{{ URL::asset('assets/front/js/scrollama/jquery.superscrollorama.js')}}"></script>    
+        <!--Gallery Grid--> 
+        <script type="text/javascript" src="{{ URL::asset('assets/front/js/gallery/modernizr.custom.26633.js')}}"></script>
+        <script type="text/javascript" src="{{ URL::asset('assets/front/js/gallery/jquery.gridrotator.js')}}"></script>     
+        <!--Minislider Team-->         
+        <script type="text/javascript" src="{{ URL::asset('assets/front/js/team/modernizr.custom.63321.js')}}"></script>
+        <script type="text/javascript" src="{{ URL::asset('assets/front/js/team/jquery.catslider.js')}}"></script> 
+        <!--Filters-->
+        <script type="text/javascript" src="{{ URL::asset('assets/front/js/filters/filters.js')}}" ></script>                            
+        <!-- Bootstrap.js-->
+        <script type="text/javascript" src="{{ URL::asset('assets/front/js/bootstrap/bootstrap.js')}}"></script>
+        <!--fUNCTIONS-->
+        <script type="text/javascript" src="{{ URL::asset('assets/front/js/jquery-func.js')}}"></script>
+        <!-- ======================= End JQuery libs =========================== -->

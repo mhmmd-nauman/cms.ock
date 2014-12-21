@@ -1,325 +1,216 @@
-<link rel="stylesheet" href="/assets/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css">
-	<link rel="stylesheet" href="/assets/css/font-icons/entypo/css/entypo.css">
-	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic">
-	<link rel="stylesheet" href="/assets/css/bootstrap.css">
-	<link rel="stylesheet" href="/assets/css/neon-core.css">
-	<link rel="stylesheet" href="/assets/css/neon-theme.css">
-	<link rel="stylesheet" href="/assets/css/neon-forms.css">
-	<link rel="stylesheet" href="/assets/css/custom.css">
+<header class="slide">            
+            <!-- nav_logo-->
+            <div class="nav_logo animated fadeInDown delay1">            
+                <div class="container">
+                    <div class="row-fluid">
 
-	
+                        <!-- Logo-->
+                        <div class="span3 logo">
+                            <a href="index.html" title="Back to Home">                            
+                                <img src="{{ URL::asset('assets/img/index/logo.png')}}" alt="OCK Group Berhad">                            </a>                        </div>
+                        <!-- End Logo-->
+                                                      
+                        <!-- Nav-->
+                        <nav class="span9">
+                            <!-- Menu-->
+                            <ul id="menu" class="sf-menu">
+                                <li><a href="index.html">HOME</a>                                </li>
+                                <li>
+                                	<a href="#">ABOUT US</a>
+                                	<ul>                                  
+                                        <li><a href="corporate_profile.html">Corporate Profile</a></li>
+                                        <li><a href="vision_mission.html">Vision &amp; Mission</a></li>
+                                        <li><a href="board_of_directors.html">Board of Directors</a></li>
+                                        <li><a href="corporate_structure.html">Corporate Structure</a></li>
+                                        <li><a href="milestone.html">Milestone</a></li>
+                                        <li><a href="achievements.html">Achievements</a></li>
+                                        <li><a href="board_charter.html">Board Charter</a></li>
+                                        <li><a href="news_events.html">News &amp; Events</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">CORE BUSINESS</a>
+                                	<ul>                                  
+                                        <li><a href="services_telecommunications_network.html">Network Telecommunications Network Services</a></li>
+                                        <li><a href="services_trading_telecommunications_it.html">Trading of Telecommunication &amp; IT Products</a></li>
+                                        <li><a href="services_green_technology_solar.html">Green Technology &amp; Solar</a></li>
+                                        <li><a href="services_me_engineering_works.html">M&amp;E Engineering Works</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="our_clients.html">CLIENTS</a></li>
+                                 <li>
+                                    <a href="investor_relations_home.html">INVESTOR RELATIONS</a>
+                                    <ul>                                  
+                                        <li><a href="#">Corporate Information</a>
+                                        	<ul>
+                                            	<li><a href="corporate_info_general.html">General</a></li>
+                                                <li><a href="corporate_info_directors_profile.html">Director's Profile</a></li>
+                                                <li><a href="corporate_info_key_mgmt_team.html">Key Management Team</a></li>
+                                                <li><a href="corporate_info_our_properties.html">Our Properties</a></li>
+                                                <li><a href="corporate_info_our_subsidiaries.html">Our Subsidiaries</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="corporate_governance.html">Corporate Governance</a></li>
+                                        <li><a href="#">IPO Centre</a>
+                                        	<ul>
+                                            	<li><a href="ipo_centre_ipo_statistics.html">IPO Statistics</a></li>
+                                                <li><a href="ipo_centre_competitive_advantages.html">Competitive Advantages</a></li>
+                                                <li><a href="ipo_centre_risk_factors.html">Risk Factors</a></li>
+                                                <li><a href="ipo_centre_utilisation_proceeds.html">Utilisation of Proceeds</a></li>
+                                                <li><a href="ipo_centre_industry_overview.html">Industry Overview</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#">Share Information</a>
+                                        	<ul>
+                                            	<li><a href="share_information_price_ticker.html">Price Ticker</a></li>
+                                                <li><a href="share_information_stock_charts.html">Stock Charts</a></li>
+                                                <li><a href="share_information_price_volume.html">Price &amp; Volume</a></li>
+                                                <li><a href="share_information_analysis_shareholdings.html">Analysis of Shareholdings</a></li>
+                                                <li><a href="share_information_top_30_shareholders.html">Top 30 Shareholders</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="entitlements.html">Entitlements</a></li>
+                                        <li><a href="#">Financial Information</a>
+                                        	<ul>
+                                            	<li><a href="financial_information_financial_highlights.html">Financial Highlights</a></li>
+                                                <li><a href="financial_information_comprehensive_income.html">Comprehensive Income</a></li>
+                                                <li><a href="financial_information_financial_position.html">Financial Position</a></li>
+                                                <li><a href="financial_information_cash_flow_statement.html">Cash Flow Statement</a></li>
+                                                <li><a href="financial_information_changes_in_equity.html">Statement of Changes In Equity</a></li>
+                                                <li><a href="financial_information_latest_quarterly_report.html">Latest Quarterly Report</a></li>
+                                                <li><a href="financial_information_segmental_analysis.html">Segmental Analysis</a></li>
+                                                <li><a href="financial_information_ratio_analysis.html">Ratio Analysis</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#">Management Analysis</a>
+                                        	<ul>
+                                            	<li><a href="management_analysis_chairman_statement.html">Chairman's Statement</a></li>
+                                                <li><a href="management_analysis_review_operations.html">Review Of Operations</a></li>
+                                                <li><a href="management_analysis_past_performance_review.html">Past Performance Review</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#">News Centre</a>
+                                        	<ul>
+                                            	<li><a href="news_centre_bursa_announcements.html">Bursa Announcements</a></li>
+                                                <li><a href="news_centre_latest_media_news.html">Media News</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#">Reports</a>
+                                        	<ul>
+                                            	<li><a href="reports_annual_reports.html">Annual Reports</a></li>
+                                                <li><a href="reports_annual_audited_accounts.html">Annual Audited Accounts</a></li>
+                                                <li><a href="reports_quarterly_reports.html">Quarterly Reports</a></li>
+                                                <li><a href="reports_circulars.html">Circulars</a></li>
+                                                <li><a href="reports_prospectus.html">Prospectus</a></li>
+                                                <li><a href="reports_analyst_reports.html">Analyst Reports</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#">Investor Tools</a>
+                                        	<ul>
+                                            	<li><a href="investor_tools_news_alert_subscribe.html">News Alert</a></li>
+                                                <li><a href="investor_tools_news_price_gain_loss_calculator.html">Price Gain / Loss Calculator</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="event_calendar.html">Event Calendar</a></li>
+                                    </ul>
+                                </li> 
+                                <li><a href="{{ URL::to('create_vacancy') }}">CAREERS</a></li>                                                    
+                          		<li><a href="#">CONTACT US</a>
+                                	<ul>
+                                       <li><a href="contact_us.html">Contact Us</a></li>
+                                       <li><a href="contact_us.html#enquiry">Enquiry</a></li>
+                                       <li><a href="regional_offices.html">Regional Offices</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <!-- End Menu-->
+                        </nav>
+                        <!-- End Nav-->
+                    </div>
+                </div>
+          </div>
+            <!-- End nav_logo-->
+            
+            <!-- Slide -->           
+            <div class="camera_wrap" id="slide">
 
-<!-- Start HEADER
-========================== -->
-<div id="header">
-    
-    <div class="logo-social clearfix"  >
-                <a href="{{ URL::to('/') }}" class="logo"><!-- --></a>
-                <div class="col-md-6 col-sm-8 pull-right clearfix " valign=" bottom">
-		@if(Session::has('user'))
-		<ul class="user-info pull-right pull-none-xsm"style=" padding-top: 20px;">
-                    
-			<!-- Profile Info -->
-			<li class="profile-info dropdown" >
-                            <!-- add class "pull-right" if you want to place this from right -->
-				
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    {{$user->firstName}} {{$user->lastName}}
-					<img src="/assets/images/thumb-1@2x.png" alt="" class="img-circle" width="44" />
-					
-				</a>
-				
-				<ul class="dropdown-menu">
-					
-					<!-- Reverse Caret -->
-					<li class="caret"></li>
-					
-					<!-- Profile sub-links -->
-                                        <li>
-						<a href="{{ URL::to('myaccount') }}">
-							<i class="entypo-user"></i>
-							Dashboard
-						</a>
-					</li>
-					<li>
-						<a href="{{ URL::to('editprofile') }}">
-							<i class="entypo-user"></i>
-							Edit Profile
-						</a>
-					</li>
-					
-					<li>
-						<a href="mailbox.html">
-							<i class="entypo-mail"></i>
-							Inbox
-						</a>
-					</li>
-					
-					<li>
-						<a href="extra-calendar.html">
-							<i class="entypo-calendar"></i>
-							Calendar
-						</a>
-					</li>
-					
-					<li>
-						<a href="#">
-							<i class="entypo-clipboard"></i>
-							Tasks
-						</a>
-					</li>
-                                        <li>
-						<a href="{{ URL::to('logout') }}">
-							<i class="entypo-clipboard"></i>
-							Logout
-						</a>
-					</li>
-				</ul>
-			</li>
-		
-		</ul>
-				
-		<ul class="user-info pull-right pull-right-xs pull-none-xsm" style=" padding-top: 20px;">
-			
-			<!-- Raw Notifications -->
-			<li class="notifications dropdown">
-				
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-					<i class="entypo-attention"></i>
-					<span class="badge badge-info">6</span>
-				</a>
-				
-				<ul class="dropdown-menu">
-					<li class="top">
-                                            <p class="small" style="width: 200px;">
-		<a href="#" class="pull-right">Mark all Read</a>
-		You have <strong>3</strong> new notifications.
-	</p>
-</li>
+                <!-- Item Slide --> 
+                <div  data-src="{{ URL::asset('assets/img/slide/slides/img1.jpg')}}">
+                    <div class="camera_caption fadeFromLeft">
+                        <div class="container">
+                            <div class="row-fluid">                                
+                                <div class="span8">
+                                    <h1 class="animated fadeInDown">Full Turnkey Solutions <br>for <span>Telecom Client</span>.</h1>
+                                    <p class="animated fadeInUp">Network planning, design &amp; optimization, network deployment, network operations &amp; maintenance</p>
+                                    <a href="#" class="button animated fadeInUp">
+                                        <span><i class="icon-hand-right"></i></span>Explore More                                    </a>                                </div>
+                            </div>  
+                        </div>                                                                                         
+                  </div>
+                </div>
+                <!-- End Item Slide -->  
 
-<li>
-	<ul class="dropdown-menu-list scroller">
-		<li class="unread notification-success">
-			<a href="#">
-				<i class="entypo-user-add pull-right"></i>
-				
-				<span class="line">
-					<strong>New user registered</strong>
-				</span>
-				
-				<span class="line small">
-					30 seconds ago
-				</span>
-			</a>
-		</li>
-		
-		<li class="unread notification-secondary">
-			<a href="#">
-				<i class="entypo-heart pull-right"></i>
-				
-				<span class="line">
-					<strong>Someone special liked this</strong>
-				</span>
-				
-				<span class="line small">
-					2 minutes ago
-				</span>
-			</a>
-		</li>
-		
-		<li class="notification-primary">
-			<a href="#">
-				<i class="entypo-user pull-right"></i>
-				
-				<span class="line">
-					<strong>Privacy settings have been changed</strong>
-				</span>
-				
-				<span class="line small">
-					3 hours ago
-				</span>
-			</a>
-		</li>
-		
-		<li class="notification-danger">
-			<a href="#">
-				<i class="entypo-cancel-circled pull-right"></i>
-				
-				<span class="line">
-					John cancelled the event
-				</span>
-				
-				<span class="line small">
-					9 hours ago
-				</span>
-			</a>
-		</li>
-		
-		<li class="notification-info">
-			<a href="#">
-				<i class="entypo-info pull-right"></i>
-				
-				<span class="line">
-					The server is status is stable
-				</span>
-				
-				<span class="line small">
-					yesterday at 10:30am
-				</span>
-			</a>
-		</li>
-		
-		<li class="notification-warning">
-			<a href="#">
-				<i class="entypo-rss pull-right"></i>
-				
-				<span class="line">
-					New comments waiting approval
-				</span>
-				
-				<span class="line small">
-					last week
-				</span>
-			</a>
-		</li>
-	</ul>
-</li>
+                <!-- Item Slide --> 
+                <div  data-src="{{ URL::asset('assets/img/slide/slides/img2.jpg')}}">
+                    <div class="camera_caption fadeFromLeft">
+                        <div class="container">
+                            <div class="row-fluid">                                
+                                <div class="span8">
+                                    <h1 class="animated fadeInDown">Venture Into <span>Green <br> Technology </span> &amp; <span>Solar</span>.</h1>
+                                    <p class="animated fadeInUp">Participation in the green energy movement as a highly profitable &amp; socially responsible venture.</p>
+                                    <a href="#" class="button animated fadeInUp">
+                                        <span><i class="icon-hand-right"></i></span>Explore More                                    </a>                                </div>
+                            </div>  
+                        </div>                                                                                         
+                  </div>
+                </div>
+                 <!-- End Item Slide --> 
 
-<li class="external">
-	<a href="#">View all notifications</a>
-</li>				</ul>
-				
-			</li>
-			
-			<!-- Message Notifications -->
-			<li class="notifications dropdown">
-				
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-					<i class="entypo-mail"></i>
-					<span class="badge badge-secondary">10</span>
-				</a>
-				
-				<ul class="dropdown-menu">
-					<li>
-	<ul class="dropdown-menu-list scroller">
-		<li class="active">
-			<a href="#">
-				<span class="image pull-right">
-					<img src="/assets/images/thumb-1.png" alt="" class="img-circle" />
-				</span>
-				
-				<span class="line">
-					<strong>Luc Chartier</strong>
-					- yesterday
-				</span>
-				
-				<span class="line desc small">
-					This ain’t our first item, it is the best of the rest.
-				</span>
-			</a>
-		</li>
-		
-		<li class="active">
-			<a href="#">
-				<span class="image pull-right">
-					<img src="/assets/images/thumb-2.png" alt="" class="img-circle" />
-				</span>
-				
-				<span class="line">
-					<strong>Salma Nyberg</strong>
-					- 2 days ago
-				</span>
-				
-				<span class="line desc small">
-					Oh he decisively impression attachment friendship so if everything. 
-				</span>
-			</a>
-		</li>
-		
-		<li>
-			<a href="#">
-				<span class="image pull-right">
-					<img src="/assets/images/thumb-3.png" alt="" class="img-circle" />
-				</span>
-				
-				<span class="line">
-					Hayden Cartwright
-					- a week ago
-				</span>
-				
-				<span class="line desc small">
-					Whose her enjoy chief new young. Felicity if ye required likewise so doubtful.
-				</span>
-			</a>
-		</li>
-		
-		<li>
-			<a href="#">
-				<span class="image pull-right">
-					<img src="/assets/images/thumb-4.png" alt="" class="img-circle" />
-				</span>
-				
-				<span class="line">
-					Sandra Eberhardt
-					- 16 days ago
-				</span>
-				
-				<span class="line desc small">
-					On so attention necessary at by provision otherwise existence direction.
-				</span>
-			</a>
-		</li>
-	</ul>
-</li>
+                 <!-- Item Slide --> 
+                <div  data-src="{{ URL::asset('assets/img/slide/slides/img3.jpg')}}">
+                    <div class="camera_caption fadeFromLeft">
+                        <div class="container">
+                            <div class="row-fluid">                                
+                                <div class="span8">
+                                    <h1 class="animated fadeInDown">Trade In <br> <span>IT Security</span> Products.</h1>
+                                    <p class="animated fadeInUp">We specialise in providing network security products &amp; solutions for the enterprise sector.</p>
+                                    <a href="#" class="button animated fadeInUp">
+                                        <span><i class="icon-hand-right"></i></span>Explore More                                    </a>                                </div>
+                            </div>  
+                        </div>                                                                                         
+                  </div>
+                </div>
+                 <!-- End Item Slide --> 
 
-<li class="external">
-	<a href="mailbox.html">All Messages</a>
-</li>				</ul>
-				
-			</li>
-			
-			<!-- Task Notifications -->
-			
-		
-		</ul>
-                @endif
-	</div> 
-               
-        </div>
-          
-        <!-- Start MAIN MENU
-========================== -->
-        <div class="main-menu">    
-<nav id="main-nav">
-<ul>
-    <li class="home current indicator"><div class="first">&nbsp;</div>
-    </li>
-    <li class=""><a href="{{ URL::to('/') }}">&nbsp;</a> </p>
+                 <!-- Item Slide --> 
+                <div  data-src="{{ URL::asset('assets/img/slide/slides/img4.jpg')}}">
+                    <div class="camera_caption fadeFromLeft">
+                        <div class="container">
+                            <div class="row-fluid">                                
+                                <div class="span8">
+                                    <h1 class="animated fadeInDown">Provision of <br> <span>M&amp;E Engineering</span> Services.</h1>
+                                    <p class="animated fadeInUp">We provide these services for the development of standalone commercial buildings, healthcare institutions.</p>
+                                    <a href="#" class="button animated fadeInUp">
+                                        <span><i class="icon-hand-right"></i></span>Explore More                                    </a>                                </div>                                
+                            </div>  
+                        </div>                                                                                         
+                  </div>
+                </div>
+                 <!-- End Item Slide --> 
 
-    
-    </li>
-    <li class=" indicator"><a href="{{ URL::to('/') }}">Deed</a> </p>
-
-    <ul class="submenu">
-      <li class="current"><a href="{{ URL::to('open') }}">Open</a></li>
-      <li><a href="{{ URL::to('closed') }}">Closed</a></li>
-      <li><a href="{{ URL::to('pushed') }}" class="last">Pushed</a></li>
-    </ul>
-    </li>
-    <li class="indicator"><a href="{{ URL::to('formulas') }}">Formulas</a>
-    <ul class="submenu">
-      <li><a href="{{ URL::to('category') }}">Category</a></li>
-      <li><a href="{{ URL::to('formulas') }}">Formula</a></li>
-    </ul>
-    </li>
-    <li>
-        <a href="{{ URL::to('marketplace') }}">Marketplace</a>
-    </li>
-    <li>
-        <a href="{{ URL::to('feedback') }}">Feedback</a>
-    </li>
-</ul>
-</nav>
-</div>
-</div>
-<!-- #End HEADER -->
+                  <!-- Item Slide --> 
+                <div  data-src="{{ URL::asset('assets/img/slide/slides/img5.jpg')}}">
+                    <div class="camera_caption fadeFromLeft">
+                        <div class="container">
+                            <div class="row-fluid">                                
+                                <div class="span8">
+                                    <h1 class="animated fadeInDown">Your <span>Trusted Partner</span> <br>of <span>Telecom Services</span>.</h1>
+                                    <p class="animated fadeInUp">We dedicate ourselves to provide excellence services exceeding our Customer's expectation.</p>
+                                    <a href="#" class="button animated fadeInUp">
+                                        <span><i class="icon-hand-right"></i></span>Explore More                                    </a>                                </div>
+                            </div>  
+                        </div>                                                                                         
+                  </div>
+                </div>
+                 <!-- End Item Slide --> 
+            </div>    
+        </header>

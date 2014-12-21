@@ -1,65 +1,36 @@
-<!-- Basic Page Needs
-  	================================================== -->
- <meta charset="utf-8">
- <title>ListDeed.Com</title>
- <meta name="description" content="">
- <meta name="author" content="">
-	<!-- CSS
-  	================================================== -->
-  <link rel="stylesheet" type="text/css" href="/css/home-styles.css" media="screen">
-  <link rel="stylesheet" type="text/css" href="/css/jniceit.css" media="screen">
-  <link rel="stylesheet" type="text/css" href="/css/slider.css">
-	<noscript>
-		<link rel="stylesheet" type="text/css" href="/css/nojs.css">
-	</noscript>
-    <!-- Fonts
-    ================================================== -->
-    <link href='http://fonts.googleapis.com/css?family=Economica:400,700' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-    <!-- Favicon
-	================================================== -->
-	<link rel="shortcut icon" href="favicon.html" type="image/x-icon">
-    <!-- JavaScript
-    ================================================== -->
-  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
-  <script type="text/javascript" src="/js/modernizr.custom.28468.js"></script>
-  <script type="text/javascript" src="/js/scripts.js"></script>
-  <script type="text/javascript" src="/js/jniceit.js"></script>
-  <script type="text/javascript">
-    $(document).ready(function() {
-      $('form.NiceIt').NiceIt();
-    });
-  </script>
-  <!-- Price Slider JS
-    ================================================== -->
-  <script type="text/javascript" src="/js/jshashtable-2.1_src.js"></script>
-  <script type="text/javascript" src="/js/jquery.numberformatter-1.2.3.js"></script>
-  <script type="text/javascript" src="/js/tmpl.js"></script>
-  <script type="text/javascript" src="/js/jquery.dependClass-0.1.js"></script>
-  <script type="text/javascript" src="/js/draggable-0.1.js"></script>
-  <script type="text/javascript" src="/js/jquery.slider.js"></script>
-  <script type="text/javascript" src="/js/jquery.jcarousel.min.js"></script>
-    <script type="text/javascript">
-    jQuery(document).ready(function() {
-      jQuery('#mycarousels').jcarousel({
-        wrap: 'circular'
-      });
-    });
-    </script>
 
-<!-- bootstrap 
-<link href="/css/bootstrap.min.css" rel="stylesheet">
-<script src="/js/bootstrap.min.js"></script>
-<style type="text/css">
-    .bs-form{
-    	margin: 20px;
-    }
-	/* Fix alignment issue of label on extra small devices in Bootstrap 3.2 */
-    .form-horizontal .control-label{
-        padding-top: 2px;
-    }
-    .form-group{ 
-        padding: 15px;
-    }
-</style>
---> 
+    <meta charset="utf-8">
+    <!-- InstanceBeginEditable name="doctitle" -->
+    <title>Online Job Application</title>
+    <!-- InstanceEndEditable -->
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <!-- tabs js / css-->
+    <script src="{{ URL::asset('assets/front/js/tab/jquery-1.7.1.min.js') }}" type="text/javascript"></script> 
+    <script src="{{ URL::asset('assets/front/js/tab/jquery.hashchange.min.js')}}" type="text/javascript"></script>
+    <script src="{{ URL::asset('assets/front/js/tab/jquery.easytabs.min.js')}}" type="text/javascript"></script>
+    <link rel="stylesheet" href="{{ URL::asset('assets/front/css/tabs.css')}}" media="all"/>
+    <!-- tabs js / css-->
+    
+    <!-- Your styles -->
+    <link href="{{ URL::asset('assets/front/css/style.css')}}" rel="stylesheet" media="screen">
+
+     <!-- Favicons
+    ================================================== -->
+
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- styles for IE -->
+    <!--[if lte IE 8]>
+    <link rel="stylesheet" href="css/ie/ie.css" type="text/css" media="screen" />
+    <![endif]-->
+   
+    <!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+   
+ 
