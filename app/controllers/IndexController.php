@@ -11,13 +11,18 @@ class IndexController extends \BaseController {
 	{
             //echo "its here";
 		// get all the nerds
-		$Home = Home::all();
+		$montages = Montage::all();
+                $homePageData = Page::find(1);
+                $CoreBusiness = CoreBusiness::all();
                 //echo "<pre>";
                 //print_r($nerds);
                 //echo "</pre>";
 		// load the view and pass the nerds
-		return View::make('front.online_job_application')
-			->with('JobsApplications', $Home);
+		return View::make('front.index')
+			->with('montages', $montages)
+                        ->with('homePageData', $homePageData)
+                        ->with('businesses_create', $CoreBusiness)
+                        ;
 	}
 
 	/**
@@ -27,6 +32,7 @@ class IndexController extends \BaseController {
 	 */
         public function Online_job_vacancy()
 	{
+        $montages = Montage::all();
         $Education_data = array();
         $Education_data['HigherLevel']="Higher secondary / STPM / &quot;A&quot; Level / Pre-U";
         $Education_data['DiplomaHigher']="Diploma / Advanced Higher / Graduate Diploma";
@@ -41,6 +47,7 @@ class IndexController extends \BaseController {
 		return View::make('front.online_job_application')
                         ->with('education_data', $Education_data)
                         ->with('country_data', $Country_data)
+                        ->with('montages', $montages)
                         ;
                                     
                         
@@ -48,7 +55,11 @@ class IndexController extends \BaseController {
 	public function create()
 	{
 		// load the create form (app/views/nerds/create.blade.php)
-		return View::make('front.careers');
+            $montages = Montage::all();
+            $homePageData = Page::find(1);
+            return View::make('front.careers')
+                    ->with('montages', $montages)
+                    ;
                                     
                         
 	}

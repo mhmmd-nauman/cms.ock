@@ -10,12 +10,8 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
+Route::get('/', 'IndexController@index');
 
-Route::get('/', function()
-{
-	//return View::make('front.online_job_application');
-        return View::make('front.index');
-});
 Route::get('create_vacancy', 'IndexController@create');
 Route::get('online_apply', 'IndexController@Online_job_vacancy');
 Route::post('Add_Application', 'IndexController@store');

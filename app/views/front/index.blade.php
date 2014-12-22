@@ -15,8 +15,8 @@
               <div class="info_vertical">  
                 <div class="span6">
                 	<div class="row-fluid">
-                      <h2 class="red-title"><span>Driving Network Solution</span></h2>
-                      <p>Established in 2000, OCK Group is principally involved in the provision of telecommunications network services. We are able to provide full turnkey services in that respect.</p> 
+                      {{$homePageData->heading1}}
+                      {{$homePageData->body1}}  
                 	</div>
                 </div>
                 <div class="span6">
@@ -48,57 +48,30 @@
                 <div class="container">
                     <div class="row text-center service-process top_animationb">
                         <div class="info_vertical">
-                        	<h2 class="red-title"><span>Core Business</span></h2>
-                            <p>Network planning, design and optimization, network deployment, network operations and maintenance, energy management, infrastructure management, and other professional services.</p>
+                            {{$homePageData->heading2}}
+                            {{$homePageData->body2}}
+                            
                         </div>
                         <br/>
+                        @foreach ($businesses_create as $Busi)
                         <!-- Step 1 -->                        
                           <div class="span3">
                               <div class="thumbnail">
                                 <div class="caption-head">
-                                  <a href="services_telecommunications_network.html">
-                                      <em class="caption-icon icon-sitemap icon-big"></em>                            
-                                      <h4 class="caption-title">Telco Network Services</h4>
+                                  <a href="{{$Busi->url}}">
+                                      <em class="caption-icon {{$Busi->icon}} icon-big"></em>                            
+                                      <h4 class="caption-title">{{$Busi->title}}</h4>
                                   </a>
                                 </div>
                               </div>
                           </div>                        
-
+                         @endforeach 
                         <!-- Step 2 -->                        
-                          <div class="span3">
-                              <div class="thumbnail">
-                                <div class="caption-head">
-                                   <a href="services_trading_telecommunications_it.html">
-                                    <em class="caption-icon icon-laptop icon-big"></em>
-                                    <h4 class="caption-title">Trading of Telco <br/>&amp; IT Products</h4>
-                                   </a>
-                                </div>
-                              </div>
-                          </div>                        
-
+                          
                         <!-- Step 3 -->
-                        <div class="span3">
-                            <div class="thumbnail">
-                              <div class="caption-head">
-                                 <a href="services_green_technology_solar.html"> 
-                                  <em class="caption-icon icon-leaf icon-big"></em>
-                                  <h4 class="caption-title">Green Technology <br/>&amp; Solar</h4>
-                                 </a>
-                              </div>
-                            </div>
-                        </div>
-
+                        
                         <!-- Step 4 -->
-                        <div class="span3">
-                            <div class="thumbnail">
-                              <div class="caption-head">
-                                 <a href="services_me_engineering_works.html"> 
-                                  <em class="caption-icon icon-wrench icon-big"></em>
-                                  <h4 class="caption-title">M&amp;E Engineering Works</h4>
-                                 </a>
-                              </div>                           
-                            </div>
-                        </div>                    
+                                         
                     </div>
                 </div>
             </div>
