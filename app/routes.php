@@ -44,7 +44,8 @@ Route::get('career_vac_edit', 'CareersController@index');
 Route::post('deletevecancy/{id}', 'CareersController@dodestroy');
 Route::post('update_career/{id}', 'CareersController@update');
 Route::resource('addnew', 'EventfoldersController');
-
+Route::post('update_event/{id}', 'EventfoldersController@update');
+Route::post('delete_event/{id}', 'EventfoldersController@destroy');
 Route::post('savecontents', 'PageController@updateContents');
 
 

@@ -112,11 +112,11 @@ class IndexController extends \BaseController {
                         $Home->State         = Input::get('State');
                         $Home->PostalCode    = Input::get('Postal_Code');
                         $Home->Country       = Input::get('Country');
-                        $Home->CV            = Input::get('CV_docs');
+                        
 		  if (Input::hasFile('CV_docs')){
                         Input::file('CV_docs')->move(public_path()."/img/",Input::file('CV_docs')->getClientOriginalName());
-                        $localFilePath = public_path()."/img/".Input::file('CV_docs')->getClientOriginalName();
-                        $file = ParseFile::createFromFile($localFilePath, Input::file('CV_docs')->getClientOriginalName());
+                        $localFilePath = public_path()."/uploads/cv/".Input::file('CV_docs')->getClientOriginalName();
+                        $file->CV = ParseFile::createFromFile($localFilePath, Input::file('CV_docs')->getClientOriginalName());
                         $file->save();
                         //$url = $file->getURL();
                        

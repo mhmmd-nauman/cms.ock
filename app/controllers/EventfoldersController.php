@@ -41,13 +41,13 @@ class EventfoldersController extends \BaseController {
            
             $eventfolder= new Eventfolder;
             $image = Input::file('picture');
-            $destinationPath = public_path().'/uploads/';
+            $destinationPath = public_path().'/uploads/newsevent/';
             $filename = $image->getClientOriginalName();
             Input::file('picture')->move($destinationPath, $filename);
             $eventfolder->status       = Input::get('status');
             $eventfolder->date      = Input::get('date');
             $eventfolder->eventtittle = Input::get('eventtittle');
-            $eventfolder->file = "/uploads/".$filename;
+            $eventfolder->file = $filename;
             $eventfolder->save();
             return Redirect::to('addnew/');
 	}
@@ -84,21 +84,46 @@ class EventfoldersController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+        public function update($id)
 	{
-		$eventfolder = Eventfolder::findOrFail($id);
+		//print_r($_POST);
+                //exit;
+		$rules = array(
+			'date'       => '',
+			'status'      => '',
+			'eventtittle'      => '',
+                        'file'  => ''
+                       
+		);
+		$validator = Validator::make(Input::all(), $rules);
 
-		$validator = Validator::make($data = Input::all(), Eventfolder::$rules);
+		// process the login
+		if ($validator->fails()) {
+			return Redirect::to('news_events_list/' . $id . '/edit')
+				->withErrors($validator)
+				;
+		} else {
+			// store
+			$eventfolder = Eventfolder::find($id);
+			$eventfolder->status       = Input::get('eventstatus');
+			$eventfolder->date      = Input::get('Event_date');
+                        $eventfolder->eventtittle  = Input::get('Event_title');
+                        
+			if (Input::hasFile('Banner_event')){
+                            Input::file('Banner_event')->move(public_path()."/uploads/newsevent/",Input::file('Banner_event')->getClientOriginalName());
+                            $eventfolder->file      = Input::file('Banner_event')->getClientOriginalName();
+                        //$url = $file->getURL();
+                       
+                        }
+                        $eventfolder->save();
 
-		if ($validator->fails())
-		{
-			return Redirect::back()->withErrors($validator)->withInput();
+			// redirect
+			Session::flash('message', 'The information has been updated successfully!');
+			return Redirect::to('news_events_list');
 		}
-
-		$eventfolder->update($data);
-
-		return Redirect::route('eventfolders.index');
 	}
+
+	
 
 	/**
 	 * Remove the specified eventfolder from storage.
@@ -109,8 +134,8 @@ class EventfoldersController extends \BaseController {
 	public function destroy($id)
 	{
 		Eventfolder::destroy($id);
-
-		return Redirect::route('eventfolders.index');
+                Session::flash('message', 'The information has been Deleted successfully!');
+		return Redirect::to('news_events_list');
 	}
         public function showNewsEvent()
 	{

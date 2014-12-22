@@ -17,7 +17,8 @@
                             <div class="alert alert-success">
                                 <strong>Thank you!</strong> You have successfully submitted your CV. Only short listed candidates will be notified for interview. 
                             </div>
-                             <form id="form" action="#">
+                             
+                             <form method="POST" action="Add_Application"  id="form" enctype="multipart/form-data">
                                 <div class="span6">
                                     <h6>Name <span class="red-title">*</span></h6>
                                    {{ Form::text('Name', Input::old('Name'), array('class' => 'input-xxlarge','placeholder' => 'Your Name'))}}
@@ -45,7 +46,9 @@
                                     <img src="{{ URL::asset('assets/front/img/img_reCAPTCHA.png" alt="recaptcha')}}"></p>
                                     
                                      <div class="clearfix"></div>
-                                     <div class="margin_top_10px">{{ Form::submit('Submit Your Application', array('class' => 'button')) }}</div>
+                                     <div class="margin_top_10px">
+                                         <input type="submit" value='Submit Your Application &nbsp;' class="button">
+                                         </div>
                                      
                                     <div id="result"></div>  
                                 </div>
@@ -69,12 +72,12 @@
                                     
                                    
                                 </div>
-                      </form>
+                                  </form>
+
                         </div>
 
                     </div>
                 </div>
-              
                 <i class="icon-briefcase right"></i>
             </div>
             
