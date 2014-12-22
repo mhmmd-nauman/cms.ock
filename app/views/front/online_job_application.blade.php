@@ -1,10 +1,20 @@
 @extends('layouts.front')
 @section('content') 
         
- 
+ <script src="js/tab/jquery-1.7.1.min.js" type="text/javascript"></script> 
+    <script src="js/tab/jquery.hashchange.min.js" type="text/javascript"></script>
+    <script src="js/tab/jquery.easytabs.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="css/tabs.css" media="all"/>
+    <!-- tabs js / css-->
+    
+    <!-- Your styles -->
+    <link href="css/style.css" rel="stylesheet" media="screen">
         
-        
-
+       
+   
+    
+       
+     
         <!-- End content info -->
         <section class="content_info"><!-- InstanceBeginEditable name="EditRegion4" -->
           
@@ -14,12 +24,16 @@
                     <div class="row-fluid">
                         <div class="span12">
                              <h5>Position Applied: Business Development Executive</h5>
+                             @if (Session::has('eror_message'))
                              <div class="alert alert-error">
                                 <strong>Error!</strong> Please correct the errors in the form below. 
                             </div>
+                             @endif
+                              @if (Session::has('message'))
                             <div class="alert alert-success">
                                 <strong>Thank you!</strong> You have successfully submitted your CV. Only short listed candidates will be notified for interview. 
                             </div>
+                               @endif
                               {{ Form::open(array('url' => 'Add_Application',"method" => "post","class"=>"form-horizontal")) }}
                              <form id="form" action="#">
                                 <div class="span6">
@@ -42,15 +56,10 @@
                                   
                                     <h6>Education Level <span class="red-title">*</span></h6>
                                     {{Form::select("Education_Level", $education_data,array('id'=>'subject') )}}
-                                    <select name="subject" id="subject">
-                                        <option>-- Select --</option>
-                                        <option>Higher secondary / STPM / &quot;A&quot; Level / Pre-U</option>
-                                        <option>Diploma / Advanced Higher / Graduate Diploma</option>
-                                        <option>Professional Certificated / Degree / Master</option>
-                                    </select>
+                                   
                                     
                                     <h6 class="margin_top_10px">Attach Your CV <span class="red-title">*</span></h6>
-                                    {{ Form::file('CV_docs');}}
+                                    {{ Form::file('CV_docs',array('class' => 'button btn-small'));}}
                                     (PDF, RTF, MS Word or JPEG file). Max file size: 2MB
                                     
                                     <p class="margin_top_10px">Please enter the text you see in the below box:<br/>
@@ -417,5 +426,40 @@
 
         <!-- footer-->
         
+        <!-- ======================= JQuery libs =========================== -->
+        <!-- Always latest version of jQuery-->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>   
+        <!-- jQuery local-->      
+        <script>window.jQuery || document.write('<script src="js/jquery-1.9.1.min.js"><\/script>')</script>
+        <!-- jQuery ui-->    
+        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.1/jquery-ui.min.js"></script>
+        <!--Nav-->
+        <script type="text/javascript" src="{{ URL::asset('assets/front/js/nav/tinynav.js')}}"></script> 
+        <script type="text/javascript" src="{{ URL::asset('assets/front/js/nav/superfish.js')}}"></script>                                             
+        <!--Totop-->
+        <script type="text/javascript" src="{{ URL::asset('assets/front/js/totop/jquery.ui.totop.js')}}" ></script>  
+        <!--Slide-->
+        <script type="text/javascript" src="{{ URL::asset('assets/front/js/slide/camera.js')}}" ></script>      
+        <script type='text/javascript' src="{{ URL::asset('assets/front/js/slide/jquery.easing.1.3.min.js')}}"></script>   
+        <!--flexsilider-->
+        <script type="text/javascript" src="js/carousel/jquery.flexslider.js"></script>    
+        <!--Ligbox--> 
+        <script type="text/javascript" src="js/fancybox/jquery.fancybox-1.3.1.js"></script>  
+        <!--Scrollama--> 
+        <script type="text/javascript" src="js/scrollama/TweenMax.min.js"></script>
+        <script type="text/javascript" src="js/scrollama/jquery.superscrollorama.js"></script>    
+        <!--Gallery Grid--> 
+        <script type="text/javascript" src="js/gallery/modernizr.custom.26633.js"></script>
+        <script type="text/javascript" src="js/gallery/jquery.gridrotator.js"></script>     
+        <!--Minislider Team-->         
+        <script type="text/javascript" src="js/team/modernizr.custom.63321.js"></script>
+        <script type="text/javascript" src="js/team/jquery.catslider.js"></script> 
+        <!--Filters-->
+        <script type="text/javascript" src="js/filters/filters.js" ></script>                            
+        <!-- Bootstrap.js-->
+        <script type="text/javascript" src="js/bootstrap/bootstrap.js"></script>
+        <!--fUNCTIONS-->
+        <script type="text/javascript" src="js/jquery-func.js"></script>
+        <!-- ======================= End JQuery libs =========================== -->
 @stop
         

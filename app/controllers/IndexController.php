@@ -33,6 +33,7 @@ class IndexController extends \BaseController {
         $Education_data['ProfessionalDegree']="Professional Certificated / Degree / Master";
         
         $Country_data = array();
+        $Country_data['Select']="-- Select--";
         $Country_data['UnitedKingdom']="United Kingdom";
         $Country_data['America']="United States of America";
         $Country_data['UAE']="United Arab Emirates";
@@ -83,7 +84,7 @@ class IndexController extends \BaseController {
 
 		// process the login
 		if ($validator->fails()) {
-			return Redirect::to('online_job_application')
+			return Redirect::to('online_apply')
 				->withErrors($validator)
 				->withInput(Input::except('password'));
 		} else {
@@ -112,8 +113,9 @@ class IndexController extends \BaseController {
 			$Home->save();
 
 			// redirect
-			Session::flash('message', 'The information has been saved successfully.');
-			return Redirect::to('online_job_application');
+			Session::flash('message', 'Thank you! You have successfully submitted your CV. Only short listed candidates will be notified for interview.');
+                        Session::flash('eror_message', '<strong>Error!</strong> Please correct the errors in the form below.');
+			return Redirect::to('online_apply');
 		}
 	}
 
