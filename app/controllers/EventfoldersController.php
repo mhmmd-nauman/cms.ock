@@ -41,7 +41,7 @@ class EventfoldersController extends \BaseController {
            
             $eventfolder= new Eventfolder;
             $image = Input::file('picture');
-            $destinationPath =public_path().'/uploads/';
+            $destinationPath = public_path().'/uploads/';
             $filename = $image->getClientOriginalName();
             Input::file('picture')->move($destinationPath, $filename);
             $eventfolder->status       = Input::get('status');

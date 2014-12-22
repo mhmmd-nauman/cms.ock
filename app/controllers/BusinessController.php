@@ -9,7 +9,7 @@ class BusinessController extends \BaseController {
 	 */
 	public function index()
   {
-            echo" ffff";
+            //echo" ffff";
         $Business = CoreBusiness::all();
         //print_r($Business);
         
@@ -60,7 +60,7 @@ class BusinessController extends \BaseController {
 			$Business->title      = Input::get('title');
                         $Business->url      = Input::get('url');
 			
-			$Business->save();
+			//$Business->save();
                         
 			// redirect
 			Session::flash('message', 'Successfully created!');

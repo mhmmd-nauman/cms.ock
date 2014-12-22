@@ -41,8 +41,8 @@ class MontageController extends \BaseController {
 		// validate
 		// read more on validation at http://laravel.com/docs/validation
 		$rules = array(
-			'title'       => 'required',
-			'status'      => 'required',
+			'title'       => '',
+			'status'      => '',
 			'Banner'      => '',
                         'MoreStatus'  => '',
                         'url'         => ''
@@ -59,14 +59,12 @@ class MontageController extends \BaseController {
 			$montage = new Montage;
 			$montage->title       = Input::get('title');
 			$montage->status      = Input::get('status');
-                        $montage->Banner      = Input::get('Banner_image');
+                        
                         $montage->MoreStatus  = Input::get('morestatus');
                         $montage->url         = Input::get('url');
 		  if (Input::hasFile('Banner_image')){
-                        Input::file('Banner_image')->move(public_path()."/img/",Input::file('Banner_image')->getClientOriginalName());
-                        $localFilePath = public_path()."/img/".Input::file('Banner_image')->getClientOriginalName();
-                        $file = ParseFile::createFromFile($localFilePath, Input::file('Banner_image')->getClientOriginalName());
-                        $file->save();
+                        Input::file('Banner_image')->move(public_path()."/uploads/slides/",Input::file('Banner_image')->getClientOriginalName());
+                        $montage->Banner      = Input::file('Banner_image')->getClientOriginalName();
                         //$url = $file->getURL();
                        
                     }
@@ -118,11 +116,11 @@ class MontageController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		// validate
-		// read more on validation at http://laravel.com/docs/validation
+		//print_r($_POST);
+                //exit;
 		$rules = array(
-			'title'       => 'required',
-			'status'      => 'required',
+			'title'       => '',
+			'status'      => '',
 			'Banner'      => '',
                         'MoreStatus'  => '',
                         'url'         => ''
@@ -133,16 +131,22 @@ class MontageController extends \BaseController {
 		if ($validator->fails()) {
 			return Redirect::to('index_edit/' . $id . '/edit')
 				->withErrors($validator)
-				->withInput(Input::except('password'));
+				;
 		} else {
 			// store
 			$montage = Montage::find($id);
 			$montage->title       = Input::get('title');
 			$montage->status      = Input::get('status');
-                        $montage->Banner      = Input::get('Banner_image');
+                        
                         $montage->MoreStatus  = Input::get('morestatus');
                         $montage->url         = Input::get('url');
-			$montage->save();
+			if (Input::hasFile('Banner_image')){
+                            Input::file('Banner_image')->move(public_path()."/uploads/slides/",Input::file('Banner_image')->getClientOriginalName());
+                            $montage->Banner      = Input::file('Banner_image')->getClientOriginalName();
+                        //$url = $file->getURL();
+                       
+                        }
+                        $montage->save();
 
 			// redirect
 			Session::flash('message', 'The information has been updated successfully!');

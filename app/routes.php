@@ -29,7 +29,7 @@ Route::get('news_events_list', array('uses' => 'EventfoldersController@index'));
 Route::get('careers_job_vacancy_list', array('uses' => 'AdminCareersController@showAdminVacancies'));
 Route::get('careers_online_applicants_list', array('uses' => 'AdminCareersController@showAdminOnlineApplicants'));
 
-Route::post('adminsavepage', array('uses' => 'PageController@doStore'));
+Route::post('adminsavepage', array('uses' => 'BusinessController@doStore'));
 
 
 
