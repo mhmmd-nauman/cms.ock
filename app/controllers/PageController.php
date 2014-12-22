@@ -7,8 +7,8 @@ class PageController extends BaseController {
         public function doStore()
 	{
 		// validate
-		print_r($_REQUEST);
-                exit;
+		//print_r($_REQUEST);
+                //exit;
 		$rules = array(
 			//'name'       => 'required',
 			
@@ -45,6 +45,14 @@ class PageController extends BaseController {
                     break;
                 case"body1":
                     $page->body1          = Input::get('editabledata');
+                    $page->save();
+                    break;
+                case"heading2":
+                    $page->heading2          = Input::get('editabledata');
+                    $page->save();
+                    break;
+                case"body2":
+                    $page->body2          = Input::get('editabledata');
                     $page->save();
                     break;
             }
