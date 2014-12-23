@@ -18,6 +18,7 @@ class CareersController extends \BaseController {
 		// load the view and pass the nerds
 		return View::make('admin.career_vac_edit')
 			->with('careers', $careers);
+                        
 	}
 
 	/**

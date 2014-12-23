@@ -22,17 +22,20 @@
             <div class="col-lg-12">
               <h2>Online Job Applicants <i class="fa fa-angle-right"></i> Listing</h2>
               <div class="clearfix"></div>
+              @if (Session::has('message'))
               <div class="alert alert-success alert-dismissable">
                 <button type="button" data-dismiss="alert" aria-hidden="true" class="close">&times;</button>
                 <i class="fa fa-check-circle"></i> <strong>Success!</strong>
-                <p>The information has been saved/updated successfully.</p>
+                <p>{{ Session::get('message') }}</p>
               </div>
+              @endif
+               @if (Session::has('error_message'))
               <div class="alert alert-danger alert-dismissable">
                 <button type="button" data-dismiss="alert" aria-hidden="true" class="close">&times;</button>
                 <i class="fa fa-times-circle"></i> <strong>Error!</strong>
-                <p>The information has not been saved/updated. Please correct the errors.</p>
+                <p>{{ Session::get('message') }}</p>
               </div>
-              
+                @endif
               <div class="pull-left"> Last updated: <span class="text-blue">15 Sept, 2014 @ 12.00PM</span> </div>
               <div class="clearfix"></div>
               <p></p>
@@ -137,16 +140,23 @@
                       </tr>
                     </thead>
                     <tbody>
+                       @foreach ($online_Applications as $online) 
                       <tr>
                         <td><input type="checkbox"/></td>
-                        <td>1</td>
+                        <td>{{$online->id}}</td>
                         <td><span class="label label-sm label-success">Active</span></td>
-                        <td>31 Dec, 2013</td>
-                        <td>Hock Lim</td>
-                        <td>Business Development Executive</td>
-                        <td><a href="#" data-hover="tooltip" data-placement="top" data-target="#modal-view-details" data-toggle="modal" title="View Details"><span class="label label-sm label-yellow"><i class="fa fa-search"></i></span></a> <a href="#" data-hover="tooltip" data-placement="top" title="Delete" data-target="#modal-delete-1" data-toggle="modal"><span class="label label-sm label-red"><i class="fa fa-trash-o"></i></span></a>
-                            <!--Modal view details start-->
-                            <div id="modal-view-details" tabindex="-1" role="dialog" aria-labelledby="modal-login-label" aria-hidden="true" class="modal fade">
+                        <td>{{$online->date}}</td>
+                        <td>{{$online->name}}</td>
+                        <td>{{$online->name}}</td>
+                        <td><a href="#" data-hover="tooltip" data-placement="top" data-target="#modal-view-details-{{$online->id}}" data-toggle="modal" title="View Details"><span class="label label-sm label-yellow"><i class="fa fa-search"></i></span></a>
+                            <a href="#" data-hover="tooltip" data-placement="top" title="Delete" data-target="#modal-delete-{{$online->id}}" data-toggle="modal"><span class="label label-sm label-red"><i class="fa fa-trash-o"></i></span></a>
+                            
+                        </td>
+                      </tr>
+                       @endforeach
+                      <!--Modal view details start-->
+                      @foreach ($online_Applications as $online)
+                            <div id="modal-view-details-{{$online->id}}" tabindex="-1" role="dialog" aria-labelledby="modal-login-label" aria-hidden="true" class="modal fade">
                               <div class="modal-dialog modal-wide-width">
                                 <div class="modal-content">
                                   <div class="modal-header">
@@ -154,7 +164,7 @@
                                     <h4 id="modal-login-label2" class="modal-title">View Applicant Details</h4>
                                   </div>
                                   <div class="modal-body">
-    								  <form action="#" class="form-horizontal">
+    						<form action="#" class="form-horizontal">
                                                     <div class="form-body pal">
                                                     	<h3 class="block-heading">Personal</h3>
 
@@ -163,14 +173,14 @@
                                                                 <div class="form-group">
                                                                 	<label for="inputFirstName" class="col-md-4 control-label">First Name:</label>
 
-                                                                    <div class="col-md-8"><p class="form-control-static">Hock</p></div>
+                                                                    <div class="col-md-8"><p class="form-control-static">{{$online->name}}</p></div>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6">
                                                                 <div class="form-group">
                                                                 	<label for="inputLastName" class="col-md-4 control-label">Last Name:</label>
 
-                                                                    <div class="col-md-8"><p class="form-control-static">Lim</p></div>
+                                                                    <div class="col-md-8"><p class="form-control-static">{{$online->name}}</p></div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -179,14 +189,14 @@
                                                                 <div class="form-group">
                                                                 	<label for="inputEmail" class="col-md-4 control-label">Email:</label>
 
-                                                                    <div class="col-md-8"><p class="form-control-static"><a href="mailto:hock@webqom.com">hock@webqom.com</a></p></div>
+                                                                    <div class="col-md-8"><p class="form-control-static"><a href="mailto:hock@webqom.com">{{$online->Email}}</a></p></div>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6">
                                                                 <div class="form-group">
                                                                 	<label for="selGender" class="col-md-4 control-label">Contact Number:</label>
 
-                                                                    <div class="col-md-8"><p class="form-control-static">03 2203-0998</p></div>
+                                                                    <div class="col-md-8"><p class="form-control-static">{{$online->ContactNumber}}</p></div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -195,14 +205,14 @@
                                                                 <div class="form-group">
                                                                 	<label for="inputBirthday" class="col-md-4 control-label">Date of Birth:</label>
 
-                                                                    <div class="col-md-8"><p class="form-control-static">22 Mar, 1980</p></div>
+                                                                    <div class="col-md-8"><p class="form-control-static">{{$online->DOB}}</p></div>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6">
                                                                 <div class="form-group">
                                                                 	<label for="inputPhone" class="col-md-4 control-label">Mobile Number:</label>
 
-                                                                    <div class="col-md-8"><p class="form-control-static">012-222-4562</p></div>
+                                                                    <div class="col-md-8"><p class="form-control-static">{{$online->MobileNumber}}</p></div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -214,14 +224,14 @@
                                                                 	<label for="inputAddress1" class="col-md-4 control-label">Address:</label>
 
                                                                     <div class="col-md-8">
-                                                                    	<p class="form-control-static">B2-2-2, Solaris Dutamas, No. 1, Jalan Dutamas 1, 50480 Kuala Lumpur, Wilayah Persekutuan, Malaysia.</p></div>
+                                                                    	<p class="form-control-static">{{$online->Address}}</p></div>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6">
                                                                 <div class="form-group">
                                                                 	<label for="inputAddress2" class="col-md-4 control-label">City:</label>
 
-                                                                    <div class="col-md-8"><p class="form-control-static">Kuala Lumpur</p></div>
+                                                                    <div class="col-md-8"><p class="form-control-static">{{$online->City}}</p></div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -230,14 +240,14 @@
                                                                 <div class="form-group">
                                                                 	<label for="inputStates" class="col-md-4 control-label">State:</label>
 
-                                                                    <div class="col-md-8"><p class="form-control-static">Wilayah Persekutuan</p></div>
+                                                                    <div class="col-md-8"><p class="form-control-static">{{$online->State}}</p></div>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6">
                                                                 <div class="form-group">
                                                                 	<label for="inputCity" class="col-md-4 control-label">Post Code:</label>
 
-                                                                    <div class="col-md-8"><p class="form-control-static">50480</p></div>
+                                                                    <div class="col-md-8"><p class="form-control-static">{{$online->PostalCode}}</p></div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -246,7 +256,7 @@
                                                                 <div class="form-group">
                                                                 	<label for="inputPostCode" class="col-md-4 control-label">Country:</label>
 
-                                                                    <div class="col-md-8"><p class="form-control-static">Malaysia</p></div>
+                                                                    <div class="col-md-8"><p class="form-control-static">{{$online->Country}}</p></div>
                                                                 </div>
                                                             </div>
                                                             
@@ -259,7 +269,7 @@
                                                                 <div class="form-group">
                                                                 	<label for="inputPostCode" class="col-md-4 control-label">Education Level:</label>
 
-                                                                    <div class="col-md-8"><p class="form-control-static">Professional Certificated/Degree/Master</p></div>
+                                                                    <div class="col-md-8"><p class="form-control-static">{{$online->EducationLevel}}</p></div>
                                                                 </div>
                                                             </div>
                                                             
@@ -273,7 +283,7 @@
                                                                 	<label for="inputPostCode" class="col-md-4 control-label">Applicant CV:</label>
 
                                                                     <div class="col-md-8">
-                                                                    	<p class="form-control-static"><a href="#" target="_blank">use the uploaded cv file name</a></p></div>
+                                                                    	<p class="form-control-static"><a href="#" target="_blank">{{$online->CV}}</a></p></div>
                                                                 </div>
                                                             </div>
                                                             
@@ -290,9 +300,12 @@
                                 </div>
                               </div>
                           </div>
+                    @endforeach
                           <!--END MODAL view details-->
                             <!--Modal delete start-->
-                            <div id="modal-delete-1" tabindex="-1" role="dialog" aria-labelledby="modal-login-label" aria-hidden="true" class="modal fade">
+                            @foreach ($online_Applications as $online)
+                            {{ Form::open(array('url' => 'delete_application/'.$online->id,"method" => "post","files"=>true,"class"=>"form-horizontal")) }}
+                            <div id="modal-delete-{{$online->id}}" tabindex="-1" role="dialog" aria-labelledby="modal-login-label" aria-hidden="true" class="modal fade">
                               <div class="modal-dialog">
                                 <div class="modal-content">
                                   <div class="modal-header">
@@ -304,15 +317,15 @@
                                     						Applicant Name: Hock Lim
                                     </p>
                                     <div class="form-actions">
-                                      <div class="col-md-offset-4 col-md-8"> <a href="#" class="btn btn-red">Yes &nbsp;<i class="fa fa-check"></i></a>&nbsp; <a href="#" data-dismiss="modal" class="btn btn-green">No &nbsp;<i class="fa fa-times-circle"></i></a> </div>
+                                      <div class="col-md-offset-4 col-md-8"> {{ Form::submit('Yes &nbsp;', array('class' => 'btn btn-red')) }}<i class="fa fa-check"></i></a>&nbsp; <a href="#" data-dismiss="modal" class="btn btn-green">No &nbsp;<i class="fa fa-times-circle"></i></a> </div>
                                     </div>
                                   </div>
                                 </div>
                               </div>
                           </div>
+                            {{ Form::close() }}
+                         @endforeach
                           <!-- modal delete end -->
-                        </td>
-                      </tr>
                     </tbody>
                     <tfoot>
                       <tr>

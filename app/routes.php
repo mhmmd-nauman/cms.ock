@@ -23,7 +23,8 @@ Route::get('dashboard', array('uses' => 'AdminController@showDashboard'));
 Route::get('index_edit', array('uses' => 'AdminIndexPageController@showIndexPageEditor'));
 Route::get('news_events_list', array('uses' => 'EventfoldersController@index'));
 Route::get('careers_job_vacancy_list', array('uses' => 'AdminCareersController@showAdminVacancies'));
-Route::get('careers_online_applicants_list', array('uses' => 'AdminCareersController@showAdminOnlineApplicants'));
+//Route::get('careers_online_applicants_list', array('uses' => 'AdminCareersController@showAdminOnlineApplicants'));
+
 
 Route::post('adminsavepage', array('uses' => 'BusinessController@doStore'));
 
@@ -47,5 +48,7 @@ Route::resource('addnew', 'EventfoldersController');
 Route::post('update_event/{id}', 'EventfoldersController@update');
 Route::post('delete_event/{id}', 'EventfoldersController@destroy');
 Route::post('savecontents', 'PageController@updateContents');
+Route::get('careers_online_applicants_list', array('uses' => 'VacancyController@index'));
+Route::post('delete_application/{id}', 'VacancyController@destroy');
 
 
