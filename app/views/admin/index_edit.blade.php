@@ -41,6 +41,7 @@ opopopop
               <div class="clearfix"></div>
               <p></p>
               
+              {{ Form::open(array('id'=>'index_page_edit', 'name'=>'index_page_edit','url' => 'save_page_contents',"method" => "post","class"=>"form-horizontal")) }}
               
               <div class="portlet">
                 <div class="portlet-header">
@@ -59,7 +60,7 @@ opopopop
                     <div class="col-lg-6">
                         <div class="row-fluid">
                           <div id="heading1" contenteditable="true">
-                          	 {{$page->heading1}}
+                          	 <h2 class="red-title">{{$page->heading1}}</h2>
                           </div>
                           <div id="body1" contenteditable="true">
                           	{{$page->body1}} 
@@ -81,8 +82,8 @@ opopopop
 
                         <div class="row text-center service-process">
                             <div class="info_vertical">
-                                <div id="heading2" contenteditable="true">
-                                	{{$page->heading2}}
+                                <div  contenteditable="true">
+                                	<h2 class="red-title2">{{$page->heading2}}</h2>
                                 </div>
                                 <div id="body2" contenteditable="true">
                                 	{{$page->body2}}
@@ -113,58 +114,7 @@ opopopop
                         
                         
                         <!--Modal edit core business 1 start-->
-                            @foreach ($businesses_create as $Busi)
-                              <div id="modal-edit-core-business-{{$Busi->id}}" tabindex="-1" role="dialog" aria-labelledby="modal-login-label" aria-hidden="true" class="modal fade">
-                                <div class="modal-dialog modal-wide-width">
-                                  <div class="modal-content">
-                                    <div class="modal-header">
-                                      <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
-                                      <h4 id="modal-login-label2" class="modal-title">Edit Core Business</h4>
-                                    </div>
-                                    <div class="modal-body">
-                                     {{ Form::open(array('url' => 'businesses_update/'.$Busi->id,"method" => "post","class"=>"form-horizontal")) }}
-                                      <div class="form">
-                                        <form class="form-horizontal">
-                                          
-                                          <div class="form-group">
-                                            <label class="col-md-3 control-label">Icon <span class='require'>*</span></label>
-                                            <div class="col-md-6">
-                                              
-                                              {{ Form::text('icon', $Busi->icon, array('placeholder' => 'Icon','class'=>'form-control',"id"=>"inputContent")) }}
-                                              <div class="help-block">Please refer here for more <a href="icons.html" target="_blank">icon options.</a></div>
-                                            </div>
-                                          </div>
-                                          <div class="form-group">
-                                            <label class="col-md-3 control-label">Title <span class='require'>*</span></label>
-                                            <div class="col-md-6">
-                                                {{ Form::textarea('title', $Busi->title, array('class'=>'form-control',"rows"=>'2')) }}
-                                              
-                                            </div>
-                                          </div>
-                                          
-                                          <div class="form-group">
-                                            <label class="col-md-3 control-label">Website URL </label>
-                                            <div class="col-md-6">
-                                              <div class="input-icon"><i class="fa fa-link"></i>
-                                                  {{ Form::text('url', $Busi->url, array('placeholder' => 'http:','class'=>'form-control')) }}
-                                                  
-                                                  
-                                              </div>
-                                            </div>
-                                            
-                                          </div>
-
-                                          <div class="form-actions">
-                                            <div class="col-md-offset-5 col-md-8"> {{ Form::submit('Save &nbsp;', array('class' => 'btn btn-red')) }}&nbsp; <a href="#" data-dismiss="modal" class="btn btn-green">Cancel &nbsp;</a> </div>
-                                          </div>
-                                        </form>
-                                      </div>
-                                     {{ Form::close() }}
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                             @endforeach
+                            
                         <!--END MODAL edit core business 1-->
                               
                               <!--Modal edit core business 2 start-->
@@ -189,6 +139,73 @@ opopopop
                 <!-- end portlet body-->
               </div>
               <!-- End portlet-->
+                {{ Form::hidden('heading1') }}
+                {{ Form::hidden('body1') }}
+                {{ Form::hidden('heading2') }}
+                {{ Form::hidden('body2') }}
+                <div class="form-actions none-bg"> 
+                    {{ Form::button(
+                                                            'Save &amp; Publish&nbsp;<i class="fa fa-globe"></i>',
+                                                            array(
+                                                                'class'=>'btn btn-blue',
+                                                                'type'=>'submit')) 
+                                                        }}
+                    <a href="#" class="btn btn-green">Cancel &nbsp;<i class="glyphicon glyphicon-ban-circle"></i></a> 
+                </div>
+              {{ Form::close() }}
+              
+              @foreach ($businesses_create as $Busi)
+                <div id="modal-edit-core-business-{{$Busi->id}}" tabindex="-1" role="dialog" aria-labelledby="modal-login-label" aria-hidden="true" class="modal fade">
+                  <div class="modal-dialog modal-wide-width">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+                        <h4 id="modal-login-label2" class="modal-title">Edit Core Business</h4>
+                      </div>
+                      <div class="modal-body">
+                       {{ Form::open(array('url' => 'businesses_update/'.$Busi->id,"method" => "post","class"=>"form-horizontal")) }}
+                        <div class="form">
+                          <form class="form-horizontal">
+
+                            <div class="form-group">
+                              <label class="col-md-3 control-label">Icon <span class='require'>*</span></label>
+                              <div class="col-md-6">
+
+                                {{ Form::text('icon', $Busi->icon, array('placeholder' => 'Icon','class'=>'form-control',"id"=>"inputContent")) }}
+                                <div class="help-block">Please refer here for more <a href="icons.html" target="_blank">icon options.</a></div>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label class="col-md-3 control-label">Title <span class='require'>*</span></label>
+                              <div class="col-md-6">
+                                  {{ Form::textarea('title', $Busi->title, array('class'=>'form-control',"rows"=>'2')) }}
+
+                              </div>
+                            </div>
+
+                            <div class="form-group">
+                              <label class="col-md-3 control-label">Website URL </label>
+                              <div class="col-md-6">
+                                <div class="input-icon"><i class="fa fa-link"></i>
+                                    {{ Form::text('url', $Busi->url, array('placeholder' => 'http:','class'=>'form-control')) }}
+
+
+                                </div>
+                              </div>
+
+                            </div>
+
+                            <div class="form-actions">
+                              <div class="col-md-offset-5 col-md-8"> {{ Form::submit('Save &nbsp;', array('class' => 'btn btn-red')) }}&nbsp; <a href="#" data-dismiss="modal" class="btn btn-green">Cancel &nbsp;</a> </div>
+                            </div>
+                          </form>
+                        </div>
+                       {{ Form::close() }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+               @endforeach
               
                <div class="portlet">
                 <div class="portlet-header">
@@ -311,7 +328,7 @@ opopopop
               </div>
               <!-- End porlet -->
               
-              <div class="form-actions none-bg"> <a href="#preview in browser/not yet published" class="btn btn-red">Save &amp; Preview &nbsp;<i class="fa fa-search"></i></a>&nbsp; <a href="#publish online" class="btn btn-blue">Save &amp; Publish &nbsp;<i class="fa fa-globe"></i></a>&nbsp; <a href="#" class="btn btn-green">Cancel &nbsp;<i class="glyphicon glyphicon-ban-circle"></i></a> </div>
+              
             </div>
           </div>
         </div>

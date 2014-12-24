@@ -26,7 +26,7 @@
 <script src="{{ URL::asset('/assets/vendors/bootstrap-switch/js/bootstrap-switch.min.js') }}"></script>
 <script src="{{ URL::asset('/assets/vendors/jquery-maskedinput/jquery-maskedinput.js') }}"></script>
 <script src="{{ URL::asset('/assets/js/form-components.js') }}"></script>
-
+<script src="{{ URL::asset('/assets/js/custom.js') }}"></script>
 <!--LOADING SCRIPTS FOR PAGE-->
 
 <script src="{{ URL::asset('/assets/vendors/tinymce/js/tinymce/tinymce.min.js') }}"></script>

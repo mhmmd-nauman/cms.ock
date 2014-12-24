@@ -27,7 +27,7 @@ Route::get('careers_job_vacancy_list', array('uses' => 'AdminCareersController@s
 
 
 Route::post('adminsavepage', array('uses' => 'BusinessController@doStore'));
-
+Route::post('save_page_contents', array('uses' => 'PageController@saveContents'));
 
 
 Route::get('users', array('uses' => 'AdminController@home'));

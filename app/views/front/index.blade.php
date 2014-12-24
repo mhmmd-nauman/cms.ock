@@ -15,7 +15,7 @@
               <div class="info_vertical">  
                 <div class="span6">
                 	<div class="row-fluid">
-                      {{$homePageData->heading1}}
+                            <h2 class="red-title">{{$homePageData->heading1}}</h2>
                       {{$homePageData->body1}}  
                 	</div>
                 </div>
@@ -48,7 +48,7 @@
                 <div class="container">
                     <div class="row text-center service-process top_animationb">
                         <div class="info_vertical">
-                            {{$homePageData->heading2}}
+                            <h2 class="red-title">{{$homePageData->heading2}}</h2>
                             {{$homePageData->body2}}
                             
                         </div>
