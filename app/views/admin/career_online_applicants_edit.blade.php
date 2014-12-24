@@ -283,7 +283,9 @@
                                                                 	<label for="inputPostCode" class="col-md-4 control-label">Applicant CV:</label>
 
                                                                     <div class="col-md-8">
-                                                                    	<p class="form-control-static"><a href="#" target="_blank">{{$online->CV}}</a></p></div>
+                                                                    	<p class="form-control-static">
+                                                                            <a href="{{ URL::to('/download/img2.jpg') }}" class="btn btn-large pull-right"><i class="icon-download-alt"> </i> Download CV </a>
+                                                                            <a href="#" target="_blank">{{$online->CV}}</a></p></div>
                                                                 </div>
                                                             </div>
                                                             
@@ -317,7 +319,15 @@
                                     						Applicant Name: Hock Lim
                                     </p>
                                     <div class="form-actions">
-                                      <div class="col-md-offset-4 col-md-8"> {{ Form::submit('Yes &nbsp;', array('class' => 'btn btn-red')) }}<i class="fa fa-check"></i></a>&nbsp; <a href="#" data-dismiss="modal" class="btn btn-green">No &nbsp;<i class="fa fa-times-circle"></i></a> </div>
+                                      <div class="col-md-offset-4 col-md-8"> 
+                                           {{ Form::button(
+                                                            'Yes &nbsp;<i class="fa fa-check"></i>&nbsp;',
+                                                            array(
+                                                                'class'=>'btn btn-red',
+                                                                'type'=>'submit')) 
+                                                        }}
+                                                        &nbsp;<a href="#" data-dismiss="modal" class="btn btn-green">No &nbsp;<i class="fa fa-times-circle"></i></a>
+                                          </div>
                                     </div>
                                   </div>
                                 </div>
@@ -329,11 +339,14 @@
                     </tbody>
                     <tfoot>
                       <tr>
-                        <td colspan="7"></td>
+                        <td colspan="7">
+                            <?php echo $pagination->links(); ?>
+                            </td>
                       </tr>
                     </tfoot>
                   </table>
                   <div class="tool-footer text-right">
+                      
                     <p class="pull-left">Showing 1 to 10 of 57 entries</p>
                     <ul class="pagination pagination mtm mbm">
                       <li class="disabled"><a href="#">&laquo;</a></li>

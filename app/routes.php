@@ -50,5 +50,6 @@ Route::post('delete_event/{id}', 'EventfoldersController@destroy');
 Route::post('savecontents', 'PageController@updateContents');
 Route::get('careers_online_applicants_list', array('uses' => 'VacancyController@index'));
 Route::post('delete_application/{id}', 'VacancyController@destroy');
+Route::get('/download', 'IndexController@getDownload');
 
 

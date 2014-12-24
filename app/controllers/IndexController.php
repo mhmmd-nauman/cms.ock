@@ -112,15 +112,13 @@ class IndexController extends \BaseController {
                         $Home->State         = Input::get('State');
                         $Home->PostalCode    = Input::get('Postal_Code');
                         $Home->Country       = Input::get('Country');
-                        
-		  if (Input::hasFile('CV_docs')){
-                        Input::file('CV_docs')->move(public_path()."/img/",Input::file('CV_docs')->getClientOriginalName());
-                        $localFilePath = public_path()."/uploads/cv/".Input::file('CV_docs')->getClientOriginalName();
-                        $file->CV = ParseFile::createFromFile($localFilePath, Input::file('CV_docs')->getClientOriginalName());
-                        $file->save();
+                      if (Input::hasFile('CV_docs')){
+                        Input::file('CV_docs')->move(public_path()."/uploads/cv/",Input::file('CV_docs')->getClientOriginalName());
+                        $Home->CV      = Input::file('CV_docs')->getClientOriginalName();
                         //$url = $file->getURL();
                        
                     }
+		  
 			$Home->save();
 
 			// redirect
@@ -218,5 +216,13 @@ class IndexController extends \BaseController {
 		Session::flash('message', 'The information has been deleted successfully!');
 		return Redirect::to('index_edit');
 	}
+       public function getDownload(){
+        //PDF file is stored under project/public/download/info.pdf
+        $file= public_path(). "/download/info.jpg";
+        $headers = array(
+              'Content-Type: application/jpg',
+            );
+        return Response::download($file, 'filename.jpg', $headers);
+}
 
 }

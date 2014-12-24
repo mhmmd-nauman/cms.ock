@@ -1,8 +1,7 @@
 @extends('layouts.front')
 @section('content') 
   <!-- End content info -->
-   
-        <section class="content_info"><!-- InstanceBeginEditable name="EditRegion4" -->
+ <section class="content_info"><!-- InstanceBeginEditable name="EditRegion4" -->
           
           <!-- Info white-->
             <div class="info_white1 border_bottom">
@@ -11,15 +10,19 @@
                     <div class="row-fluid">
                         <div class="span12">
                              <h5>Position Applied: Business Development Executive</h5>
+                             @if (Session::has('error_message'))
                              <div class="alert alert-error">
-                                <strong>Error!</strong> Please correct the errors in the form below. 
+                                <strong>Error!</strong> {{ Session::get('error_message') }}  
                             </div>
+                             @endif
+                             @if (Session::has('message'))
                             <div class="alert alert-success">
-                                <strong>Thank you!</strong> You have successfully submitted your CV. Only short listed candidates will be notified for interview. 
+                                <strong>Thank you!</strong> {{ Session::get('message') }} 
                             </div>
-                             
-                             <form method="POST" action="Add_Application"  id="form" enctype="multipart/form-data">
+                              @endif
+                             {{ Form::open(array('url' => 'Add_Application',"class"=>"form-horizontal","files"=>true)) }} 
                                 <div class="span6">
+                                   
                                     <h6>Name <span class="red-title">*</span></h6>
                                    {{ Form::text('Name', Input::old('Name'), array('class' => 'input-xxlarge','placeholder' => 'Your Name'))}}
                                     <h6>Date of Birth <span class="red-title">*</span></h6>
@@ -42,12 +45,15 @@
                                    
                                     (PDF, RTF, MS Word or JPEG file). Max file size: 2MB
                                     
-                                    <p class="margin_top_10px">Please enter the text you see in the below box:<br/>
-                                    <img src="{{ URL::asset('assets/front/img/img_reCAPTCHA.png" alt="recaptcha')}}"></p>
+                                   
                                     
                                      <div class="clearfix"></div>
                                      <div class="margin_top_10px">
-                                         <input type="submit" value='Submit Your Application &nbsp;' class="button">
+                                         
+                                        {{ Form::submit('Submit Your Application', array('class' => 'button')) }}
+                                         
+                                        
+                                         
                                          </div>
                                      
                                     <div id="result"></div>  

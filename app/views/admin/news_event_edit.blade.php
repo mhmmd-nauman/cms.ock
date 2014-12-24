@@ -230,7 +230,19 @@
                                 </div>
                               </div>
                               <div class="form-actions">
-                                <div class="col-md-offset-5 col-md-8"> <a href="#" class="btn btn-red">Save &nbsp;<i class="fa fa-floppy-o"></i></a>&nbsp; <a href="#" data-dismiss="modal" class="btn btn-green">Cancel &nbsp;<i class="glyphicon glyphicon-ban-circle"></i></a> </div>
+                                <div class="col-md-offset-5 col-md-8"> 
+                                     {{ Form::button(
+                                                            'Save &nbsp;<i class="fa fa-floppy-o"></i>&nbsp;',
+                                                            array(
+                                                                'class'=>'btn btn-red',
+                                                                'type'=>'submit')) 
+                                                        }}
+                                                        <a href="#" data-dismiss="modal" class="btn btn-green">No &nbsp;<i class="fa fa-times-circle"></i></a> 
+                                                        
+                                    
+                                    
+                                
+                                </div>
                               </div>
                             </form>
                           </div>

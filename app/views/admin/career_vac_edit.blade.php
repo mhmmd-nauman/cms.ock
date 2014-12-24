@@ -109,7 +109,8 @@
                                 <label class="col-md-3 control-label">Status</label>
                                 <div class="col-md-9">
                                   <div data-on="success" data-off="primary" class="make-switch">
-                                    {{ Form::checkbox('status', '1');}}
+                                    
+                                    {{ Form::checkbox('status', '1','yes');}}
                                   </div>
                                 </div>
                               </div>
@@ -153,7 +154,19 @@
                                 </div>
                               </div>
                               <div class="form-actions">
-                                <div class="col-md-offset-5 col-md-8"> {{ Form::submit('Save &nbsp;', array('class' => 'btn btn-red')) }}<i class="fa fa-floppy-o"></i></a>&nbsp; <a href="#" data-dismiss="modal" class="btn btn-green">Cancel &nbsp;<i class="glyphicon glyphicon-ban-circle"></i></a> </div>
+                                <div class="col-md-offset-5 col-md-8"> 
+                                      {{ Form::button(
+                                                            'Save &nbsp;<i class="fa fa-check"></i>&nbsp;',
+                                                            array(
+                                                                'class'=>'btn btn-red',
+                                                                'type'=>'submit')) 
+                                                        }}
+                                                        <a href="#" data-dismiss="modal" class="btn btn-green">Cancel &nbsp;<i class="glyphicon glyphicon-ban-circle"></i></a> 
+                                    
+                                   
+                                
+                                
+                                </div>
                               </div>
                             {{ Form::close() }}
                               
@@ -294,7 +307,8 @@
                                           <label class="col-md-3 control-label">Status</label>
                                           <div class="col-md-9">
                                             <div data-on="success" data-off="primary" class="make-switch">
-                                             {{ Form::checkbox('status', '1');}}
+                                             
+                                             {{ Form::checkbox('status', '1','yes');}}
                                             </div>
                                           </div>
                                         </div>
@@ -364,7 +378,16 @@
                                           </div>
                                         </div>
                                         <div class="form-actions">
-                                          <div class="col-md-offset-5 col-md-8">{{ Form::submit('Update &nbsp;', array('class' => 'btn btn-red')) }}  <i class="fa fa-floppy-o"></i></a>&nbsp; <a href="#" data-dismiss="modal" class="btn btn-green">Cancel &nbsp;<i class="glyphicon glyphicon-ban-circle"></i></a> </div>
+                                          <div class="col-md-offset-5 col-md-8">
+                                              {{ Form::button(
+                                                            'Update &nbsp;<i class="fa fa-floppy-o"></i>',
+                                                            array(
+                                                                'class'=>'btn btn-red',
+                                                                'type'=>'submit')) 
+                                                        }}
+                                                        &nbsp;<a href="#" data-dismiss="modal" class="btn btn-green">Cancel &nbsp;<i class="glyphicon glyphicon-ban-circle"></i></a>
+                                                
+                                               </div>
                                         </div>
                                       {{ Form::close() }}
                                     </div>
@@ -388,7 +411,19 @@
                                   <div class="modal-body">
                                     <p><strong>#1:</strong> Are You sure Delete Vacancy</p>
                                     <div class="form-actions">
-                                      <div class="col-md-offset-4 col-md-8"> {{ Form::submit('Yes &nbsp;', array('class' => 'btn btn-red')) }}<i class="fa fa-check"></i>&nbsp; <a href="#" data-dismiss="modal" class="btn btn-green">No &nbsp;<i class="fa fa-times-circle"></i></a> </div>
+                                      <div class="col-md-offset-4 col-md-8">
+                                          {{ Form::button(
+                                                            'Yes &nbsp;<i class="fa fa-check"></i>&nbsp;',
+                                                            array(
+                                                                'class'=>'btn btn-red',
+                                                                'type'=>'submit')) 
+                                                        }}
+                                                        &nbsp;<a href="#" data-dismiss="modal" class="btn btn-green">No &nbsp;<i class="fa fa-times-circle"></i></a>
+                                          
+                                         
+                                      
+                                      
+                                      </div>
                                     </div>
                                   </div>
                                 </div>

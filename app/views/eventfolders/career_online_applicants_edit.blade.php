@@ -22,17 +22,20 @@
             <div class="col-lg-12">
               <h2>Online Job Applicants <i class="fa fa-angle-right"></i> Listing</h2>
               <div class="clearfix"></div>
+              @if (Session::has('message'))
               <div class="alert alert-success alert-dismissable">
                 <button type="button" data-dismiss="alert" aria-hidden="true" class="close">&times;</button>
                 <i class="fa fa-check-circle"></i> <strong>Success!</strong>
-                <p>The information has been saved/updated successfully.</p>
+                <p>{{ Session::get('message') }}</p>
               </div>
+               @endif
+               @if (Session::has('error_message'))
               <div class="alert alert-danger alert-dismissable">
                 <button type="button" data-dismiss="alert" aria-hidden="true" class="close">&times;</button>
                 <i class="fa fa-times-circle"></i> <strong>Error!</strong>
-                <p>The information has not been saved/updated. Please correct the errors.</p>
+                <p>{{ Session::get('error_message') }}</p>
               </div>
-              
+               @endif
               <div class="pull-left"> Last updated: <span class="text-blue">15 Sept, 2014 @ 12.00PM</span> </div>
               <div class="clearfix"></div>
               <p></p>
