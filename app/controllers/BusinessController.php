@@ -84,16 +84,17 @@ public function update($id)
 		$rules = array(
 			'icon'       => '',
 			'title'      => '',
-			'url'      => ''
+			'url'        => ''
                        
 		);
 		$validator = Validator::make(Input::all(), $rules);
 
 		// process the login
 		if ($validator->fails()) {
+                    
 			return Redirect::to('index_edit/' . $id . '/edit')
-				->withErrors($validator)
-				->withInput(Input::except('password'));
+				->withErrors($validator);
+				
 		} else {
 			// store
 			$Business = CoreBusiness::find($id);

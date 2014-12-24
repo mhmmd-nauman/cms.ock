@@ -44,7 +44,7 @@
               <div class="alert alert-danger alert-dismissable">
                 <button type="button" data-dismiss="alert" aria-hidden="true" class="close">&times;</button>
                 <i class="fa fa-times-circle"></i> <strong>Error!</strong>
-                <p>{{ Session::get('message') }}</p>
+                <p>{{ Session::get('error_message') }}</p>
               </div>
                @endif
               <div class="pull-left"> Last updated: <span class="text-blue">15 Sept, 2014 @ 12.00PM</span> </div>
@@ -117,7 +117,7 @@
                               <div class="form-group">
                                 <label class="col-md-3 control-label">Job Title <span class='require'>*</span></label>
                                 <div class="col-md-9">
-                                    {{ Form::textarea('job_title', Input::old('job_title'), array('class' => 'form-control','placeholder' => 'Job Title'))}}
+                                    {{ Form::textarea('job_title', Input::old('job_title'), array('class' => 'form-control','placeholder' => 'Job Title','rows'=>'4'))}}
                                   
                                 </div>
                               </div>
@@ -134,13 +134,13 @@
                               <div class="form-group">
                                 <label for="inputContent" class="col-md-3 control-label">Responsibilities <span class='require'>*</span></label>
                                 <div class="col-md-9"> note to programmer: please follow 100% front end style, including the list style in below fckeditor.
-                                  {{ Form::textarea('Responsibilities', Input::old('Responsibilities'), array('class' => 'form-control','placeholder' => 'Responsibilities'))}}
+                                  {{ Form::textarea('Responsibilities', Input::old('Responsibilities'), array('class' => 'form-control','placeholder' => 'Responsibilities','rows'=>'4'))}}
                                 </div>
                               </div>
                               <div class="form-group">
                                 <label for="inputContent" class="col-md-3 control-label">Requirements <span class='require'>*</span></label>
                                 <div class="col-md-9"> note to programmer: please follow 100% front end style, including the list style in below fckeditor.
-                                 {{ Form::textarea('Requirements', Input::old('Requirements'), array('class' => 'form-control','placeholder' => 'Requirements'))}}
+                                 {{ Form::textarea('Requirements', Input::old('Requirements'), array('class' => 'form-control','placeholder' => 'Requirements','rows'=>'4'))}}
                                 </div>
                               </div>
                               <div class="form-group">

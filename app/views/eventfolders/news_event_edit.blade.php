@@ -32,7 +32,7 @@
               <div class="alert alert-danger alert-dismissable">
                 <button type="button" data-dismiss="alert" aria-hidden="true" class="close">&times;</button>
                 <i class="fa fa-times-circle"></i> <strong>Error!</strong>
-                <p>{{ Session::get('message') }}</p>
+                <p>{{ Session::get('error_message') }}</p>
               </div>
                @endif
               <div class="pull-left margin-top-10px"> Last updated: <span class="text-blue">15 Sept, 2014 @ 12.00PM</span> </div>

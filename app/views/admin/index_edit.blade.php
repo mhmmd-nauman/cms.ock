@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-opopopop
+
 <!--BEGIN PAGE WRAPPER-->
  <div id="page-wrapper">
      <!--BEGIN PAGE HEADER & BREADCRUMB-->
@@ -27,14 +27,14 @@ opopopop
               <div class="alert alert-success alert-dismissable">
                 <button type="button" data-dismiss="alert" aria-hidden="true" class="close">&times;</button>
                 <i class="fa fa-check-circle"></i> <strong>Success!</strong>
-                <p>The information has been saved/updated successfully.</p>
+                <p>{{ Session::get('message') }}</p>
               </div>
               @endif
               @if (Session::has('error_message'))
               <div class="alert alert-danger alert-dismissable">
                 <button type="button" data-dismiss="alert" aria-hidden="true" class="close">&times;</button>
                 <i class="fa fa-times-circle"></i> <strong>Error!</strong>
-                <p>The information has not been saved/updated. Please correct the errors.</p>
+                <p>{{ Session::get('error_message') }}</p>
               </div>
               @endif
               <div class="pull-left"> Last updated: <span class="text-blue">{{ date("d F, Y @ h:i a",strtotime($page->updated_at)) }}</span> </div>
@@ -145,11 +145,11 @@ opopopop
                 {{ Form::hidden('body2') }}
                 <div class="form-actions none-bg"> 
                     {{ Form::button(
-                                                            'Save &amp; Publish&nbsp;<i class="fa fa-globe"></i>',
-                                                            array(
-                                                                'class'=>'btn btn-blue',
-                                                                'type'=>'submit')) 
-                                                        }}
+                                   'Save &amp; Publish&nbsp;<i class="fa fa-globe"></i>',
+                                   array(
+                                  'class'=>'btn btn-blue',
+                                  'type'=>'submit')) 
+                        }}
                     <a href="#" class="btn btn-green">Cancel &nbsp;<i class="glyphicon glyphicon-ban-circle"></i></a> 
                 </div>
               {{ Form::close() }}
@@ -171,7 +171,7 @@ opopopop
                               <label class="col-md-3 control-label">Icon <span class='require'>*</span></label>
                               <div class="col-md-6">
 
-                                {{ Form::text('icon', $Busi->icon, array('placeholder' => 'Icon','class'=>'form-control',"id"=>"inputContent")) }}
+                                {{ Form::text('icon', $Busi->icon, array('placeholder' => 'Icon','class'=>'form-control',"id"=>"inputContent",'required')) }}
                                 <div class="help-block">Please refer here for more <a href="icons.html" target="_blank">icon options.</a></div>
                               </div>
                             </div>
@@ -196,7 +196,16 @@ opopopop
                             </div>
 
                             <div class="form-actions">
-                              <div class="col-md-offset-5 col-md-8"> {{ Form::submit('Save &nbsp;', array('class' => 'btn btn-red')) }}&nbsp; <a href="#" data-dismiss="modal" class="btn btn-green">Cancel &nbsp;</a> </div>
+                              <div class="col-md-offset-5 col-md-8">
+                                   {{ Form::button(
+                                                            'Save &nbsp;<i class="fa fa-check"></i>&nbsp;',
+                                                            array(
+                                                                'class'=>'btn btn-red',
+                                                                'type'=>'submit')) 
+                                                        }}
+                                                        <a href="#" data-dismiss="modal" class="btn btn-green">Cancel &nbsp;<i class="glyphicon glyphicon-ban-circle"></i></a> 
+                                  
+                              </div>
                             </div>
                           </form>
                         </div>

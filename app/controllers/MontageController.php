@@ -41,19 +41,20 @@ class MontageController extends \BaseController {
 		// validate
 		// read more on validation at http://laravel.com/docs/validation
 		$rules = array(
-			'title'       => '',
-			'status'      => '',
-			'Banner'      => '',
-                        'MoreStatus'  => '',
-                        'url'         => ''
+			'title'       => 'required',
+			'status'      => 'required',
+			'Banner'      => 'required',
+                        'MoreStatus'  => 'required',
+                        'url'         => 'required'
 		);
 		$validator = Validator::make(Input::all(), $rules);
 
 		// process the login
 		if ($validator->fails()) {
+                     Session::flash('error_message', 'The information has not been saved/updated. Please correct the errors');
 			return Redirect::to('index_edit')
-				->withErrors($validator)
-				->withInput(Input::except('password'));
+				->withErrors($validator);
+				
 		} else {
 			// store
 			$montage = new Montage;

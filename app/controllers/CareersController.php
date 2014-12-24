@@ -43,11 +43,11 @@ class CareersController extends \BaseController {
 		// validate
 		// read more on validation at http://laravel.com/docs/validation
 		$rules = array(
-			'status'           => '',
-			'jobtitle'         => '',
-			'date'             => '',
-                        'responsibilities' => '',
-                        'requirements'     => ''
+			'status'           => 'required',
+			'jobtitle'         => 'required',
+			'date'             => 'required',
+                        'responsibilities' => 'required',
+                        'requirements'     => 'required'
                         //'footertext'     => ''
 		);
                 
@@ -55,10 +55,10 @@ class CareersController extends \BaseController {
 
 		// process the login
 		if ($validator->fails()) {
-                     
+                     Session::flash('error_message', 'The information has been Not saved successfully/ Please try again');
 			return Redirect::to('career_vac_edit')
-				->withErrors($validator)
-				->withInput(Input::except('password'));
+				->withErrors($validator);
+				
 		} else {
                     
 			// store

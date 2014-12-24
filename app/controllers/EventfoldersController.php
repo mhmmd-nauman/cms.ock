@@ -35,8 +35,26 @@ class EventfoldersController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function store()
-	{
+	public function store(){
+                $rules = array(
+			'status'           => 'required',
+			'eventtittle'         => 'required',
+			'date'             => 'required',
+                        'file'             => 'required',
+                        
+                        //'footertext'     => ''
+		);
+                
+		$validator = Validator::make(Input::all(), $rules);
+
+		// process the login
+		if ($validator->fails()) {
+                     Session::flash('error_message', 'The information has been Not saved successfully/ Please try again');
+			return Redirect::to('news_events_list')
+				->withErrors($validator);
+				
+		} else{
+	
 		//echo 'Asif';
            
             $eventfolder= new Eventfolder;
@@ -51,7 +69,7 @@ class EventfoldersController extends \BaseController {
             $eventfolder->save();
             return Redirect::to('addnew/');
 	}
-
+        }
 	/**
 	 * Display the specified eventfolder.
 	 *
