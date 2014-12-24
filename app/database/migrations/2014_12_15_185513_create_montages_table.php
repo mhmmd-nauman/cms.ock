@@ -19,6 +19,7 @@ class CreateMontagesTable extends Migration {
                         $table->string('title', 255);
                         $table->string('status', 255);
                         $table->string('Banner', 255);
+                        $table->text('body');//ALTER TABLE `montages` ADD `body` TEXT NOT NULL AFTER `Banner`;
                         $table->string('MoreStatus', 255);
                         $table->string('url', 255);
 		});

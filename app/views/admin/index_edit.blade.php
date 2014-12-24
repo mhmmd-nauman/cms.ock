@@ -449,9 +449,24 @@ opopopop
    {{ Form::close() }}
  @endforeach
 <!-- modal delete end -->
+<script type="text/javascript">
+$(function(){
+@foreach ($montages as $montage)    
+$("#montages_edit{{$montage->id}}").submit(function(event){
+       
+       var body1                = $("#mon_body_edit{{$montage->id}}").html();
+       
+       $(this).find('input[name="body"]').val(body1); 
+       
+       //
+    });
+@endforeach
+}
+</script>
 @foreach ($montages as $montage)          
-{{ Form::open(array('url' => 'update_emontage/'.$montage->id,"method" => "post","files"=>true,"class"=>"form-horizontal")) }}
-    <div id="modal-edit-{{$montage->id}}" tabindex="-1" role="dialog" aria-labelledby="modal-login-label" aria-hidden="true" class="modal fade">
+{{ Form::open(array('name'=>'montages_edit'.$montage->id,'id'=>'montages_edit'.$montage->id,'url' => 'update_emontage/'.$montage->id,"method" => "post","files"=>true,"class"=>"form-horizontal")) }}
+{{ Form::hidden('body') }}    
+<div id="modal-edit-{{$montage->id}}" tabindex="-1" role="dialog" aria-labelledby="modal-login-label" aria-hidden="true" class="modal fade">
                 <div class="modal-dialog modal-wide-width">
                   <div class="modal-content">
                     <div class="modal-header">
@@ -480,7 +495,7 @@ opopopop
                             <label class="col-md-3 control-label">Banner Text </label>
                             <div class="col-md-9">
                                 <div class="text-blue border-bottom">You can edit the content by clicking the text section below.</div>
-                              <div contenteditable="true">
+                              <div id="mon_body_edit{{$montage->id}}}" contenteditable="true">
                                  <div class="camera_caption fadeFromLeft">
 
                                     <div class="row-fluid">                                
