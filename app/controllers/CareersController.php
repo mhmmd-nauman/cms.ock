@@ -135,8 +135,9 @@ class CareersController extends \BaseController {
 			$career->jobtitle       = Input::get('job_title');
 			$career->status      = Input::get('status');
                         $career->date      = Input::get('date');
-                        $career->responsibilities  = Input::get('morestatus');
-                        $career->requirements         = Input::get('url');
+                        $career->responsibilities  = Input::get('job_responsibilities');
+                        $career->requirements         = Input::get('job_requirements');
+                        $career->footertext         = Input::get('job_footer_content');
 			$career->save();
 
 			// redirect

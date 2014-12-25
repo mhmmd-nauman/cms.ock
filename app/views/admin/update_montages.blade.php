@@ -1,8 +1,8 @@
 @extends('layouts.admin')
 @section('content')
 
-{{ Form::open(array('name'=>'montages_edit'.$montage->id,'id'=>'montages_edit'.$montage->id,'url' => 'update_emontage/'.$montage->id,"method" => "post","files"=>true,"class"=>"form-horizontal")) }}
-{{ Form::hidden('body') }} 
+{{ Form::open(array('name'=>'montages_edit','id'=>'montages_edit_form','url' => 'update_emontage/'.$montage->id,"method" => "post","files"=>true,"class"=>"form-horizontal")) }}
+ 
      <div id="page-wrapper">
              <div class="modal-content">
                     <div class="modal-header">
@@ -16,7 +16,8 @@
                             <label class="col-md-3 control-label">Status</label>
                             <div class="col-md-6">
                               <div data-on="success" data-off="primary" class="make-switch">
-                               {{ Form::checkbox('status', '1','yes');}}
+                                   @if($montage->status == 1) <?php $checked = true ?> @else <?php  $checked = false ?> @endif
+                                  {{ Form::checkbox('status', '1',$checked );}}
                               </div>
                             </div>
                           </div>
@@ -31,14 +32,8 @@
                             <label class="col-md-3 control-label">Banner Text </label>
                             <div class="col-md-9">
                                 <div class="text-blue border-bottom">You can edit the content by clicking the text section below.</div>
-                              <div id="mon_body_edit{{$montage->id}}}" contenteditable="true">
-                                 <div class="camera_caption fadeFromLeft">
-
-                                    <div class="row-fluid">                                
-                                            <h1 class="animated fadeInDown">Full Turnkey Solutions <br>for <span>Telecom Client</span>.</h1>
-                                            <p class="animated fadeInUp">Network planning, design &amp; optimization, network deployment, network operations &amp; maintenance</p>
-                                    </div>  
-                                </div>                                                                                         
+                              <div id="mon_body_edit" contenteditable="true">
+                                 {{$montage->body}}                                                                                        
 
                               </div>
                             </div>
@@ -57,7 +52,8 @@
                             <label class="col-md-3 control-label">Enable Explore More Button</label>
                             <div class="col-md-6">
                              <div data-on="success" data-off="primary" class="make-switch">
-                                {{ Form::checkbox('morestatus', '1','yes');}}
+                                 @if($montage->MoreStatus == 1) <?php $checked = true ?> @else <?php  $checked = false ?> @endif
+                                {{ Form::checkbox('morestatus', '1', $checked);}}
                               </div>
                               note to programmer: the below URL link box is only appeared  when the above enable explore more button is on.
                               <div class="input-icon margin-top-10px"><i class="fa fa-link"></i>
@@ -84,6 +80,7 @@
                       </div>
                     </div>
                   </div>
+                    {{ Form::hidden('mon_body') }}
                      {{ Form::close() }}
                       </div>
                     
@@ -107,6 +104,4 @@
     <!--END FOOTER--></div>
 
 
-
-<script>var dump_file="savecontents";</script>
 @stop

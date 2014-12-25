@@ -458,20 +458,7 @@
    {{ Form::close() }}
  @endforeach
 <!-- modal delete end -->
-<script type="text/javascript">
-$(function(){
-@foreach ($montages as $montage)    
-$("#montages_edit{{$montage->id}}").submit(function(event){
-       
-       var body1                = $("#mon_body_edit{{$montage->id}}").html();
-       
-       $(this).find('input[name="body"]').val(body1); 
-       
-       //
-    });
-@endforeach
-}
-</script>
+
 @foreach ($montages as $montage)          
 {{ Form::open(array('name'=>'montages_edit'.$montage->id,'id'=>'montages_edit'.$montage->id,'url' => 'update_emontage/'.$montage->id,"method" => "post","files"=>true,"class"=>"form-horizontal")) }}
 {{ Form::hidden('body') }}    

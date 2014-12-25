@@ -8,7 +8,7 @@ $(function(){
     $("#index_page_edit, #index_page_new").submit(function(event){
        
        //event.preventDefault();
-       
+       // alert("eeee");
        var heading1             = $(".red-title").html();
        var body1                = $("#body1").html();
        var heading2             = $(".red-title2").html();
@@ -23,6 +23,20 @@ $(function(){
     $('#save_page_content_form').click(function(event){
         $("#index_page_edit").submit();
     });
+    
+    $("#montages_edit_form").submit(function(event){
+       var body  = $("#mon_body_edit").html();
+       $(this).find('input[name="mon_body"]').val(body); 
+    });
+    $("#job_vac_edit_form").submit(function(event){
+       var job_responsibilities  = $("#job_responsibilities").html();
+       $(this).find('input[name="job_responsibilities"]').val(job_responsibilities);
+       var job_requirements  = $("#job_requirements").html();
+       $(this).find('input[name="job_requirements"]').val(job_requirements);
+       var job_footer_content  = $("#job_footer_content").html();
+       $(this).find('input[name="job_footer_content"]').val(job_footer_content);
+    });
+    
     //media_news Delete Multiple JS
     
     $(".deleteMultiple, .deleteAll").click(function(event)

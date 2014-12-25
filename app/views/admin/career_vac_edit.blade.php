@@ -94,8 +94,11 @@
                    
 <div class="tools"> <i class="fa fa-chevron-up"></i> </div>
                   <!--Modal Add New start-->
-                   {{ Form::open(array('url' => 'Add_Vacancy',"method" => "post","class"=>"form-horizontal")) }}
-                  <div id="modal-add-director" tabindex="-1" role="dialog" aria-labelledby="modal-login-label" aria-hidden="true" class="modal fade">
+                 {{ Form::open(array('name'=>'job_vac_edit_form','id'=>'job_vac_edit_form','url' => 'Add_Vacancy',"method" => "post","class"=>"form-horizontal")) }}
+                 {{ Form::hidden('job_responsibilities') }}
+                 {{ Form::hidden('job_requirements') }}
+                 {{ Form::hidden('job_footer_content') }}
+                 <div id="modal-add-director" tabindex="-1" role="dialog" aria-labelledby="modal-login-label" aria-hidden="true" class="modal fade">
                     <div class="modal-dialog modal-wide-width">
                       <div class="modal-content">
                         <div class="modal-header">
@@ -245,7 +248,8 @@
                       <tr>
                         <td><input type="checkbox"/></td>
                         <td>{{$career->id}}</td>
-                        <td><span class="label label-sm label-success">Active</span></td>
+                        
+                        <td><span class="label label-sm @if($career->status == 1) label-success @endif">Active</span></td>
                         <td>{{$career->date}}</td>
                         <td>{{$career->jobtitle}}</td>
                         <td><a href="edit_career/{{$career->id}}" data-hover="tooltip" data-placement="top"  title="Edit"><span class="label label-sm label-success"><i class="fa fa-pencil"></i></span></a> <a href="#" data-hover="tooltip" data-placement="top" title="Delete" data-target="#modal-delete-{{$career->id}}" data-toggle="modal"><span class="label label-sm label-red"><i class="fa fa-trash-o"></i></span></a>

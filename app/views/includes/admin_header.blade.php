@@ -142,13 +142,13 @@
                         </div>
                     </li>
                     <li class="sidebar-heading"><h4>Main Menu</h4></li>
-                    <li @if(Route::getCurrentRoute()->getPath()=='dashboard') class="active" @endif ><a href="dashboard"><i class="fa fa-laptop fa-fw"></i><span class="menu-title">Dashboard</span></a></li>
-                    <li @if(Route::getCurrentRoute()->getPath()=='index_edit') class="active" @endif><a href="index_edit"><i class="fa fa-home fa-fw"></i><span class="menu-title">Index Page</span></a> </li>
-                    <li @if(Route::getCurrentRoute()->getPath()=='news_events_list') class="active" @endif><a href="news_events_list"><i class="glyphicon glyphicon-camera fa-fw"></i><span class="menu-title">News &amp; Events</span></a> </li>
+                    <li @if(Route::getCurrentRoute()->getPath()=='dashboard') class="active" @endif ><a href="{{URL::to('/dashboard')}}"><i class="fa fa-laptop fa-fw"></i><span class="menu-title">Dashboard</span></a></li>
+                    <li @if(Route::getCurrentRoute()->getPath()=='index_edit') class="active" @endif><a href="{{URL::to('/index_edit')}}"><i class="fa fa-home fa-fw"></i><span class="menu-title">Index Page</span></a> </li>
+                    <li @if(Route::getCurrentRoute()->getPath()=='news_events_list') class="active" @endif><a href="{{URL::to('/news_events_list')}}"><i class="glyphicon glyphicon-camera fa-fw"></i><span class="menu-title">News &amp; Events</span></a> </li>
                     <li><a href="#"><i class="fa fa-briefcase fa-fw"></i><span class="menu-title">Careers</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li @if(Route::getCurrentRoute()->getPath()=='career_vac_edit') class="active" @endif><a href="career_vac_edit">Vacancies Listing</a></li>
-                            <li @if(Route::getCurrentRoute()->getPath()=='careers_online_applicants_list') class="active" @endif><a href="careers_online_applicants_list">Online Applicants Listing</a></li>
+                            <li @if(Route::getCurrentRoute()->getPath()=='career_vac_edit') class="active" @endif><a href="{{URL::to('/career_vac_edit')}}">Vacancies Listing</a></li>
+                            <li @if(Route::getCurrentRoute()->getPath()=='careers_online_applicants_list') class="active" @endif><a href="{{URL::to('/careers_online_applicants_list')}}">Online Applicants Listing</a></li>
                         </ul>
                     </li>
                     

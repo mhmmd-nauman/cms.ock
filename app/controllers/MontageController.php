@@ -118,10 +118,12 @@ class MontageController extends \BaseController {
 				;
 		} else {
 			// store
+                        //print_r($_POST);
+                        //exit;
 			$montage = Montage::find($id);
 			$montage->title       = Input::get('title');
 			$montage->status      = Input::get('status');
-                        $montage->body      = Input::get('body');
+                        $montage->body      = Input::get('mon_body');
                         $montage->MoreStatus  = Input::get('morestatus');
                         $montage->url         = Input::get('url');
 			if (Input::hasFile('Banner_image')){
