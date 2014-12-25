@@ -14,7 +14,8 @@
                         </div>
                         <div class="modal-body">
                          
-                             {{ Form::open(array('url' => 'montage',"method" => "post","files"=>true,"class"=>"form-horizontal")) }}
+                             {{ Form::open(array('name'=>'montages_add_form','id'=>'montages_add_form','url' => 'montage',"method" => "post","files"=>true,"class"=>"form-horizontal")) }}
+                             {{ Form::hidden('montage_banner_text') }} 
                               <div class="form-group">
                                 <label class="col-md-3 control-label">Status</label>
                                 <div class="col-md-6">
@@ -29,20 +30,13 @@
                                 <div class="col-md-6">
                                    {{ Form::text('title', Input::old('title'), array('class' => 'form-control','placeholder' => 'Title'))}}
                                 </div>
-                                <div class="col-md-3">
-                                      <div class="popover popover-validator right">
-                                        <div class="arrow"></div>
-                                        <div class="popover-content">
-                                          <p class="mbn">Title is empty!</p>
-                                        </div>
-                                      </div>
-                                    </div>
+                               
                               </div>
                               <div class="form-group">
                                 <label class="col-md-3 control-label">Banner Text </label>
                                 <div class="col-md-9">
                                 	<div class="text-blue border-bottom">You can edit the content by clicking the text section below.</div>
-                                  <div contenteditable="true">
+                                  <div id="montage_banner_text" contenteditable="true">
                                   	 <div class="camera_caption fadeFromLeft">
 
                                         <div class="row-fluid">                                

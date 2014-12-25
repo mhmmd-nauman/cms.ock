@@ -26,7 +26,7 @@ class CareersController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function create_add_view()
 	{
 		// load the create form (app/views/nerds/create.blade.php)
                          $careers = Career::all();
@@ -69,9 +69,9 @@ class CareersController extends \BaseController {
 			$career->jobtitle       = Input::get('job_title');
 			$career->status      = Input::get('status');
                         $career->date      = Input::get('date');
-                        $career->responsibilities  = Input::get('Responsibilities');
-                        $career->requirements         = Input::get('Requirements');
-                        //$career->footertext         = Input::get('url');
+                        $career->responsibilities  = Input::get('job_responsibilities');
+                        $career->requirements         = Input::get('job_requirements');
+                        $career->footertext         = Input::get('job_footer_content');
 		 
 			$career->save();
                        

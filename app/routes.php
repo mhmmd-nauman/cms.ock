@@ -46,7 +46,7 @@ Route::get('edit_montages/{id}', 'MontageController@edit_montages');
 Route::post('deletemontage/{id}', 'MontageController@dodestroy');
 Route::post('update_emontage/{id}', 'MontageController@update');
 Route::post('Add_Vacancy', 'CareersController@Store');
-Route::get('create', 'CareersController@create');
+Route::get('add_vacancy_view', 'CareersController@create_add_view');
 Route::get('edit_career/{id}', 'CareersController@edit_career');
 Route::get('career_vac_edit', 'CareersController@index');
 Route::post('deletevecancy/{id}', 'CareersController@dodestroy');

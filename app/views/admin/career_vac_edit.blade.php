@@ -81,7 +81,7 @@
                   <div class="caption">Job Vacancies Listing</div>
                   <br/>
                   <p class="margin-top-10px"></p>
-                  <a href="{{ URL::to('create') }}"  data-toggle="modal" class="btn btn-success">Add New &nbsp;<i class="fa fa-plus"></i></a>&nbsp;
+                  <a href="{{ URL::to('add_vacancy_view') }}"  data-toggle="modal" class="btn btn-success">Add New &nbsp;<i class="fa fa-plus"></i></a>&nbsp;
                   <div class="btn-group">
                     <button type="button" class="btn btn-primary">Delete</button>
                     <button type="button" data-toggle="dropdown" class="btn btn-red dropdown-toggle"><span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>

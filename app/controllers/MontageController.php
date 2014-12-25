@@ -72,7 +72,7 @@ class MontageController extends \BaseController {
 			$montage = new Montage;
 			$montage->title       = Input::get('title');
 			$montage->status      = Input::get('status');
-                        
+                        $montage->body        = Input::get('montage_banner_text');
                         $montage->MoreStatus  = Input::get('morestatus');
                         $montage->url         = Input::get('url');
 		  if (Input::hasFile('Banner_image')){
