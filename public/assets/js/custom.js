@@ -36,7 +36,19 @@ $(function(){
        var job_footer_content  = $("#job_footer_content").html();
        $(this).find('input[name="job_footer_content"]').val(job_footer_content);
     });
-    
+     $("#job_vac_add_form").submit(function(event){
+       var job_responsibilities  = $("#job_responsibilities").html();
+       $(this).find('input[name="job_responsibilities"]').val(job_responsibilities);
+       var job_requirements  = $("#job_requirements").html();
+       $(this).find('input[name="job_requirements"]').val(job_requirements);
+       var job_footer_content  = $("#job_footer_content").html();
+       $(this).find('input[name="job_footer_content"]').val(job_footer_content);
+    });
+      $("#montages_add_form").submit(function(event){
+       var montage_banner_text  = $("#montage_banner_text").html();
+       $(this).find('input[name="montage_banner_text"]').val(montage_banner_text);
+       
+    });
     //media_news Delete Multiple JS
     
     $(".deleteMultiple, .deleteAll").click(function(event)
