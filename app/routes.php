@@ -13,7 +13,8 @@
 Route::get('/', 'IndexController@index');
 
 Route::get('create_vacancy', 'IndexController@create');
-Route::get('online_apply', 'IndexController@Online_job_vacancy');
+Route::get('online_apply/{id}', 'IndexController@Online_job_vacancy');
+Route::get('online_apply_form/{id}', 'IndexController@online_apply_form');
 Route::post('Add_Application', 'IndexController@store');
 
 Route::get('ListDeedAdmin',array('uses' => 'AdminController@index'));

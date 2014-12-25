@@ -20,7 +20,9 @@
                                 <strong>Thank you!</strong> {{ Session::get('message') }} 
                             </div>
                               @endif
-                             {{ Form::open(array('url' => 'Add_Application',"class"=>"form-horizontal","files"=>true)) }} 
+                             {{ Form::open(array('url' => 'Add_Application',"class"=>"form-horizontal","files"=>true)) }}
+                             
+                             {{ Form::hidden('vacancy_id',$vacancy_id) }} 
                                 <div class="span6">
                                    
                                     <h6>Name <span class="red-title">*</span></h6>

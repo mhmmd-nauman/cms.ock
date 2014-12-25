@@ -14,6 +14,7 @@ class IndexController extends \BaseController {
 		$montages = Montage::all();
                 $homePageData = Page::find(1);
                 $CoreBusiness = CoreBusiness::all();
+                
                 //echo "<pre>";
                 //print_r($nerds);
                 //echo "</pre>";
@@ -22,6 +23,7 @@ class IndexController extends \BaseController {
 			->with('montages', $montages)
                         ->with('homePageData', $homePageData)
                         ->with('businesses_create', $CoreBusiness)
+                       
                         ;
 	}
 
@@ -30,7 +32,7 @@ class IndexController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-        public function Online_job_vacancy()
+        public function Online_job_vacancy($vacancy_id)
 	{
         $montages = Montage::all();
         $Education_data = array();
@@ -43,11 +45,13 @@ class IndexController extends \BaseController {
         $Country_data['UnitedKingdom']="United Kingdom";
         $Country_data['America']="United States of America";
         $Country_data['UAE']="United Arab Emirates";
+        
 		// load the create form (app/views/nerds/create.blade.php)
 		return View::make('front.online_job_application')
                         ->with('education_data', $Education_data)
                         ->with('country_data', $Country_data)
                         ->with('montages', $montages)
+                        ->with('vacancy_id', $vacancy_id)
                         ;
                                     
                         
@@ -57,13 +61,37 @@ class IndexController extends \BaseController {
 		// load the create form (app/views/nerds/create.blade.php)
             $montages = Montage::all();
             $homePageData = Page::find(1);
+            $careers = Career::all();
             return View::make('front.careers')
                     ->with('montages', $montages)
+                     ->with('job_vacancies_data', $careers)
                     ;
                                     
                         
 	}
-
+public function online_apply_form($vacancy_id)
+	{
+		// load the create form (app/views/nerds/create.blade.php)
+          $montages = Montage::all();
+        $Education_data = array();
+        $Education_data['HigherLevel']="Higher secondary / STPM / &quot;A&quot; Level / Pre-U";
+        $Education_data['DiplomaHigher']="Diploma / Advanced Higher / Graduate Diploma";
+        $Education_data['ProfessionalDegree']="Professional Certificated / Degree / Master";
+        
+        $Country_data = array();
+        $Country_data['Select']="-- Select--";
+        $Country_data['UnitedKingdom']="United Kingdom";
+        $Country_data['America']="United States of America";
+        $Country_data['UAE']="United Arab Emirates";
+            return View::make('front.online_job_application')
+                     ->with('vacancy_id', $vacancy_id)
+                    ->with('education_data', $Education_data)
+                        ->with('country_data', $Country_data)
+                        ->with('montages', $montages)
+                    ;
+                                    
+                        
+	}
 	/**
 	 * Store a newly created resource in storage.
 	 *
@@ -78,6 +106,7 @@ class IndexController extends \BaseController {
 // read more on validation at http://laravel.com/docs/validation
             
 		$rules = array(
+                        
 			'name'           => '',
 			'DOB'            => '',
 			'Email'          => '',
@@ -90,12 +119,13 @@ class IndexController extends \BaseController {
                         'PostalCode'     => '',
                         'Country'        => '',
                         'CV'             => '',
+                        'career_vacancy_id'  => '',
 		);
 		$validator = Validator::make(Input::all(), $rules);
 
 		// process the login
 		if ($validator->fails()) {
-			return Redirect::to('online_apply')
+			return Redirect::to('online_apply_form')
 				->withErrors($validator)
 				->withInput(Input::except('password'));
 		} else {
@@ -112,6 +142,7 @@ class IndexController extends \BaseController {
                         $Home->State         = Input::get('State');
                         $Home->PostalCode    = Input::get('Postal_Code');
                         $Home->Country       = Input::get('Country');
+                        $Home->career_vacancy_id= Input::get('vacancy_id');
                       if (Input::hasFile('CV_docs')){
                         Input::file('CV_docs')->move(public_path()."/uploads/cv/",Input::file('CV_docs')->getClientOriginalName());
                         $Home->CV      = Input::file('CV_docs')->getClientOriginalName();
@@ -124,7 +155,7 @@ class IndexController extends \BaseController {
 			// redirect
 			Session::flash('message', 'Thank you! You have successfully submitted your CV. Only short listed candidates will be notified for interview.');
                         Session::flash('eror_message', '<strong>Error!</strong> Please correct the errors in the form below.');
-			return Redirect::to('online_apply');
+			return Redirect::to('online_apply_form/'.Input::get('vacancy_id'));
 		}
 	}
 
@@ -134,16 +165,7 @@ class IndexController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
-	{
-		// get the nerd
-		$nerd = Nerd::find($id);
-
-		// show the view and pass the nerd to it
-		return View::make('nerds.show')
-			->with('nerd', $nerd);
-	}
-
+	
 	/**
 	 * Show the form for editing the specified resource.
 	 *

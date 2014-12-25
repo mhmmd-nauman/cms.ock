@@ -14,44 +14,37 @@
                     <div class="row-fluid">
                         <div class="span12">
                              <h2 class="red-title">Job Vacancy</h2>
+                              
+                             
+                              
                              <div id="accordion2" class="accordion">
+                                 @foreach ($job_vacancies_data as $job_vacancy)
                                 <div class="accordion-group">
                                     <div class="accordion-heading">
                                         <a href="#collapseOne" data-parent="#accordion2" data-toggle="collapse" class="accordion-toggle">
-                                        <i class="icon-chevron-down"></i> <span class="title">Business Development Executive</span></a>
+                                        <i class="icon-chevron-down"></i> <span class="title">{{$job_vacancy->jobtitle}}</span></a>
                                     </div>
                                     <div class="accordion-body collapse in" id="collapseOne">
                                         <div class="accordion-inner">
                                             <span><strong>Responsibilities</strong></span>
                                             <ul class="list icons">
-                                                <li><i class="icon-ok"></i> Liaising and networking with customers, suppliers and partner organisations.</li>
-                                                <li><i class="icon-ok"></i> Communicating with target audiences and managing customer relationship.</li>
-                                                <li><i class="icon-ok"></i> Maintaining and updating customer databases.</li>
-                                                <li><i class="icon-ok"></i> Contributing to and developing marketing plans and strategies, and achieve performance target.</li>
-                                                <li><i class="icon-ok"></i> Market research and competitor analysis.</li>
-                                                <li><i class="icon-ok"></i> Focus on both business growth and customer retention.</li>
-                                                <li><i class="icon-ok"></i> Attend to customer's queries and provide quotation.</li>
-                                                <li><i class="icon-ok"></i> Handle RFP activities and production of tender submission material.</li>
-                                            </ul>
+                                                <li class="icon-ok">{{$job_vacancy->responsibilities}}</li> 
+                                            </ul>  
+                                            
+                                           
                                             
                                             <span><strong>Requirements</strong></span>
-                                            <ul class="list icons">
-                                                <li><i class="icon-ok"></i> Pocess own vehicle.</li>
-                                                <li><i class="icon-ok"></i> Pleasant personality, easy going.</li>
-                                                <li><i class="icon-ok"></i> Able to communicate in Bahasa Malaysia and English.</li>
-                                                <li><i class="icon-ok"></i> Able to use Microsoft Excel, Words and Powerpoint.</li>
-                                                <li><i class="icon-ok"></i> Able to work after office hour occasionally.</li>
-                                                <li><i class="icon-ok"></i> Having experience in telco industry will be advantageous.</li>
-                                                <li><i class="icon-ok"></i> Qualification: Diploma.</li>
-                                            </ul>
+                                            {{$job_vacancy->requirements}}
                                             
-                                            <p>Whether you are an experienced professional looking to elevate your career to greater heights or a fresh graduate ready to fast track your career; we invite you to join our team.</p>
-                                            <p>For those who are ready to explore a new career path and grow with us as a team, please email your resume to <a href="mailto:hrm@myock.com">hrm@myock.com</a>.</p>
-                                            <a href="{{ URL::to('online_apply') }}" target="_blank"><input type="submit" name="Submit" value="Apply This Position" class="button"></a>
+                                            <p>{{$job_vacancy->footertext}}</p>
+                                            
+                                            
+                                            <a href="online_apply/{{$job_vacancy->id }}" target="_blank"><input type="submit" name="Submit" value="Apply This Position" class="button"></a>
                                             
                                         </div>
                                     </div>
                                 </div>
+                                 @endforeach
                                 <div class="accordion-group">
                                     <div class="accordion-heading">
                                         <a href="#collapseTwo" data-parent="#accordion2" data-toggle="collapse" class="accordion-toggle">
