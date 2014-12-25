@@ -112,6 +112,11 @@ class AdminController extends BaseController {
        // $page->save();
         //echo "wow";
     
-
+public function ForgotPassword() {
+    		// validate the info, create rules for the inputs
+	
+		 return View::make('admin.forgot_password');
+                         
+    }
    
 }

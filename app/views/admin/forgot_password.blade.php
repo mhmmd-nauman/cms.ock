@@ -3,33 +3,23 @@
 
 <body id="signin-page" class="animated bounceInDown">
 <div id="signin-page-content">
-    {{ Form::open(array('url' => 'adminLogin')) }}
-    	<div class="text-center"><a href="http://www.webqom.com/web88.html" target="_blank">
-                <img src="assets/images/login/logo_web88.jpg" alt="Web88"></a></div>
-        <h1 class="block-heading">Web88 CMS Admin Login</h1>
+    {{ Form::open(array('url' => 'ForgotPassword')) }}
+    	<div class="text-center"><a href="http://www.webqom.com/web88.html" target="_blank"><img src="assets/images/login/logo_web88.jpg" alt="Web88"></a></div>
+        <h1 class="block-heading">Forgot Your Password?</h1>
 
-        <p>Please enter your login details to access.</p>
+        <p>Please enter your registered email to reset the password.</p>
 
         <div class="form-group">
-            <div class="input-icon">
-                <i class="fa fa-user"></i>
-                {{ Form::text('username', Input::old('username'), array('placeholder' => 'Username','class' => 'form-control')) }}
-            </div>
+            <div class="input-icon"><i class="fa fa-user"></i>
+                 {{ Form::text('email', Input::old('email'), array('placeholder' => 'Your Email','class' => 'form-control')) }}
+                </div>
         </div>
+        
+
         <div class="form-group">
-            <div class="input-icon">
-                <i class="fa fa-key"></i>
-                {{ Form::password('password',array('placeholder' => 'Password','class' => 'form-control')) }}
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="checkbox"><label><input type="checkbox">&nbsp;
-                Remember me</label></div>
-        </div>
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary">Login
+            <button type="submit" class="btn btn-primary">Reset Password
                 &nbsp;<i class="fa fa-chevron-circle-right"></i></button>
-            <a id="btn-forgot-pwd" href="{{ URL::to('ForgotPassword') }}" class="mlm">Forgot your password?</a></div>
+            <a id="btn-forgot-pwd" href="{{ URL::to('ReturnToLogin') }}" class="mlm">Return to Login Page</a></div>
         <hr>
         <a href="mailto:hock@webqom.com"><i class="fa fa-envelope"></i> hock@webqom.com</a>
         <a href="http://www.facebook.com/webqomtechnologies" class="pull-right" target="_blank"><i class="fa fa-facebook-square"></i> /webqomtechnologies</a><br/>
@@ -50,3 +40,6 @@
 </body>
 
 @stop
+
+
+

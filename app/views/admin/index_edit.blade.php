@@ -221,7 +221,7 @@
                   <div class="caption">Montage Listing</div>
                   <br/>
                   <p class="margin-top-10px"></p>
-                  <a href="#" data-target="#modal-add-montage" data-toggle="modal" class="btn btn-success">Add New Montage &nbsp;<i class="fa fa-plus"></i></a>&nbsp;
+                  <a href="{{ URL::to('Add_Montages') }}" data-target="" data-toggle="modal" class="btn btn-success">Add New Montage &nbsp;<i class="fa fa-plus"></i></a>&nbsp;
                   <div class="btn-group">
                     <button type="button" class="btn btn-primary">Delete</button>
                     <button type="button" data-toggle="dropdown" class="btn btn-red dropdown-toggle"><span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
@@ -308,7 +308,7 @@
                         <td><span class="label label-sm label-success">Active</span></td>
                         <td>{{$montage->title}}</td>
                         <td>
-                            <a href="{{$montage->id}}" data-hover="tooltip" data-placement="top" data-target="#modal-edit-{{$montage->id}}" data-toggle="modal" title="Edit"><span class="label label-sm label-success"><i class="fa fa-pencil"></i></span></a> 
+                            <a href="edit_montages/{{$montage->id}}" data-hover="tooltip" data-placement="top"  title="Edit"><span class="label label-sm label-success"><i class="fa fa-pencil"></i></span></a> 
                             <a href="deletemontage/{{$montage->id}}" data-hover="tooltip" data-placement="top" title="Delete" data-target="#modal-delete-{{$montage->id}}" data-toggle="modal"><span class="label label-sm label-red"><i class="fa fa-trash-o"></i></span></a>
                         </td>
                       </tr>
@@ -477,77 +477,7 @@ $("#montages_edit{{$montage->id}}").submit(function(event){
 {{ Form::hidden('body') }}    
 <div id="modal-edit-{{$montage->id}}" tabindex="-1" role="dialog" aria-labelledby="modal-login-label" aria-hidden="true" class="modal fade">
                 <div class="modal-dialog modal-wide-width">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
-                      <h4 id="modal-login-label2" class="modal-title">Edit Montage</h4>
-                    </div>
-                    <div class="modal-body">
-                      <div class="form">
-                        <form class="form-horizontal">
-                          <div class="form-group">
-                            <label class="col-md-3 control-label">Status</label>
-                            <div class="col-md-6">
-                              <div data-on="success" data-off="primary" class="make-switch">
-                               {{ Form::checkbox('status', '1','yes');}}
-                              </div>
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <label class="col-md-3 control-label">Title </label>
-                            <div class="col-md-6">
-                                {{ Form::text('title', $montage->title, array('placeholder' => 'Title','class'=>'form-control')) }}
-
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <label class="col-md-3 control-label">Banner Text </label>
-                            <div class="col-md-9">
-                                <div class="text-blue border-bottom">You can edit the content by clicking the text section below.</div>
-                              <div id="mon_body_edit{{$montage->id}}}" contenteditable="true">
-                                 <div class="camera_caption fadeFromLeft">
-
-                                    <div class="row-fluid">                                
-                                            <h1 class="animated fadeInDown">Full Turnkey Solutions <br>for <span>Telecom Client</span>.</h1>
-                                            <p class="animated fadeInUp">Network planning, design &amp; optimization, network deployment, network operations &amp; maintenance</p>
-                                    </div>  
-                                </div>                                                                                         
-
-                              </div>
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <label class="col-md-3 control-label">Upload Banner <span class='require'>*</span></label>
-                            <div class="col-md-9">
-                              <div class="text-15px margin-top-10px">
-                                <img src="{{ URL::asset('uploads/slides/'.$montage->Banner) }}" alt="Banner" class="img-responsive"><br/>
-                                {{ Form::file('Banner_image');}}
-                                <br/>
-                                <span class="help-block">(Image dimension: min. 1700 x 1000 pixels, JPEG/GIF/PNG only, Max. 1MB) </span> </div>
-                            </div>
-                       </div>
-                          <div class="form-group">
-                            <label class="col-md-3 control-label">Enable Explore More Button</label>
-                            <div class="col-md-6">
-                             <div data-on="success" data-off="primary" class="make-switch">
-                                {{ Form::checkbox('morestatus', '1','yes');}}
-                              </div>
-                              note to programmer: the below URL link box is only appeared  when the above enable explore more button is on.
-                              <div class="input-icon margin-top-10px"><i class="fa fa-link"></i>
-                                   {{ Form::text('url', $montage->url, array('placeholder' => 'http://','class'=>'form-control')) }}
-
-                              </div>
-
-                            </div>
-                          </div>
-
-                          <div class="form-actions">
-                            <div class="col-md-offset-5 col-md-8"> {{ Form::submit('Update &nbsp;', array('class' => 'btn btn-red')) }}&nbsp; <a href="#" data-dismiss="modal" class="btn btn-green">Cancel &nbsp;</a> </div>
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
+                 
                 </div>
               </div>
  {{ Form::close() }}

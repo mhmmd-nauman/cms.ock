@@ -29,7 +29,10 @@ class CareersController extends \BaseController {
 	public function create()
 	{
 		// load the create form (app/views/nerds/create.blade.php)
-		return View::make('admin.career_vac_edit');
+                         $careers = Career::all();
+		return View::make('admin.add_vacancy')
+                        ->with('careers', $careers)
+                        ;
 	}
 
 	/**
@@ -43,12 +46,12 @@ class CareersController extends \BaseController {
 		// validate
 		// read more on validation at http://laravel.com/docs/validation
 		$rules = array(
-			'status'           => 'required',
-			'jobtitle'         => 'required',
-			'date'             => 'required',
-                        'responsibilities' => 'required',
-                        'requirements'     => 'required'
-                        //'footertext'     => ''
+			'status'           => '',
+			'jobtitle'         => '',
+			'date'             => '',
+                        'responsibilities' => '',
+                        'requirements'     => '',
+                        'footertext'     => ''
 		);
                 
 		$validator = Validator::make(Input::all(), $rules);
@@ -84,15 +87,7 @@ class CareersController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
-	{
-		// get the nerd
-		$nerd = Nerd::find($id);
-
-		// show the view and pass the nerd to it
-		return View::make('nerds.show')
-			->with('nerd', $nerd);
-	}
+	
 
 	/**
 	 * Show the form for editing the specified resource.
@@ -100,14 +95,14 @@ class CareersController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
+	 public function edit_career($id)
 	{
 		// get the nerd
-		$nerd = Nerd::find($id);
+		$career = Career::find($id);
 
 		// show the edit form and pass the nerd
-		return View::make('admin.index_edit')
-			->with('nerd', $nerd);
+		return View::make('admin.update_vacancy')
+			->with('career', $career);
 	}
 
 	/**

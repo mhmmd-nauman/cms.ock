@@ -36,16 +36,28 @@ class MontageController extends \BaseController {
 	 *
 	 * @return Response
 	 */
+        public function add_montages()
+	{
+                if (!Session::has('user')) {          
+                    return Redirect::to('ListDeedAdmin');
+                }
+                $user = Session::get('user');
+		// load the create form (app/views/nerds/create.blade.php)
+                $montage = Montage::all();
+		return View::make('admin.add_montages')
+                        ->with('montages', $montage)
+                        ->with('user', $user);
+	}
 	public function store()
 	{
 		// validate
 		// read more on validation at http://laravel.com/docs/validation
 		$rules = array(
-			'title'       => 'required',
-			'status'      => 'required',
-			'Banner'      => 'required',
-                        'MoreStatus'  => 'required',
-                        'url'         => 'required'
+			'title'       => '',
+			'status'      => '',
+			'Banner'      => '',
+                        'MoreStatus'  => '',
+                        'url'         => ''
 		);
 		$validator = Validator::make(Input::all(), $rules);
 
@@ -76,45 +88,16 @@ class MontageController extends \BaseController {
 			return Redirect::to('index_edit');
 		}
 	}
-
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
+  public function edit_montages($id)
 	{
 		// get the nerd
-		$nerd = Nerd::find($id);
-
-		// show the view and pass the nerd to it
-		return View::make('nerds.show')
-			->with('nerd', $nerd);
-	}
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		// get the nerd
-		$nerd = Nerd::find($id);
+		$montage = Montage::find($id);
 
 		// show the edit form and pass the nerd
-		return View::make('admin.index_edit')
-			->with('nerd', $nerd);
+		return View::make('admin.update_montages')
+			->with('montage', $montage);
 	}
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
+	
 	public function update($id)
 	{
 		//print_r($_POST);
