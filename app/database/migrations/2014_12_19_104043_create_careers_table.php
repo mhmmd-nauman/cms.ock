@@ -18,9 +18,9 @@ class CreateCareersTable extends Migration {
                         $table->string('status');
                         $table->text('jobtitle');
                         $table->string('date');
-                        $table->string('responsibilities');
-                        $table->string('requirements');
-                        $table->string('footertext');
+                        $table->text('responsibilities');
+                        $table->text('requirements');
+                        $table->text('footertext');
 			$table->timestamps();
 		});	//
 	}

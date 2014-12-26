@@ -25,10 +25,12 @@ class IndexController extends \BaseController {
         public function showPage($page="pagenotfound"){
             $page_title="Index";
             $montages = Montage::all();
+            $CoreBusiness = CoreBusiness::all();
             
             return View::make('front.'.$page)
                     ->with('page_title', $page_title)
                     ->with('montages', $montages)
+                    ->with('businesses_create', $CoreBusiness)
                     ;
             
         } 
