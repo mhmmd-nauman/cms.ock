@@ -11,6 +11,18 @@ class AdminController extends BaseController {
     public function index() { 
     	return View::make('admin.admin_login');
     }
+    
+    public function showPage($page=""){
+        if (!Session::has('user')) {          
+            return Redirect::to('ListDeedAdmin');
+        }
+        $user = Session::get('user');
+            
+            return View::make('admin.'.$page)
+                    ->with('user', $user)
+                    ;
+            
+        }
 
     public function adminLogin() {
     		// validate the info, create rules for the inputs

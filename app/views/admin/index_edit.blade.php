@@ -172,7 +172,7 @@
                               <div class="col-md-6">
 
                                 {{ Form::text('icon', $Busi->icon, array('placeholder' => 'Icon','class'=>'form-control',"id"=>"inputContent",'required')) }}
-                                <div class="help-block">Please refer here for more <a href="icons.html" target="_blank">icon options.</a></div>
+                                <div class="help-block">Please refer here for more <a href="{{ URL::to('adminpages/icons') }}" target="_blank">icon options.</a></div>
                               </div>
                             </div>
                             <div class="form-group">

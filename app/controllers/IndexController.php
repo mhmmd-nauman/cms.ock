@@ -9,23 +9,29 @@ class IndexController extends \BaseController {
 	 */
 	public function index()
 	{
-            //echo "its here";
-		// get all the nerds
-		$montages = Montage::all();
-                $homePageData = Page::find(1);
-                $CoreBusiness = CoreBusiness::all();
-                
-                //echo "<pre>";
-                //print_r($nerds);
-                //echo "</pre>";
-		// load the view and pass the nerds
-		return View::make('front.index')
-			->with('montages', $montages)
-                        ->with('homePageData', $homePageData)
-                        ->with('businesses_create', $CoreBusiness)
-                       
-                        ;
+            
+            $montages = Montage::all();
+            $homePageData = Page::find(1);
+            $CoreBusiness = CoreBusiness::all();
+            $page_title="Index";
+
+            return View::make('front.index')
+                    ->with('montages', $montages)
+                    ->with('homePageData', $homePageData)
+                    ->with('businesses_create', $CoreBusiness)
+                    ->with('page_title', $page_title)
+                    ;
 	}
+        public function showPage($page="pagenotfound"){
+            $page_title="Index";
+            $montages = Montage::all();
+            
+            return View::make('front.'.$page)
+                    ->with('page_title', $page_title)
+                    ->with('montages', $montages)
+                    ;
+            
+        } 
 
 	/**
 	 * Show the form for creating a new resource.
@@ -34,17 +40,20 @@ class IndexController extends \BaseController {
 	 */
         public function Online_job_vacancy($vacancy_id)
 	{
-        $montages = Montage::all();
-        $Education_data = array();
-        $Education_data['HigherLevel']="Higher secondary / STPM / &quot;A&quot; Level / Pre-U";
-        $Education_data['DiplomaHigher']="Diploma / Advanced Higher / Graduate Diploma";
-        $Education_data['ProfessionalDegree']="Professional Certificated / Degree / Master";
-        
-        $Country_data = array();
-        $Country_data['Select']="-- Select--";
-        $Country_data['UnitedKingdom']="United Kingdom";
-        $Country_data['America']="United States of America";
-        $Country_data['UAE']="United Arab Emirates";
+            
+            $page_title="Index";
+
+            $montages = Montage::all();
+            $Education_data = array();
+            $Education_data['HigherLevel']="Higher secondary / STPM / &quot;A&quot; Level / Pre-U";
+            $Education_data['DiplomaHigher']="Diploma / Advanced Higher / Graduate Diploma";
+            $Education_data['ProfessionalDegree']="Professional Certificated / Degree / Master";
+
+            $Country_data = array();
+            $Country_data['Select']="-- Select--";
+            $Country_data['UnitedKingdom']="United Kingdom";
+            $Country_data['America']="United States of America";
+            $Country_data['UAE']="United Arab Emirates";
         
 		// load the create form (app/views/nerds/create.blade.php)
 		return View::make('front.online_job_application')
@@ -52,42 +61,45 @@ class IndexController extends \BaseController {
                         ->with('country_data', $Country_data)
                         ->with('montages', $montages)
                         ->with('vacancy_id', $vacancy_id)
+                        ->with('page_title', $page_title)
                         ;
                                     
                         
 	}
 	public function create()
 	{
-		// load the create form (app/views/nerds/create.blade.php)
+            $page_title="Index";
             $montages = Montage::all();
             $homePageData = Page::find(1);
             $careers = Career::all();
             return View::make('front.careers')
                     ->with('montages', $montages)
-                     ->with('job_vacancies_data', $careers)
+                    ->with('job_vacancies_data', $careers)
+                    ->with('page_title', $page_title)
                     ;
                                     
                         
 	}
-public function online_apply_form($vacancy_id)
+        public function online_apply_form($vacancy_id)
 	{
-		// load the create form (app/views/nerds/create.blade.php)
-          $montages = Montage::all();
-        $Education_data = array();
-        $Education_data['HigherLevel']="Higher secondary / STPM / &quot;A&quot; Level / Pre-U";
-        $Education_data['DiplomaHigher']="Diploma / Advanced Higher / Graduate Diploma";
-        $Education_data['ProfessionalDegree']="Professional Certificated / Degree / Master";
+            $page_title="Index";
+            $montages = Montage::all();
+            $Education_data = array();
+            $Education_data['HigherLevel']="Higher secondary / STPM / &quot;A&quot; Level / Pre-U";
+            $Education_data['DiplomaHigher']="Diploma / Advanced Higher / Graduate Diploma";
+            $Education_data['ProfessionalDegree']="Professional Certificated / Degree / Master";
         
-        $Country_data = array();
-        $Country_data['Select']="-- Select--";
-        $Country_data['UnitedKingdom']="United Kingdom";
-        $Country_data['America']="United States of America";
-        $Country_data['UAE']="United Arab Emirates";
+            $Country_data = array();
+            $Country_data['Select']="-- Select--";
+            $Country_data['UnitedKingdom']="United Kingdom";
+            $Country_data['America']="United States of America";
+            $Country_data['UAE']="United Arab Emirates";
             return View::make('front.online_job_application')
-                     ->with('vacancy_id', $vacancy_id)
+                    ->with('vacancy_id', $vacancy_id)
                     ->with('education_data', $Education_data)
-                        ->with('country_data', $Country_data)
-                        ->with('montages', $montages)
+                    ->with('country_data', $Country_data)
+                    ->with('montages', $montages)
+                    ->with('page_title', $page_title)
                     ;
                                     
                         
@@ -100,12 +112,7 @@ public function online_apply_form($vacancy_id)
 	public function store()
 	{
 		// validate
-        
-        
-        
-// read more on validation at http://laravel.com/docs/validation
-            
-		$rules = array(
+            $rules = array(
                         
 			'name'           => '',
 			'DOB'            => '',
@@ -126,8 +133,7 @@ public function online_apply_form($vacancy_id)
 		// process the login
 		if ($validator->fails()) {
 			return Redirect::to('online_apply_form')
-				->withErrors($validator)
-				->withInput(Input::except('password'));
+				->withErrors($validator);
 		} else {
 			// store
 			$Home = new Home;
@@ -159,39 +165,10 @@ public function online_apply_form($vacancy_id)
 		}
 	}
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
 	
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		// get the nerd
-		$nerd = Nerd::find($id);
-
-		// show the edit form and pass the nerd
-		return View::make('admin.index_edit')
-			->with('nerd', $nerd);
-	}
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
 	public function update($id)
 	{
-		// validate
-		// read more on validation at http://laravel.com/docs/validation
+		
 		$rules = array(
 			'title'       => 'required',
 			'status'      => 'required',
@@ -201,11 +178,10 @@ public function online_apply_form($vacancy_id)
 		);
 		$validator = Validator::make(Input::all(), $rules);
 
-		// process the login
 		if ($validator->fails()) {
 			return Redirect::to('index_edit/' . $id . '/edit')
 				->withErrors($validator)
-				->withInput(Input::except('password'));
+				;
 		} else {
 			// store
 			$montage = Montage::find($id);
@@ -222,12 +198,7 @@ public function online_apply_form($vacancy_id)
 		}
 	}
 
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
+	
 	public function dodestroy($id)
 	{
 		// delete
@@ -238,13 +209,14 @@ public function online_apply_form($vacancy_id)
 		Session::flash('message', 'The information has been deleted successfully!');
 		return Redirect::to('index_edit');
 	}
-       public function getDownload(){
+       public function getDownload()
+        {
         //PDF file is stored under project/public/download/info.pdf
-        $file= public_path(). "/download/info.jpg";
-        $headers = array(
+            $file= public_path(). "/download/info.jpg";
+            $headers = array(
               'Content-Type: application/jpg',
             );
-        return Response::download($file, 'filename.jpg', $headers);
-}
+            return Response::download($file, 'filename.jpg', $headers);
+        }
 
 }

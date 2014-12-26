@@ -1,7 +1,7 @@
 
     <meta charset="utf-8">
     <!-- InstanceBeginEditable name="doctitle" -->
-    <title>Online Job Application</title>
+    <title>{{$page_title}}</title>
     <!-- InstanceEndEditable -->
      <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">

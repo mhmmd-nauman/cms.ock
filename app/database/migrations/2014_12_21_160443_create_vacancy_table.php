@@ -27,6 +27,7 @@ class CreateVacancyTable extends Migration {
                         $table->string('PostalCode');
                         $table->string('Country');
                         $table->string('CV');
+                        $table->integer('career_vacancy_id');
 			$table->timestamps();
 		});	
 		//

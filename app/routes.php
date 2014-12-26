@@ -11,6 +11,7 @@
 |
 */
 Route::get('/', 'IndexController@index');
+Route::get('pages/{page}', 'IndexController@showPage');
 
 Route::get('create_vacancy', 'IndexController@create');
 Route::get('online_apply/{id}', 'IndexController@Online_job_vacancy');
@@ -18,6 +19,7 @@ Route::get('online_apply_form/{id}', 'IndexController@online_apply_form');
 Route::post('Add_Application', 'IndexController@store');
 
 Route::get('ListDeedAdmin',array('uses' => 'AdminController@index'));
+Route::get('adminpages/{page}', 'AdminController@showPage');
 Route::post('adminLogin', array('uses' => 'AdminController@adminLogin'));
 Route::get('ForgotPassword', array('uses' => 'AdminController@ForgotPassword'));
 Route::post('ForgotPassword', array('uses' => 'AdminController@ForgotPassword'));
