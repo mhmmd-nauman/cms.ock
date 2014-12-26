@@ -1,6 +1,14 @@
 @extends('layouts.admin')
 @section('content')
-
+ <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+   <link rel="stylesheet" href="/resources/demos/style.css">
+  <script>
+  $(function() {
+    $( "#career-vacancy-date" ).datepicker();
+  });
+  </script>
 {{ Form::open(array('name'=>'job_vac_edit_form','id'=>'job_vac_edit_form','url' => 'update_career/'.$career->id,"method" => "post","class"=>"form-horizontal")) }}
 {{ Form::hidden('job_responsibilities') }}
 {{ Form::hidden('job_requirements') }}

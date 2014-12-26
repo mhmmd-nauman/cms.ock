@@ -1,5 +1,14 @@
 @extends('layouts.front')
 @section('content') 
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script>
+  $(function() {
+    $( "#date" ).datepicker();
+  });
+  </script>
   <!-- End content info -->
  <section class="content_info"><!-- InstanceBeginEditable name="EditRegion4" -->
           
@@ -28,7 +37,7 @@
                                     <h6>Name <span class="red-title">*</span></h6>
                                    {{ Form::text('Name', Input::old('Name'), array('class' => 'input-xxlarge','placeholder' => 'Your Name'))}}
                                     <h6>Date of Birth <span class="red-title">*</span></h6>
-                                   {{ Form::text('DOB', Input::old('DOB'), array('class' => 'input-xxlarge','placeholder' => 'DD/MM/YYYY'))}}
+                                   {{ Form::text('DOB', Input::old('DOB'), array('class' => 'input-xxlarge','placeholder' => 'DD/MM/YYYY','id'=>'date'))}}
                                     <h6>E-mail Address <span class="red-title">*</span></h6>
                                   {{ Form::text('Email', Input::old('Email'), array('class' => 'input-xxlarge','placeholder' => 'E-mail Address'))}}
                                     <h6>Contact Number <span class="red-title">*</span></h6>

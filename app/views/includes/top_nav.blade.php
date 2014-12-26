@@ -21,8 +21,8 @@
                                         <li><a href="board_of_directors.html">Board of Directors</a></li>
                                         <li><a href="corporate_structure.html">Corporate Structure</a></li>
                                         <li><a href="milestone.html">Milestone</a></li>
-                                        <li><a href="achievements.html">Achievements</a></li>
-                                        <li><a href="board_charter.html">Board Charter</a></li>
+                                        <li><a href="{{ URL::to('/pages/achievements')}}">Achievements</a></li>
+                                        <li><a href="{{ URL::to('/pages/board_charter')}}">Board Charter</a></li>
                                         <li><a href="{{ URL::to('/pages/news_events') }}">News &amp; Events</a></li>
                                     </ul>
                                 </li>
