@@ -124,11 +124,78 @@ class AdminController extends BaseController {
        // $page->save();
         //echo "wow";
     
-public function ForgotPassword() {
+    public function ForgotPassword() {
     		// validate the info, create rules for the inputs
 	
 		 return View::make('admin.forgot_password');
                          
+    }
+    public function ProcessForgotPassword() {
+    		// validate the info, create rules for the inputs
+	try
+        {
+            // Find the user using the user email address
+            $user = Sentry::findUserByLogin(Input::get('email'));
+
+            // Get the password reset code
+            $resetCode = $user->getResetPasswordCode();
+            
+            //return View::make('admin.forgot_password');
+            
+            
+            Mail::send('emails.auth.reminder', array('resetCode' => $resetCode,'id'=>$user->id), function($message)
+            {
+                $message->to(Input::get('email'), $user->first_name.' '.$user->last_name)->subject('Reset Password Request');
+            });
+            return Redirect::to('ActivatePassword/'.$resetCode.'/'.$user->id);
+            // Now you can send this code to your user via email for example.
+        }
+        catch (Cartalyst\Sentry\Users\UserNotFoundException $e)
+        {
+            return View::make('admin.forgot_password');
+        }
+		 
+                         
+    }
+    public function ActivateNewPassword($passcode,$user_id) {
+        
+        return View::make('admin.activate_new_password')
+                ->with('passcode', $passcode)
+                ->with('user_id', $user_id);
+    }
+    
+    public function ProcessNewPassword(){
+        try
+        {
+            //print_r($_POST);
+            //exit;
+            // Find the user using the user id
+            $user = Sentry::findUserById(Input::get('user_id'));
+           
+            // Check if the reset password code is valid
+            if ($user->checkResetPasswordCode(Input::get('passcode')))
+            {
+                // Attempt to reset the user password
+                if ($user->attemptResetPassword(Input::get('passcode'), Input::get('password')))
+                {
+                    // Password reset passed
+                     return Redirect::to('ListDeedAdmin');
+                }
+                else
+                {
+                    // Password reset failed
+                     return Redirect::to('ListDeedAdmin');
+                }
+            }
+            else
+            {
+                // The provided password reset code is Invalid
+            }
+        }
+        catch (Cartalyst\Sentry\Users\UserNotFoundException $e)
+        {
+            echo 'User was not found.';
+        }
     }
    
 }

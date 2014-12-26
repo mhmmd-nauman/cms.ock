@@ -22,8 +22,11 @@ Route::get('ListDeedAdmin',array('uses' => 'AdminController@index'));
 Route::get('adminpages/{page}', 'AdminController@showPage');
 Route::post('adminLogin', array('uses' => 'AdminController@adminLogin'));
 Route::get('ForgotPassword', array('uses' => 'AdminController@ForgotPassword'));
-Route::post('ForgotPassword', array('uses' => 'AdminController@ForgotPassword'));
-Route::get('ReturnToLogin', array('uses' => 'AdminController@adminLogin'));
+Route::post('ForgotPassword', array('uses' => 'AdminController@ProcessForgotPassword'));
+Route::get('ActivatePassword/{passcode}/{user_id}', array('uses' => 'AdminController@ActivateNewPassword'));
+Route::post('ActivatePassword', array('uses' => 'AdminController@ProcessNewPassword'));
+
+Route::get('ReturnToLogin', array('uses' => 'AdminController@index'));
 Route::get('adminLogout', array('uses' => 'AdminController@adminLogout'));
 Route::get('dashboard', array('uses' => 'AdminController@showDashboard'));
 Route::get('index_edit', array('uses' => 'AdminIndexPageController@showIndexPageEditor'));
