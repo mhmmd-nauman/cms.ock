@@ -305,7 +305,7 @@
                       <tr>
                         <td><input type="checkbox"/></td>
                         <td>{{$montage->id}}</td>
-                        <td><span class="label label-sm label-success">Active</span></td>
+                        <td><span class="label label-sm @if($montage->status == 1) label-success @endif">@if($montage->status == 1) Active @endif</span></td>
                         <td>{{$montage->title}}</td>
                         <td>
                             <a href="edit_montages/{{$montage->id}}" data-hover="tooltip" data-placement="top"  title="Edit"><span class="label label-sm label-success"><i class="fa fa-pencil"></i></span></a> 
@@ -459,15 +459,6 @@
  @endforeach
 <!-- modal delete end -->
 
-@foreach ($montages as $montage)          
-{{ Form::open(array('name'=>'montages_edit'.$montage->id,'id'=>'montages_edit'.$montage->id,'url' => 'update_emontage/'.$montage->id,"method" => "post","files"=>true,"class"=>"form-horizontal")) }}
-{{ Form::hidden('body') }}    
-<div id="modal-edit-{{$montage->id}}" tabindex="-1" role="dialog" aria-labelledby="modal-login-label" aria-hidden="true" class="modal fade">
-                <div class="modal-dialog modal-wide-width">
-                 
-                </div>
-              </div>
- {{ Form::close() }}
- @endforeach
+
 <script>var dump_file="savecontents";</script>
 @stop

@@ -10,7 +10,8 @@ class IndexController extends \BaseController {
 	public function index()
 	{
             
-            $montages = Montage::all();
+            $montages = Montage::where('status', '=', 1)->get();
+           // print_r($montages);
             $homePageData = Page::find(1);
             $CoreBusiness = CoreBusiness::all();
             $page_title="Index";
@@ -24,7 +25,7 @@ class IndexController extends \BaseController {
 	}
         public function showPage($page="pagenotfound"){
             $page_title="Index";
-            $montages = Montage::all();
+            $montages = Montage::where('status', '=', 1)->get();
             $CoreBusiness = CoreBusiness::all();
             
             return View::make('front.'.$page)
@@ -45,7 +46,7 @@ class IndexController extends \BaseController {
             
             $page_title="Index";
 
-            $montages = Montage::all();
+            $montages = Montage::where('status', '=', 1)->get();
             $Education_data = array();
             $Education_data['HigherLevel']="Higher secondary / STPM / &quot;A&quot; Level / Pre-U";
             $Education_data['DiplomaHigher']="Diploma / Advanced Higher / Graduate Diploma";
@@ -71,7 +72,7 @@ class IndexController extends \BaseController {
 	public function create()
 	{
             $page_title="Index";
-            $montages = Montage::all();
+            $montages = Montage::where('status', '=', 1)->get();
             $homePageData = Page::find(1);
             $careers = Career::all();
             return View::make('front.careers')
@@ -85,7 +86,7 @@ class IndexController extends \BaseController {
         public function online_apply_form($vacancy_id)
 	{
             $page_title="Index";
-            $montages = Montage::all();
+            $montages = Montage::where('status', '=', 1)->get();
             $Education_data = array();
             $Education_data['HigherLevel']="Higher secondary / STPM / &quot;A&quot; Level / Pre-U";
             $Education_data['DiplomaHigher']="Diploma / Advanced Higher / Graduate Diploma";

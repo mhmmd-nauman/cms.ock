@@ -12,10 +12,12 @@
                         <div class="container">
                             <div class="row-fluid">                                
                                 <div class="span8">
-                                    <h1 class="animated fadeInDown">Full Turnkey Solutions <br>for <span>Telecom Client</span>.</h1>
-                                    <p class="animated fadeInUp">Network planning, design &amp; optimization, network deployment, network operations &amp; maintenance</p>
+                                     {{$montage->body}}
+                                     @if($montage->MoreStatus == 1)
                                     <a href="{{$montage->url}}" class="button animated fadeInUp">
-                                        <span><i class="icon-hand-right"></i></span>Explore More                                    </a>                                </div>
+                                        <span><i class="icon-hand-right"></i></span>Explore More</a> 
+                                     @endif
+                                </div>
                             </div>  
                         </div>                                                                                         
                   </div>

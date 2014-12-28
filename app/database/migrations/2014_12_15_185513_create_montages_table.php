@@ -17,10 +17,10 @@ class CreateMontagesTable extends Migration {
 			$table->increments('id');
 			$table->timestamps();
                         $table->string('title', 255);
-                        $table->string('status', 255);
+                        $table->integer('status');
                         $table->string('Banner', 255);
                         $table->text('body');//ALTER TABLE `montages` ADD `body` TEXT NOT NULL AFTER `Banner`;
-                        $table->string('MoreStatus', 255);
+                        $table->integer('MoreStatus');
                         $table->string('url', 255);
 		});
 	}
