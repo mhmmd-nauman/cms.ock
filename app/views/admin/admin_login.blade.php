@@ -3,6 +3,20 @@
 
 <body id="signin-page" class="animated bounceInDown">
 <div id="signin-page-content">
+    @if (Session::has('message'))
+        <div class="alert alert-success alert-dismissable">
+          <button type="button" data-dismiss="alert" aria-hidden="true" class="close">&times;</button>
+          <i class="fa fa-check-circle"></i> <strong>Success!</strong>
+          <p>{{ Session::get('message') }}</p>
+        </div>
+        @endif
+        @if (Session::has('error_message'))
+        <div class="alert alert-danger alert-dismissable">
+          <button type="button" data-dismiss="alert" aria-hidden="true" class="close">&times;</button>
+          <i class="fa fa-times-circle"></i> <strong>Error!</strong>
+          <p>{{ Session::get('error_message') }}</p>
+        </div>
+        @endif
     {{ Form::open(array('url' => 'adminLogin')) }}
     	<div class="text-center"><a href="http://www.webqom.com/web88.html" target="_blank">
                 <img src="assets/images/login/logo_web88.jpg" alt="Web88"></a></div>

@@ -35,7 +35,7 @@ class AdminController extends BaseController {
 
 		// if the validator fails, redirect back to the form
 		if ($validator->fails()) {
-			return Redirect::to('adminLogin')
+			return Redirect::to('ListDeedAdmin')
 				->withErrors($validator) // send back all errors to the login form
 				->withInput(Input::except('password')); // send back the input (not the password) so that we can repopulate the form
 		} else {
@@ -58,40 +58,47 @@ class AdminController extends BaseController {
                         }
                         catch (Cartalyst\Sentry\Users\LoginRequiredException $e)
                         {
-                            echo 'Login field is required.';
-                            return Redirect::to('adminLogin');
+                            //echo 'Login field is required.';
+                            Session::flash('error_message', 'Login field is required.');
+                            return Redirect::to('ListDeedAdmin');
                         }
                         catch (Cartalyst\Sentry\Users\PasswordRequiredException $e)
                         {
-                            echo 'Password field is required.';
-                            return Redirect::to('adminLogin');
+                            //echo 'Password field is required.';
+                            Session::flash('error_message', 'Password field is required.');
+                            return Redirect::to('ListDeedAdmin');
                         }
                         catch (Cartalyst\Sentry\Users\WrongPasswordException $e)
                         {
-                            echo 'Wrong password, try again.';
-                            return Redirect::to('adminLogin');
+                            //echo 'Wrong password, try again.';
+                            Session::flash('error_message', 'Wrong password, try again.');
+                            return Redirect::to('ListDeedAdmin');
                         }
                         catch (Cartalyst\Sentry\Users\UserNotFoundException $e)
                         {
-                            echo 'User was not found.';
-                            return Redirect::to('adminLogin');
+                            //echo 'User was not found.';
+                            Session::flash('error_message', 'User was not found.');
+                            return Redirect::to('ListDeedAdmin');
                         }
                         catch (Cartalyst\Sentry\Users\UserNotActivatedException $e)
                         {
-                            echo 'User is not activated.';
-                            return Redirect::to('adminLogin');
+                            //echo 'User is not activated.';
+                            Session::flash('error_message', 'User is not activated.');
+                            return Redirect::to('ListDeedAdmin');
                         }
 
                         // The following is only required if the throttling is enabled
                         catch (Cartalyst\Sentry\Throttling\UserSuspendedException $e)
                         {
-                            echo 'User is suspended.';
-                            return Redirect::to('adminLogin');
+                            //echo 'User is suspended.';
+                            Session::flash('error_message', 'User is suspended.');
+                            return Redirect::to('ListDeedAdmin');
                         }
                         catch (Cartalyst\Sentry\Throttling\UserBannedException $e)
                         {
-                            echo 'User is banned.';
-                            return Redirect::to('adminLogin');
+                            //echo 'User is banned.';
+                            Session::flash('error_message', 'User is banned.');
+                            return Redirect::to('ListDeedAdmin');
                         }
                         
                         
@@ -145,13 +152,16 @@ class AdminController extends BaseController {
             
             Mail::send('emails.auth.reminder', array('resetCode' => $resetCode,'id'=>$user->id), function($message)
             {
-                $message->to(Input::get('email'), $user->first_name.' '.$user->last_name)->subject('Reset Password Request');
+                $message->to(Input::get('email'), "My Name")->subject('Reset Password Request');
             });
-            return Redirect::to('ActivatePassword/'.$resetCode.'/'.$user->id);
+            //return Redirect::to('ActivatePassword/'.$resetCode.'/'.$user->id);
             // Now you can send this code to your user via email for example.
+            Session::flash('message', 'The information has been sent on email successfully.');
+            return View::make('admin.forgot_password');
         }
         catch (Cartalyst\Sentry\Users\UserNotFoundException $e)
         {
+            Session::flash('error_message', 'We are unable to find email in database.');
             return View::make('admin.forgot_password');
         }
 		 
@@ -179,11 +189,13 @@ class AdminController extends BaseController {
                 if ($user->attemptResetPassword(Input::get('passcode'), Input::get('password')))
                 {
                     // Password reset passed
+                    Session::flash('message', 'Your password has been updated successfully.');
                      return Redirect::to('ListDeedAdmin');
                 }
                 else
                 {
                     // Password reset failed
+                    Session::flash('error_message', 'We are unable to set password.');
                      return Redirect::to('ListDeedAdmin');
                 }
             }

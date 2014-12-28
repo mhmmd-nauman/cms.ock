@@ -28,7 +28,8 @@ return array(
 	|
 	*/
 
-	'host' => 'smtp.mailgun.org',
+	//'host' => 'smtp.mailgun.org',
+        'host' => 'mail.ock.net.my',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -41,8 +42,8 @@ return array(
 	|
 	*/
 
-	'port' => 587,
-
+	//'port' => 587,
+        'port' => 25,
 	/*
 	|--------------------------------------------------------------------------
 	| Global "From" Address
@@ -54,8 +55,8 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => null, 'name' => null),
-
+	//'from' => array('address' => null, 'name' => null),
+        'from' => array('address' => 'nauman@ock.net.my', 'name' => null),
 	/*
 	|--------------------------------------------------------------------------
 	| E-Mail Encryption Protocol
@@ -68,7 +69,7 @@ return array(
 	*/
 
 	'encryption' => 'tls',
-
+        //'encryption' => 'ssl',
 	/*
 	|--------------------------------------------------------------------------
 	| SMTP Server Username
@@ -80,8 +81,8 @@ return array(
 	|
 	*/
 
-	'username' => null,
-
+	//'username' => null,
+        'username' => 'nauman@ock.net.my',
 	/*
 	|--------------------------------------------------------------------------
 	| SMTP Server Password
@@ -93,8 +94,8 @@ return array(
 	|
 	*/
 
-	'password' => null,
-
+	//'password' => null,
+        'password' => '12qwaszx',
 	/*
 	|--------------------------------------------------------------------------
 	| Sendmail System Path
