@@ -74,49 +74,49 @@
                                                 <li><a href="{{ URL::to('/pages/financial_information_financial_position')}}">Financial Position</a></li>
                                                 <li><a href="{{ URL::to('/pages/financial_information_cash_flow_statement')}}">Cash Flow Statement</a></li>
                                                 <li><a href="{{ URL::to('/pages/financial_information_changes_in_equity')}}">Statement of Changes In Equity</a></li>
-                                                <li><a href="financial_information_latest_quarterly_report.html">Latest Quarterly Report</a></li>
-                                                <li><a href="financial_information_segmental_analysis.html">Segmental Analysis</a></li>
-                                                <li><a href="financial_information_ratio_analysis.html">Ratio Analysis</a></li>
+                                                <li><a href="{{ URL::to('/pages/financial_information_latest_quarterly_report')}}">Latest Quarterly Report</a></li>
+                                                <li><a href="{{ URL::to('/pages/financial_information_segmental_analysis')}}">Segmental Analysis</a></li>
+                                                <li><a href="{{ URL::to('/pages/financial_information_ratio_analysis')}}">Ratio Analysis</a></li>
                                             </ul>
                                         </li>
                                         <li><a href="#">Management Analysis</a>
                                         	<ul>
-                                            	<li><a href="management_analysis_chairman_statement.html">Chairman's Statement</a></li>
-                                                <li><a href="management_analysis_review_operations.html">Review Of Operations</a></li>
-                                                <li><a href="management_analysis_past_performance_review.html">Past Performance Review</a></li>
+                                            	<li><a href="{{ URL::to('/pages/management_analysis_chairman_statement')}}">Chairman's Statement</a></li>
+                                                <li><a href="{{ URL::to('/pages/management_analysis_review_operations')}}">Review Of Operations</a></li>
+                                                <li><a href="{{ URL::to('/pages/management_analysis_past_performance_review')}}">Past Performance Review</a></li>
                                             </ul>
                                         </li>
                                         <li><a href="#">News Centre</a>
                                         	<ul>
-                                            	<li><a href="news_centre_bursa_announcements.html">Bursa Announcements</a></li>
-                                                <li><a href="news_centre_latest_media_news.html">Media News</a></li>
+                                            	<li><a href="{{ URL::to('/pages/news_centre_bursa_announcements')}}">Bursa Announcements</a></li>
+                                                <li><a href="{{ URL::to('/pages/news_centre_latest_media_news')}}">Media News</a></li>
                                             </ul>
                                         </li>
                                         <li><a href="#">Reports</a>
                                         	<ul>
-                                            	<li><a href="reports_annual_reports.html">Annual Reports</a></li>
-                                                <li><a href="reports_annual_audited_accounts.html">Annual Audited Accounts</a></li>
-                                                <li><a href="reports_quarterly_reports.html">Quarterly Reports</a></li>
-                                                <li><a href="reports_circulars.html">Circulars</a></li>
-                                                <li><a href="reports_prospectus.html">Prospectus</a></li>
-                                                <li><a href="reports_analyst_reports.html">Analyst Reports</a></li>
+                                            	<li><a href="{{ URL::to('/pages/reports_annual_reports')}}">Annual Reports</a></li>
+                                                <li><a href="{{ URL::to('/pages/reports_annual_audited_accounts')}}">Annual Audited Accounts</a></li>
+                                                <li><a href="{{ URL::to('/pages/reports_quarterly_reports')}}">Quarterly Reports</a></li>
+                                                <li><a href="{{ URL::to('/pages/reports_circulars')}}">Circulars</a></li>
+                                                <li><a href="{{ URL::to('/pages/reports_prospectus')}}">Prospectus</a></li>
+                                                <li><a href="{{ URL::to('/pages/reports_analyst_reports')}}">Analyst Reports</a></li>
                                             </ul>
                                         </li>
                                         <li><a href="#">Investor Tools</a>
                                         	<ul>
-                                            	<li><a href="investor_tools_news_alert_subscribe.html">News Alert</a></li>
-                                                <li><a href="investor_tools_news_price_gain_loss_calculator.html">Price Gain / Loss Calculator</a></li>
+                                            	<li><a href="{{ URL::to('/pages/investor_tools_news_alert_subscribe')}}">News Alert</a></li>
+                                                <li><a href="{{ URL::to('/pages/investor_tools_news_price_gain_loss_calculator')}}">Price Gain / Loss Calculator</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="event_calendar.html">Event Calendar</a></li>
+                                        <li><a href="{{ URL::to('/pages/event_calendar')}}">Event Calendar</a></li>
                                     </ul>
                                 </li> 
                                 <li><a href="{{ URL::to('create_vacancy') }}">CAREERS</a></li>                                                    
                           		<li><a href="#">CONTACT US</a>
                                 	<ul>
-                                       <li><a href="contact_us.html">Contact Us</a></li>
-                                       <li><a href="contact_us.html#enquiry">Enquiry</a></li>
-                                       <li><a href="regional_offices.html">Regional Offices</a></li>
+                                       <li><a href="{{ URL::to('/pages/contact_us')}}">Contact Us</a></li>
+                                       <li><a href="{{ URL::to('/pages/contact_us')}}">Enquiry</a></li>
+                                       <li><a href="{{ URL::to('/pages/regional_offices')}}">Regional Offices</a></li>
                                     </ul>
                                 </li>
                             </ul>
