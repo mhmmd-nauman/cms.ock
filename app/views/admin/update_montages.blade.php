@@ -24,7 +24,7 @@
                           <div class="form-group">
                             <label class="col-md-3 control-label">Title </label>
                             <div class="col-md-6">
-                                {{ Form::text('title', $montage->title, array('placeholder' => 'Title','class'=>'form-control')) }}
+                                {{ Form::text('title', $montage->title, array('placeholder' => 'Title','class'=>'form-control',"required")) }}
 
                             </div>
                           </div>
@@ -55,7 +55,7 @@
                                  @if($montage->MoreStatus == 1) <?php $checked = true ?> @else <?php  $checked = false ?> @endif
                                 {{ Form::checkbox('morestatus', '1', $checked);}}
                               </div>
-                              note to programmer: the below URL link box is only appeared  when the above enable explore more button is on.
+                              
                               <div class="input-icon margin-top-10px"><i class="fa fa-link"></i>
                                    {{ Form::text('url', $montage->url, array('placeholder' => 'http://','class'=>'form-control')) }}
 
@@ -72,7 +72,7 @@
                                                                 'class'=>'btn btn-red',
                                                                 'type'=>'submit')) 
                                                         }}
-                                                        <a href="#" data-dismiss="modal" class="btn btn-green">Cancel &nbsp;<i class="fa fa-times-circle"></i></a> 
+                                                        <a href="{{ URL::to('/index_edit') }}" data-dismiss="modal" class="btn btn-green">Cancel &nbsp;<i class="fa fa-times-circle"></i></a> 
                                                         
                                </div>
                           </div>

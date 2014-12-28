@@ -237,22 +237,7 @@
                   </div>
                  
                   <!--Modal delete selected items start-->
-                  <div id="modal-delete-selected" tabindex="-1" role="dialog" aria-labelledby="modal-login-label" aria-hidden="true" class="modal fade">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
-                          <h4 id="modal-login-label3" class="modal-title"><a href=""><i class="fa fa-exclamation-triangle"></i></a> Are you sure you want to delete the selected item(s)? </h4>
-                        </div>
-                        <div class="modal-body">
-                          <p><strong>#1:</strong> Banner 1</p>
-                          <div class="form-actions">
-                            <div class="col-md-offset-4 col-md-8"> <a href="#" class="btn btn-red">Yes &nbsp;<i class="fa fa-check"></i></a>&nbsp; <a href="#" data-dismiss="modal" class="btn btn-green">No &nbsp;<i class="fa fa-times-circle"></i></a> </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  
                   <!-- modal delete selected items end -->
                   <!--Modal delete all items start-->
                   <div id="modal-delete-all" tabindex="-1" role="dialog" aria-labelledby="modal-login-label" aria-hidden="true" class="modal fade">
@@ -351,89 +336,6 @@
             </div>
     <!--END FOOTER--></div>
 
-<div id="modal-add-montage" tabindex="-1" role="dialog" aria-labelledby="modal-login-label" aria-hidden="true" class="modal fade">
-                    <div class="modal-dialog modal-wide-width">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
-                          <h4 id="modal-login-label2" class="modal-title">Add New Montage</h4>
-                        </div>
-                        <div class="modal-body">
-                          <div class="form">
-                             {{ Form::open(array('url' => 'montage',"method" => "post","files"=>true,"class"=>"form-horizontal")) }}
-                              <div class="form-group">
-                                <label class="col-md-3 control-label">Status</label>
-                                <div class="col-md-6">
-                                  <div data-on="success" data-off="primary" class="make-switch">
-                                   {{ Form::checkbox('status', '1','yes');}}
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="form-group has-error">
-                                <label class="col-md-3 control-label">Title </label>
-                                <div class="col-md-6">
-                                   {{ Form::text('title', Input::old('title'), array('class' => 'form-control','placeholder' => 'Title'))}}
-                                </div>
-                                <div class="col-md-3">
-                                      <div class="popover popover-validator right">
-                                        <div class="arrow"></div>
-                                        <div class="popover-content">
-                                          <p class="mbn">Title is empty!</p>
-                                        </div>
-                                      </div>
-                                    </div>
-                              </div>
-                              <div class="form-group">
-                                <label class="col-md-3 control-label">Banner Text </label>
-                                <div class="col-md-9">
-                                	<div class="text-blue border-bottom">You can edit the content by clicking the text section below.</div>
-                                  <div contenteditable="true">
-                                  	 <div class="camera_caption fadeFromLeft">
-
-                                        <div class="row-fluid">                                
-                                                <h1 class="animated fadeInDown">Full Turnkey Solutions <br>for <span>Telecom Client</span>.</h1>
-                                                <p class="animated fadeInUp">Network planning, design &amp; optimization, network deployment, network operations &amp; maintenance</p>
-                                        </div>  
-                                    </div>                                                                                         
-
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="form-group">
-                                <label class="col-md-3 control-label">Upload Banner <span class='require'>*</span></label>
-                                <div class="col-md-9">
-                                  <div class="text-15px margin-top-10px">
-                                   {{ Form::file('Banner_image');}}
-                                    <br/>
-                                    <span class="help-block">(Image dimension: min. 1700 x 1000 pixels, JPEG/GIF/PNG only, Max. 1MB) </span> </div>
-                                </div>
-                              </div>
-                              <div class="form-group">
-                                <label class="col-md-3 control-label">Enable Explore More Button</label>
-                                <div class="col-md-6">
-                                  <div data-on="success" data-off="primary" class="make-switch">
-                                     {{ Form::checkbox('morestatus', '1','yes');}}
-                                    
-                                  </div>
-                                  <div class="clearfix"></div>
-								  note to programmer: the below URL link box is only appeared  when the above enable explore more button is on.
-                                  <div class="input-icon margin-top-10px"><i class="fa fa-link"></i>
-                                     {{ Form::text('url', Input::old('url'), array('class' => 'form-control','placeholder' => 'http://'))}}
-                                  </div>
-                                </div>
-                                
-                                
-                              </div>
-                              
-                              <div class="form-actions">
-                                <div class="col-md-offset-5 col-md-8"> {{ Form::submit('Save &nbsp;', array('class' => 'btn btn-red')) }}&nbsp; <a href="#" data-dismiss="modal" class="btn btn-green">Cancel &nbsp;</a> </div>
-                              </div>
-                             {{ Form::close() }}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
 
 <!--Modal delete start-->
 @foreach ($montages as $montage)          
@@ -446,10 +348,17 @@
                            <h4 id="modal-login-label3" class="modal-title"><a href=""><i class="fa fa-exclamation-triangle"></i></a> Are you sure you want to delete this banner? </h4>
                          </div>
                          <div class="modal-body">
-                           <p><strong>#1:</strong> Banner 1</p>
+                           <p>{{$montage->title}}</p>
                            <div class="form-actions">
 
-                             <div class="col-md-offset-4 col-md-8"> {{ Form::submit('Yes &nbsp;', array('class' => 'btn btn-red')) }}<i class="fa fa-check"></i>&nbsp; <a href="#" data-dismiss="modal" class="btn btn-green">No &nbsp;<i class="fa fa-times-circle"></i></a> </div>
+                             <div class="col-md-offset-4 col-md-8"> 
+                                 {{ Form::button(
+                                                'Yes &nbsp;<i class="fa fa-check"></i>',
+                                                array(
+                                                    'class'=>'btn btn-red',
+                                                    'type'=>'submit')) 
+                                            }}
+                                 &nbsp; <a href="#" data-dismiss="modal" class="btn btn-green">No &nbsp;<i class="fa fa-times-circle"></i></a> </div>
                            </div>
                          </div>
                        </div>

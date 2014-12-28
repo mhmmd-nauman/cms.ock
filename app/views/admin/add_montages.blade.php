@@ -20,7 +20,7 @@
                                 <label class="col-md-3 control-label">Status</label>
                                 <div class="col-md-6">
                                   <div data-on="success" data-off="primary" class="make-switch">
-                                      {{ Form::checkbox('status', '1','yes');}}
+                                      {{ Form::checkbox('status', '1');}}
                                   
                                   </div>
                                 </div>
@@ -28,7 +28,7 @@
                               <div class="form-group has-error">
                                 <label class="col-md-3 control-label">Title </label>
                                 <div class="col-md-6">
-                                   {{ Form::text('title', Input::old('title'), array('class' => 'form-control','placeholder' => 'Title'))}}
+                                   {{ Form::text('title', Input::old('title'), array('class' => 'form-control','placeholder' => 'Title',"required"))}}
                                 </div>
                                
                               </div>
@@ -40,8 +40,8 @@
                                   	 <div class="camera_caption fadeFromLeft">
 
                                         <div class="row-fluid">                                
-                                                <h1 class="animated fadeInDown">Full Turnkey Solutions <br>for <span>Telecom Client</span>.</h1>
-                                                <p class="animated fadeInUp">Network planning, design &amp; optimization, network deployment, network operations &amp; maintenance</p>
+                                                <h1 class="animated fadeInDown">Banner Title <br>for <span> Client</span>.</h1>
+                                                <p class="animated fadeInUp">Banner body, design &amp; banner body part 2 &amp; banner body part 3</p>
                                         </div>  
                                     </div>                                                                                         
 
@@ -61,12 +61,12 @@
                                 <label class="col-md-3 control-label">Enable Explore More Button</label>
                                 <div class="col-md-6">
                                   <div data-on="success" data-off="primary" class="make-switch">
-                                      {{ Form::checkbox('morestatus', '1','yes');}}
+                                      {{ Form::checkbox('morestatus', '1');}}
                                     
                                     
                                   </div>
                                   <div class="clearfix"></div>
-								  note to programmer: the below URL link box is only appeared  when the above enable explore more button is on.
+								  
                                   <div class="input-icon margin-top-10px"><i class="fa fa-link"></i>
                                      {{ Form::text('url', Input::old('url'), array('class' => 'form-control','placeholder' => 'http://'))}}
                                   </div>
@@ -83,7 +83,7 @@
                                                     'class'=>'btn btn-red',
                                                     'type'=>'submit')) 
                                             }}
-                                            <a href="#" data-dismiss="modal" class="btn btn-green">Cancel &nbsp;<i class="glyphicon glyphicon-ban-circle"></i></a> 
+                                            <a href="{{ URL::to('/index_edit') }}" data-dismiss="modal" class="btn btn-green">Cancel &nbsp;<i class="glyphicon glyphicon-ban-circle"></i></a> 
                                    
                                 
                                 </div>
