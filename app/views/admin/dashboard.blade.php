@@ -40,31 +40,20 @@
                                             </tr>
                                             </thead>
                                             <tbody>
+                                              @foreach($last_5_vacanies as $last_5_vacancy)  
                                             <tr>
-                                                <td><a href="link to details">Hock Lim</a></td>
-                                                <td>Business Development Executive</td>
-                                                <td>31 Dec, 2013</td>
+                                                <td><a href="#">{{$last_5_vacancy->name}}</a></td>
+                                                <td>{{$last_5_vacancy->career_vacancy_id}}</td>
+                                                <td>
+                                                    
+                                                    {{ date("d M, Y",strtotime($last_5_vacancy->created_at)) }}
+                                                </td>
                                             </tr>
-                                            <tr>
-                                                <td><a href="link to details">Hock Lim</a></td>
-                                                <td>Business Development Executive</td>
-                                                <td>31 Dec, 2013</td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="link to details">Hock Lim</a></td>
-                                                <td>Business Development Executive</td>
-                                                <td>31 Dec, 2013</td>
-                                            </tr>
-                                           <tr>
-                                                <td><a href="link to details">Hock Lim</a></td>
-                                                <td>Business Development Executive</td>
-                                                <td>31 Dec, 2013</td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="link to details">Hock Lim</a></td>
-                                                <td>Business Development Executive</td>
-                                                <td>31 Dec, 2013</td>
-                                            </tr>
+                                            @endforeach()
+                                          
+                                            
+                                         
+                                           
                                             </tbody>
                                         </table>
                                     </div>
@@ -84,7 +73,9 @@
                                                     <i class="fa fa-suitcase icon-4x"></i>
                                                 </div>
                                                 <div class="col-md-8 mts">
-                                                    <div class="ls-total">10</span></div>
+                                                   
+                                                    <div class="ls-total">{{count($total_vacancy)}}</span></div>
+                                                    
                                                     <div class="ls-title">Jobs Posted</div>
                                                 </div>
                                             </div>
@@ -103,7 +94,9 @@
                                                     <i class="fa fa-users icon-4x"></i>
                                                 </div>
                                                 <div class="col-md-8 mts">
-                                                    <div class="ao-total">120</div>
+                                                    
+                                                    <div class="ao-total">{{count($total_applications)}}</div>
+                                                    
                                                     <div class="ao-title">Job Applicants</div>
                                                 </div>
                                             </div>
@@ -123,7 +116,9 @@
                                                     <i class="fa fa-picture-o icon-4x"></i>
                                                 </div>
                                                 <div class="col-md-8 mts">
-                                                    <div class="ao-total">350</div>
+                                                   
+                                                    <div class="ao-total">{{count($total_events)}}</div>
+                                                    
                                                     <div class="ao-title">Event Photos Posted</div>
                                                 </div>
                                             </div>

@@ -122,7 +122,17 @@ class AdminController extends BaseController {
         }
         $user = Session::get('user');
         
-        return View::make('admin.dashboard')->with('user', $user);
+        $job_vacancy = Career::all();
+        $online_applications = Vacancy::all();
+        $last_5_vacancy = Vacancy::orderBy('id', 'desc')->take(5)->get();
+        $eventfolders = Eventfolder::all();
+        return View::make('admin.dashboard')
+                        ->with('user', $user)
+                        ->with('last_5_vacanies',$last_5_vacancy)
+                        ->with('total_applications',$online_applications)
+                        ->with('total_vacancy',$job_vacancy)
+                        ->with('total_events',$eventfolders)
+            ;
     }
     
     
