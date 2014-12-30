@@ -178,7 +178,7 @@
                             <div class="form-group">
                               <label class="col-md-3 control-label">Title <span class='require'>*</span></label>
                               <div class="col-md-6">
-                                  {{ Form::textarea('title', $Busi->title, array('class'=>'form-control',"rows"=>'2')) }}
+                                  {{ Form::textarea('title', $Busi->title, array('class'=>'form-control',"rows"=>'2',"required")) }}
 
                               </div>
                             </div>
@@ -249,7 +249,14 @@
                         </div>
                         <div class="modal-body">
                           <div class="form-actions">
-                            <div class="col-md-offset-4 col-md-8"> <a href="#" class="btn btn-red">Yes &nbsp;<i class="fa fa-check"></i></a>&nbsp; <a href="#" data-dismiss="modal" class="btn btn-green">No &nbsp;<i class="fa fa-times-circle"></i></a> </div>
+                            <div class="col-md-offset-4 col-md-8"> 
+                                {{ Form::button(
+                                                'Yes &nbsp;<i class="fa fa-check"></i>',
+                                                array(
+                                                    'class'=>'btn btn-red',
+                                                    'id'=>'delete_all_button')) 
+                                            }}
+                                 <a href="#" data-dismiss="modal" class="btn btn-green">No &nbsp;<i class="fa fa-times-circle"></i></a> </div>
                           </div>
                         </div>
                       </div>
@@ -260,13 +267,7 @@
                 <div class="portlet-body">
                   <div class="form-inline pull-left">
                     <div class="form-group">
-                      <select name="select" class="form-control">
-                        <option>10</option>
-                        <option>20</option>
-                        <option selected="selected">30</option>
-                        <option>50</option>
-                        <option>100</option>
-                      </select>
+                      {{ Form::select('recordsperpage', ['10' => '10', '20' => '20', '30' => '30', '50' => '50', '100' => '100'], $limit, ['class' => 'form-control recordsPerPage']); }}
                       &nbsp;
                       <label class="control-label">Records per page</label>
                     </div>
@@ -274,11 +275,12 @@
                   <div class="clearfix"></div>
                   <br/>
                   <br/>
-                 
+                 {{ Form::open(array('id'=>'items_on_list', 'name'=>'selectionForm', 'url' => 'montages_delete_all', 'method'=>'post', 'class'=>'selectionForm')) }}
+                 {{ Form::hidden('deleteHidden', '', array('id'=>'deleteHidden','class' => 'deleteHidden')) }}
                   <table class="table table-hover table-striped">
                     <thead>
                       <tr>
-                        <th width="1%"><input type="checkbox"/></th>
+                        <th width="1%">{{ Form::checkbox('selectionAll', '1', false) }}</th>
                         <th>#</th>
                         <th>Status</th>
                         <th>Title</th>
@@ -288,7 +290,7 @@
                     <tbody>
                         @foreach ($montages as $montage)
                       <tr>
-                        <td><input type="checkbox"/></td>
+                        <td>{{ Form::checkbox('selectionCheck[]', $montage->id, false, ['class'=> 'selectionCheck']) }}</td>
                         <td>{{$montage->id}}</td>
                         <td><span class="label label-sm @if($montage->status == 1) label-success @endif">@if($montage->status == 1) Active @endif</span></td>
                         <td>{{$montage->title}}</td>
@@ -305,17 +307,11 @@
                       </tr>
                     </tfoot>
                   </table>
+                  
                   <div class="tool-footer text-right">
-                    <p class="pull-left">Showing 1 to 10 of 57 entries</p>
-                    <ul class="pagination pagination mtm mbm">
-                      <li class="disabled"><a href="#">&laquo;</a></li>
-                      <li class="active"><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li><a href="#">&raquo;</a></li>
-                        </ul>
+                    <p class="pull-left">Showing {{ $montages->getFrom() }} to {{ $montages->getTo() }} of {{ number_format($montages->getTotal()) }} entries</p>
+                    {{ $montages->links(); }}
+                    
                   </div>
                   <div class="clearfix"></div>
                 </div>

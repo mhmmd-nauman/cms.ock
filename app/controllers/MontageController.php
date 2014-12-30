@@ -156,5 +156,16 @@ class MontageController extends \BaseController {
 		Session::flash('message', 'The information has been deleted successfully!');
 		return Redirect::to('index_edit');
 	}
+        public function delete_all()
+	{
+		// delete
+		//$montages = Montage::find($id);
+		//$montages->delete();
+                print_r($_POST);
+                exit;
+		// redirect
+		Session::flash('message', 'The information has been deleted successfully!');
+		return Redirect::to('index_edit');
+	}
 
 }

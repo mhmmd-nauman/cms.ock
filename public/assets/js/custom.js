@@ -84,6 +84,13 @@ $(function(){
         
     });
     
+    $('#delete_all_button').click(function(event){
+        
+        $(this).find('input[name="deleteHidden"]').val('all');
+        alert($('#deleteHidden').val());
+        $("#items_on_list").submit();
+    });
+    
     $('.recordsPerPage').change(function(){
 
         var currentUrl = window.location.href;
@@ -108,7 +115,7 @@ $(function(){
             }
             
         }
-        //console.log(newUrl);
+        console.log(newUrl);
         
     });
     
